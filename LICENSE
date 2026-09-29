@@ -1,0 +1,48 @@
+Kit Commit — License
+
+Copyright (c) 2026 Elliott Park. All rights reserved.
+
+Kit Commit (the "Software") is free to download and use, but it is not open source.
+The Software includes the app, its source code, pixel art, character designs,
+animations, sounds, text and the name "Kit Commit".
+
+1. What you may do
+   - Download the Software only from the official page:
+     https://github.com/elliott-json-park/kitcommit-releases/releases
+   - Install and use it for free, for personal use or at work.
+   - Share the link to the official page.
+
+2. What you may not do
+   - Re-upload, mirror, redistribute, sell or rent the Software or its installer files
+     anywhere else (other websites, file-sharing services, app stores, package managers).
+   - Modify the Software, or distribute a modified version.
+   - Unpack, copy or reuse its source code, pixel art, characters or other assets
+     in another product.
+   - Use the name "Kit Commit" or its characters for another app or service,
+     or in a way that suggests it is the official app.
+   - Remove or change this license or the copyright notices.
+
+   If you would like to do any of the above, ask first:
+   https://github.com/elliott-json-park/kitcommit-releases/issues
+
+3. No warranty
+   The Software is provided "as is", without warranty of any kind. The author is not
+   liable for any damage or loss arising from its use.
+
+4. Third-party names
+   Kit Commit is an unofficial fan-made app. It is not affiliated with, made by, or
+   endorsed by Anthropic or OpenAI. Claude and Claude Code are trademarks of Anthropic.
+   Codex is a trademark of OpenAI. Bundled open-source components (such as Electron
+   and the Galmuri and Pretendard fonts) remain under their own licenses.
+
+---
+
+한국어 요약 (위 영어 원문이 기준입니다)
+
+- 킷커밋은 무료로 받아 쓸 수 있지만 오픈소스가 아닙니다. 저작권은 Elliott Park 에게 있습니다.
+- 공식 페이지(https://github.com/elliott-json-park/kitcommit-releases/releases)에서 받아
+  개인이나 회사에서 무료로 쓸 수 있고, 공식 페이지 링크는 자유롭게 공유할 수 있습니다.
+- 설치 파일을 다른 곳에 다시 올리거나 팔거나, 앱을 고쳐서 배포하거나, 코드·도트 그림·캐릭터를
+  다른 곳에 쓰거나, "Kit Commit" 이름으로 다른 앱을 만들 수 없습니다. 필요하면 먼저 물어봐 주세요.
+- 앱은 있는 그대로 제공되며, 사용으로 생긴 손해에 책임지지 않습니다.
+- 비공식 팬메이드 앱이며 Anthropic·OpenAI 와 관련이 없습니다.
