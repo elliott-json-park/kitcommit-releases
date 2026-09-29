@@ -15,23 +15,28 @@ Open the latest release on the **[Releases](https://github.com/elliott-json-park
 
 | Your computer | File |
 |---|---|
-| Windows 10/11 (64-bit) | `Kit Commit <version>.exe` |
-| Mac (Apple Silicon or Intel) | `Kit Commit <version>.dmg` |
+| Windows 10/11 (64-bit) | `KitCommit-Setup-<version>.exe` |
+| Mac (Apple Silicon or Intel) | `KitCommit-<version>.dmg` |
 
 To make sure a file is the real one, compare its SHA-256 checksum with the one written in the release notes.
 
-- Windows (PowerShell): `Get-FileHash "Kit Commit <version>.exe"`
-- Mac (Terminal): `shasum -a 256 "Kit Commit <version>.dmg"`
+- Windows (PowerShell): `Get-FileHash KitCommit-Setup-<version>.exe`
+- Mac (Terminal): `shasum -a 256 KitCommit-<version>.dmg`
 
 ## Installing on Windows
 
-The app is not code-signed yet, so Windows may show **"Windows protected your PC"** the first time. Click **More info → Run anyway**. After that it opens normally.
+Run `KitCommit-Setup-<version>.exe`. It installs for your account only (no admin rights needed) and opens Kit Commit when it's done.
+
+- The app is not code-signed yet, so Windows may show **"Windows protected your PC"**. Click **More info → Run anyway**.
+- **Updates are automatic.** The app checks for a new version in the background, and installs it the next time you quit or restart it (you can also choose **Install and restart** from the tray menu).
+- To uninstall, use **Settings → Apps**. Your cat's progress (`%APPDATA%/Kit Commit`) is kept.
+- If you used a pre-release test build (a single `.exe` with no installer), just install this one. Your progress carries over.
 
 ## Installing on a Mac
 
 This beta is not signed with a (paid) Apple Developer account, so you have to let macOS open it **once**. After that it opens normally.
 
-1. Open `Kit Commit <version>.dmg`
+1. Open `KitCommit-<version>.dmg`
 2. Drag the **Kit Commit** icon onto the **Applications** folder next to it
 3. Open Kit Commit from the Applications folder → if a warning like "unidentified developer" appears, click **Done (or Cancel)**
 4. Open **System Settings → Privacy & Security** and scroll down. Next to "Kit Commit was blocked" there is an **Open Anyway** button. Click it and enter your password
@@ -43,7 +48,7 @@ If you see "Kit Commit is damaged and can't be opened", open the **Terminal** ap
 xattr -dr com.apple.quarantine "/Applications/Kit Commit.app"
 ```
 
-When a new version comes out, install the new dmg over the old one the same way. Your cat's progress is kept.
+There is no auto-update on Mac yet. When a new version comes out, install the new dmg over the old one the same way. Your cat's progress is kept.
 
 ## Privacy
 
