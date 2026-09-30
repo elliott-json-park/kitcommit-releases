@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>킷커밋 — AI와 일할수록 자라는 도트 고양이</title>
+<meta name="description" content="Claude Code 나 Codex 를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 작업이 끝나면 알려 주고, 점심·휴식·잠잘 시간을 챙겨 줘요. 무료.">
+<meta property="og:title" content="킷커밋 — AI와 일할수록 자라는 도트 고양이">
+<meta property="og:description" content="Claude Code 나 Codex 를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 작업이 끝나면 알려 주고, 점심·휴식·잠잘 시간을 챙겨 줘요. 무료.">
+<meta property="og:image" content="https://elliott-json-park.github.io/kitcommit-releases/assets/og.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/icon.png">
+<link rel="alternate" hreflang="en" href="../">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="../assets/icon.png" alt="">Kit Commit</a>
+  <nav class="nav"><a href="#play">놀아 보기</a><a href="#day">고양이의 하루</a><a href="#gallery">모션</a><a href="#download">받기</a></nav>
+  <a class="lang" href="../">English</a>
+  <a class="btn primary sm" href="#download">받기</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Claude Code · Codex 데스크톱 펫</span>
+      <h1>AI와 일할수록 자라는<br><em>도트 고양이</em></h1>
+      <p class="lead">토큰을 먹고 자라는 작은 고양이가 화면 구석에서 같이 일해요. 답이 끝나면 박수를 치고, 허락이 필요하면 손을 흔들고, 새벽 1시엔 이제 자자고 해요.</p>
+      <div class="ctas">
+        <a class="btn primary" data-dl="win" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>윈도우용 받기 <small>무료</small></a>
+        <a class="btn primary" data-dl="mac" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>맥용 받기 <small>무료</small></a>
+      </div>
+      <p class="meta">윈도우 10/11 · macOS (M칩·인텔) · 대화 내용은 읽지 않아요 · <span data-ver></span></p>
+      <p class="mobile-note" hidden>킷커밋은 PC(윈도우 · 맥)에서 쓰는 앱이에요. 주소를 복사해 두었다가 PC에서 열어 보세요. <button type="button" data-copy data-done="복사했어요!">주소 복사</button></p>
+    </div>
+    <div>
+      <div class="screen">
+        <div class="bar"><i></i><i></i><i></i><span>claude — ~/my-app</span></div>
+        <div class="term" id="term" aria-hidden="true"></div>
+        <div class="stage" id="hero-stage">
+          <div class="pet"><div class="bubble"></div><canvas></canvas></div>
+        </div>
+      </div>
+      <p class="hint"><b>▸</b> 고양이를 눌러 쓰다듬고, 끌어서 들어 올려 보세요</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap center">
+  <h2>그냥 귀엽기만 한 게 아니에요</h2>
+  <p class="lead">AI와 함께 일하는 하루에 맞춰 같이 움직이는 고양이예요.</p>
+  <div class="grid g3">
+    <div class="card feature"><div class="sp-box"><canvas data-sp="a-levelup"  aria-hidden="true"></canvas></div><h3>토큰을 먹고 자라요</h3><p>보낸 메시지와 출력 토큰만큼 경험치가 쌓여 레벨이 오르고, 코인으로 옷·모션·간식을 사요.</p></div>
+    <div class="card feature"><div class="sp-box"><canvas data-sp="m-donebell"  aria-hidden="true"></canvas></div><h3>같이 일하고 알려 줘요</h3><p>답을 만드는 동안 노트북으로 같이 타이핑하고, 끝나면 말풍선으로, 허락이 필요하면 손을 흔들어 알려 줘요.</p></div>
+    <div class="card feature"><div class="sp-box"><canvas data-sp="m-stretch"  aria-hidden="true"></canvas></div><h3>생활을 챙겨 줘요</h3><p>점심·저녁 시간, 두 시간째 일할 때의 스트레칭, 늦은 밤 작업할 때 건네는 위로의 말까지. 고양이가 내 생활을 챙겨 줘요.</p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="play"><div class="wrap center">
+  <span class="eyebrow">직접 해 보기</span>
+  <h2>고양이랑 놀아 보세요</h2>
+  <p class="lead">앱에서와 똑같이 움직여요. 고양이를 쓰다듬고 끌어 올리고, 밥을 주고, 장난감을 꺼내 직접 놀아 주세요.</p>
+  <div class="play">
+    <div class="stage" id="play-stage">
+      <canvas class="field" aria-hidden="true"></canvas>
+      <div class="pet"><div class="bubble"></div><canvas></canvas></div>
+      <button type="button" class="go" hidden></button>
+      <div class="caption">고양이를 눌러 쓰다듬거나, 끌어서 들어 올려 보세요</div>
+    </div>
+    <div class="actions">
+      <button class="btn" data-act="feed" data-label="밥 주기"><span class="ico">🍚</span>밥 주기</button>
+      <button class="btn" data-act="toy" data-label="장난감 꺼내기"><span class="ico">🧸</span>장난감 꺼내기 <small></small></button>
+      <button class="btn" data-act="work" data-label="일 시키기"><span class="ico">💻</span>일 시키기</button>
+      <button class="btn" data-act="notify" data-label="허락 요청"><span class="ico">❗</span>허락 요청</button>
+      <button class="btn" data-act="lunch" data-label="점심시간"><span class="ico">🍱</span>점심시간</button>
+      <button class="btn" data-act="sleep" data-label="재우기"><span class="ico">🌙</span>재우기</button>
+      <button class="btn" data-act="motion" data-label="아무 모션"><span class="ico">🎲</span>아무 모션</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="day"><div class="wrap center">
+  <span class="eyebrow">어느 하루</span>
+  <h2>고양이와 함께하는 하루</h2>
+  <p class="lead">Claude Code 나 Codex 가 일하는 흐름에 맞춰 고양이도 움직여요. 아래 말풍선은 앱 속 실제 대사예요.</p>
+  <div class="day">
+    <div class="moment"><span class="time">09:02</span><div class="card"><div class="sp-box"><div class="bubble ">새 세션이다! 오늘은 뭘 만들어 볼까?</div><canvas data-sp="a-wave"  aria-hidden="true"></canvas></div><h3>세션 시작</h3></div></div>
+    <div class="moment"><span class="time">10:15</span><div class="card"><div class="sp-box"><div class="bubble ">(노트북 타닥타닥…)</div><canvas data-sp="mood-thinking"  aria-hidden="true"></canvas></div><h3>같이 일하는 중</h3></div></div>
+    <div class="moment"><span class="time">10:48</span><div class="card"><div class="sp-box"><div class="bubble notify">Claude가 Bash 허락을 기다려</div><canvas data-sp="m-enterwait"  aria-hidden="true"></canvas></div><h3>허락이 필요할 때</h3></div></div>
+    <div class="moment"><span class="time">10:51</span><div class="card"><div class="sp-box"><div class="bubble ">작업 끝! 일동 박수!!</div><canvas data-sp="m-donebell"  aria-hidden="true"></canvas></div><h3>답이 끝났을 때</h3></div></div>
+    <div class="moment"><span class="time">12:00</span><div class="card"><div class="sp-box"><div class="bubble ">점심시간이닷!!!!!</div><canvas data-sp="a-eat"  aria-hidden="true"></canvas></div><h3>점심시간</h3></div></div>
+    <div class="moment"><span class="time">15:30</span><div class="card"><div class="sp-box"><div class="bubble ">벌써 2시간째야. 스트레칭 한 번 할까?</div><canvas data-sp="m-stretch"  aria-hidden="true"></canvas></div><h3>오래 일했을 때</h3></div></div>
+    <div class="moment"><span class="time">18:40</span><div class="card"><div class="sp-box"><div class="bubble ">라면이가 놀러 왔어!</div><canvas data-sp="f-raccoon"  aria-hidden="true"></canvas></div><h3>동네 친구가 놀러 옴</h3></div></div>
+    <div class="moment"><span class="time">01:10</span><div class="card"><div class="sp-box"><div class="bubble ">1시야… 오늘은 여기까지 할까?</div><canvas data-sp="m-nodoff"  aria-hidden="true"></canvas></div><h3>늦은 밤</h3></div></div>
+  </div>
+</div></section>
+
+<section class="alt" id="gallery"><div class="wrap center">
+  <span class="eyebrow">모션 87개 · 코스튬 264개</span>
+  <h2>매일 다른 모습</h2>
+  <p class="lead">상황마다 모션을 고르고, 코인으로 새 모션과 옷을 사요.</p>
+  <div class="tabs" role="tablist"><button role="tab" data-tab="motions" data-note="일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 87개 가운데 일부예요." aria-selected="true" class="on">모션 <i>28</i></button><button role="tab" data-tab="costumes" data-note="머리부터 발끝까지 한 벌이에요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요." aria-selected="false" class="">코스튬 세트 <i>10</i></button><button role="tab" data-tab="friends" data-note="2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러낼 수 있어요." aria-selected="false" class="">동네 친구 <i>8</i></button></div>
+  <p class="tab-note" id="tab-note">일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 87개 가운데 일부예요.</p>
+  <div class="grid g6" data-panel="motions"><div class="tile"><canvas data-sp="m-sojuchug"  aria-hidden="true"></canvas><b>소주 병나발</b></div><div class="tile"><canvas data-sp="m-darkmode"  aria-hidden="true"></canvas><b>다크모드 전환</b></div><div class="tile"><canvas data-sp="m-stockup"  aria-hidden="true"></canvas><b>주식 차트 떡상</b></div><div class="tile"><canvas data-sp="m-deployrocket"  aria-hidden="true"></canvas><b>배포 성공 로켓</b></div><div class="tile"><canvas data-sp="m-cicheck"  aria-hidden="true"></canvas><b>초록 체크 뱃지</b></div><div class="tile"><canvas data-sp="m-enterwait"  aria-hidden="true"></canvas><b>엔터 키 대기</b></div><div class="tile"><canvas data-sp="m-staticfur"  aria-hidden="true"></canvas><b>정전기 폭발</b></div><div class="tile"><canvas data-sp="m-donebell"  aria-hidden="true"></canvas><b>끝났다옹 종 울리기</b></div><div class="tile"><canvas data-sp="m-giantfist"  aria-hidden="true"></canvas><b>거대 주먹 쾅쾅</b></div><div class="tile"><canvas data-sp="m-ufo"  aria-hidden="true"></canvas><b>UFO 납치</b></div><div class="tile"><canvas data-sp="m-karaoke"  aria-hidden="true"></canvas><b>노래방 열창</b></div><div class="tile"><canvas data-sp="m-raisehand"  aria-hidden="true"></canvas><b>저요 저요!</b></div><div class="tile"><canvas data-sp="m-fooddream"  aria-hidden="true"></canvas><b>맛있는 상상</b></div><div class="tile"><canvas data-sp="m-snot"  aria-hidden="true"></canvas><b>코풍선</b></div><div class="tile"><canvas data-sp="m-zoomies"  aria-hidden="true"></canvas><b>우다다</b></div><div class="tile"><canvas data-sp="m-box"  aria-hidden="true"></canvas><b>박스 들어가기</b></div><div class="tile"><canvas data-sp="m-bath"  aria-hidden="true"></canvas><b>거품 목욕</b></div><div class="tile"><canvas data-sp="m-coffee"  aria-hidden="true"></canvas><b>커피 한 잔</b></div><div class="tile"><canvas data-sp="m-stretch"  aria-hidden="true"></canvas><b>기지개</b></div><div class="tile"><canvas data-sp="m-hooray"  aria-hidden="true"></canvas><b>임무 완료</b></div><div class="tile"><canvas data-sp="m-blowkiss"  aria-hidden="true"></canvas><b>하트 날리기</b></div><div class="tile"><canvas data-sp="m-melt"  aria-hidden="true"></canvas><b>녹아내리기</b></div><div class="tile"><canvas data-sp="m-slowblink"  aria-hidden="true"></canvas><b>고양이 키스 (천천히 깜빡)</b></div><div class="tile"><canvas data-sp="m-startle"  aria-hidden="true"></canvas><b>화들짝</b></div><div class="tile"><canvas data-sp="m-fishthink"  aria-hidden="true"></canvas><b>생선 상상하기</b></div><div class="tile"><canvas data-sp="m-foodsign"  aria-hidden="true"></canvas><b>"FOOD" 피켓 시위</b></div><div class="tile"><canvas data-sp="m-tapfoot"  aria-hidden="true"></canvas><b>발 동동 시계 보기</b></div><div class="tile"><canvas data-sp="m-pray"  aria-hidden="true"></canvas><b>제발요 기도</b></div></div>
+  <div class="grid g6" data-panel="costumes" hidden><div class="tile"><canvas data-sp="c-magicalgirl"  aria-hidden="true"></canvas><b>야옹나라 냥냥공주</b></div><div class="tile"><canvas data-sp="c-holyknight"  aria-hidden="true"></canvas><b>츄르를 수호하는 신의 기사단</b></div><div class="tile"><canvas data-sp="c-sunwukong"  aria-hidden="true"></canvas><b>근두운 할부 중인 제천대성</b></div><div class="tile"><canvas data-sp="c-dinosuit"  aria-hidden="true"></canvas><b>크아앙 공룡 잠옷</b></div><div class="tile"><canvas data-sp="c-ironcat"  aria-hidden="true"></canvas><b>아이언냥 Mk. 1</b></div><div class="tile"><canvas data-sp="c-mondaydev"  aria-hidden="true"></canvas><b>월요일 아침 배포 개발자</b></div><div class="tile"><canvas data-sp="c-overtimer"  aria-hidden="true"></canvas><b>야근 요정 김대리 (사원증 포함)</b></div><div class="tile"><canvas data-sp="c-seonbi"  aria-hidden="true"></canvas><b>과거 낙방 7수 선비</b></div><div class="tile"><canvas data-sp="c-beesuit"  aria-hidden="true"></canvas><b>꿀 빠는 꿀벌</b></div><div class="tile"><canvas data-sp="c-nyangwarts"  aria-hidden="true"></canvas><b>빗자루 면허 없는 냥그와트 1학년</b></div></div>
+  <div class="grid g4" data-panel="friends" hidden><div class="tile friend"><canvas data-sp="f-dust"  aria-hidden="true"></canvas><b>먼지</b><em>우리는 광활한 우주의</em><p>회색 줄무늬 고양이 · 소파 밑 (본인 말로는 우주)</p><p><i>좋아하는 것</i> 햇볕 드는 창틀, 낮잠</p></div><div class="tile friend"><canvas data-sp="f-coal"  aria-hidden="true"></canvas><b>연탄이</b><em>까만데 뜨거운 남자</em><p>까만 고양이 · 골목 끝 보일러실</p><p><i>좋아하는 것</i> 따뜻한 곳, 폼 잡기</p></div><div class="tile friend"><canvas data-sp="f-tofu"  aria-hidden="true"></canvas><b>두부</b><em>후</em><p>하얀 고양이 · 2층 창가</p><p><i>좋아하는 것</i> 조용한 곳, 부드러운 담요</p></div><div class="tile friend"><canvas data-sp="f-bolt"  aria-hidden="true"></canvas><b>최번개</b><em>노란색 정전기 고양이</em><p>노란 고양이 · 멀티탭 옆</p><p><i>좋아하는 것</i> 충전기 옆자리, 털 부비기</p></div><div class="tile friend"><canvas data-sp="f-dondon"  aria-hidden="true"></canvas><b>돈돈까스</b><em>츄르 공장 공장장</em><p>샴 고양이 · 언덕 위 츄르 공장 꼭대기 층</p><p><i>좋아하는 것</i> 대리석 스크래처, 반짝이는 것</p></div><div class="tile friend"><canvas data-sp="f-pigeon"  aria-hidden="true"></canvas><b>구구단</b><em>눈치 백단 바위처럼 단단</em><p>비둘기 · 탑골공원</p><p><i>좋아하는 것</i> 과자 부스러기, 걷기</p></div><div class="tile friend"><canvas data-sp="f-hedgehog"  aria-hidden="true"></canvas><b>고도리</b><em>방배동 타짜</em><p>고슴도치 · 방배동 어느 화분 밑</p><p><i>좋아하는 것</i> 딱지치기, 확률 계산</p></div><div class="tile friend"><canvas data-sp="f-raccoon"  aria-hidden="true"></canvas><b>라면이</b><em>편의점 뒤 단골</em><p>너구리 · 편의점 뒤</p><p><i>좋아하는 것</i> 컵라면 국물, 밤 산책</p></div></div>
+</div></section>
+
+<section><div class="wrap center">
+  <span class="eyebrow">모으고 꾸미고</span>
+  <h2>쓸수록 할 게 많아져요</h2>
+  <p class="lead">레벨이 오르면 새 물건이 열리고, 놀 거리와 모을 거리가 계속 생겨요.</p>
+  <div class="stats"><div class="stat"><b>87</b><span>모션</span></div><div class="stat"><b>264</b><span>코스튬</span></div><div class="stat"><b>55</b><span>밥 · 간식</span></div><div class="stat"><b>30</b><span>장난감</span></div><div class="stat"><b>8</b><span>동네 친구</span></div><div class="stat"><b>161</b><span>업적</span></div></div>
+  <div class="todo"><div class="card"><span class="ico">🎮</span><div><h3>같이 하는 게임</h3><p>두더지 잡기 · 가위바위보 · 도미노 · 줄다리기 · 트램펄린. 기록이 남아요.</p></div></div><div class="card"><span class="ico">💎</span><div><h3>깜짝 보물과 공방</h3><p>고양이가 가끔 보물을 물어 와요. 38가지를 모아 공방에서만 나오는 코스튬 24벌을 만들어요.</p></div></div><div class="card"><span class="ico">📜</span><div><h3>퀘스트와 업적</h3><p>한 번에 퀘스트 3개, 업적은 161개. 깨면 경험치와 간식 · 코인을 받아요.</p></div></div><div class="card"><span class="ico">📊</span><div><h3>통계와 자랑하기</h3><p>요일 × 시간 히트맵과 누적 기록을 보고, 카드 이미지로 복사해 자랑해요.</p></div></div><div class="card"><span class="ico">💡</span><div><h3>AI 활용 팁</h3><p>하루 몇 번, 고양이가 말풍선으로 쓸 만한 팁을 하나씩 알려 줘요.</p></div></div><div class="card"><span class="ico">🔕</span><div><h3>방해하지 않아요</h3><p>크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드가 있어요.</p></div></div></div>
+  <div class="shots"><figure><img src="../assets/shots/home.png" alt="홈 — 오늘의 고양이" loading="lazy"><figcaption>홈 — 오늘의 고양이</figcaption></figure><figure><img src="../assets/shots/shop.png" alt="상점 — 코인으로 꾸미기" loading="lazy"><figcaption>상점 — 코인으로 꾸미기</figcaption></figure><figure><img src="../assets/shots/stats.png" alt="통계 — 나의 코딩 기록" loading="lazy"><figcaption>통계 — 나의 코딩 기록</figcaption></figure></div>
+  <p class="note">스크린샷은 데모 기록으로 찍은 영어 화면이에요.</p>
+</div></section>
+
+<section class="alt"><div class="wrap center">
+  <h2>Claude Code 도, Codex 도</h2>
+  <p class="lead">처음 안내나 설정에서 쓰는 도구를 고르면 돼요. 도구마다 고양이가 따로 자라요.</p>
+  <div class="tools">
+    <div class="card"><canvas data-sp="mood-thinking"  aria-hidden="true"></canvas><div><h3>Claude Code</h3><p>대화 기록으로 자라고, hook 으로 실시간 반응해요.</p></div></div>
+    <div class="card"><canvas data-sp="c-mondaydev"  aria-hidden="true"></canvas><div><h3>Codex</h3><p>Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.</p></div></div>
+  </div>
+</div></section>
+
+<section id="download"><div class="wrap center">
+  <span class="eyebrow">무료</span>
+  <h2>지금 받기</h2>
+  <p class="lead">설치는 1분이면 끝나요. <span data-ver></span></p>
+  <div class="dl">
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg> 윈도우</h3><ol><li>설치 파일을 실행하면 관리자 권한 없이 설치되고 바로 켜져요.</li><li>"Windows의 PC 보호" 창이 뜨면 <b>추가 정보 → 실행</b>.</li><li><b>새 버전은 자동으로</b> 받아서 설치해요.</li></ol>
+      <a class="btn primary" data-dl="win" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>윈도우용 받기 <small>무료</small></a>
+      <p class="note">윈도우 10 / 11 (64비트)</p><p class="sha" data-sha="win"></p></div>
+    <div class="card"><h3><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg> 맥</h3><ol><li>dmg 를 열고 Kit Commit 을 응용 프로그램 폴더로 끌어 놓아요.</li><li>처음 한 번만 <b>시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기</b>.</li><li>새 버전이 나오면 새 dmg 로 덮어 설치해요.</li></ol>
+      <a class="btn primary" data-dl="mac" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>맥용 받기 <small>무료</small></a>
+      <p class="note">macOS · M칩 · 인텔</p><p class="sha" data-sha="mac"></p></div>
+  </div>
+  <p class="official"><b>공식 다운로드는 이 사이트와 GitHub Releases 뿐이에요.</b> 다른 곳에 올라온 파일은 고쳐진 것일 수 있어요. 받은 파일의 SHA-256 을 위 값과 비교해 확인할 수 있어요. <a href="https://github.com/elliott-json-park/kitcommit-releases/blob/main/README.ko.md">자세한 설치 방법 →</a></p>
+</div></section>
+
+<section class="alt"><div class="wrap center">
+  <h2>자주 묻는 질문</h2>
+  <div class="faq"><details><summary>제 대화 내용을 읽나요?</summary><p>아니요. 이 컴퓨터의 기록 파일에서 <b>개수 · 토큰 수 · 시각 · 도구 이름만</b> 세고, 대화 내용은 저장하지도 어디로 보내지도 않아요. 계산은 모두 이 컴퓨터 안에서 해요.</p></details><details><summary>무료인가요?</summary><p>네, 무료예요. 결제나 광고가 없어요.</p></details><details><summary>Anthropic · OpenAI 가 만든 공식 앱인가요?</summary><p>아니요. 개인이 만든 비공식 팬메이드 앱이에요. 두 회사와 관련이 없어요.</p></details><details><summary>hook 은 뭐고, 꼭 연결해야 하나요?</summary><p>Claude Code / Codex 가 일을 시작하고 끝낼 때 고양이에게 알려 주는 연결이에요. 연결하지 않아도 기록 파일로 자라지만, 연결하면 작업 끝 · 허락 요청에 바로 반응해요. 기존 설정은 그대로 두고 백업도 만들어요.</p></details><details><summary>방해되지 않나요?</summary><p>고양이는 화면 맨 아래를 걸어 다니고, 클릭은 고양이 몸 위에서만 받아요. 크기 조절, 음소거, 한 시간 숨기기, 방해 금지 모드가 있어요.</p></details><details><summary>맥은 왜 경고가 뜨나요?</summary><p>Apple 개발자 서명(유료)이 없는 베타라서, 처음 한 번만 설정에서 열어 줘야 해요. 그다음부터는 그냥 열려요.</p></details></div>
+</div></section>
+
+<section class="cta"><div class="wrap center">
+  <h2>오늘부터 같이 일할 고양이</h2>
+  <p class="lead">작은 고양이 한 마리가 일하는 하루를 조금 더 즐겁게 만들어 줄 거예요.</p>
+  <div class="ctas">
+        <a class="btn primary" data-dl="win" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>윈도우용 받기 <small>무료</small></a>
+        <a class="btn primary" data-dl="mac" href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>맥용 받기 <small>무료</small></a>
+  </div>
+  <div class="stage" id="cta-stage">
+    <div class="pet"><div class="bubble"></div><canvas></canvas></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><a href="https://github.com/elliott-json-park/kitcommit-releases/releases/latest">GitHub Releases</a> · <a href="https://github.com/elliott-json-park/kitcommit-releases/blob/main/LICENSE">라이선스</a> · <a href="https://github.com/elliott-json-park/kitcommit-releases/issues">버그 · 의견</a></div>
+  <div>킷커밋은 비공식 팬메이드 앱으로, Anthropic · OpenAI 와 관련이 없고 두 회사가 만들거나 보증하지 않습니다. Claude 와 Claude Code 는 Anthropic 의 상표이고, Codex 는 OpenAI 의 상표입니다.</div>
+  <div>© 2026 Elliott Park. 무료로 쓸 수 있지만 오픈소스가 아니며, 재배포 · 수정을 허용하지 않습니다.</div>
+</div></footer>
+
+<script>window.KC = {"base":"../assets/sprites/","sprites":{"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-seonbi":30,"c-beesuit":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36},"lines":{"session":["새 세션이다! 오늘은 뭘 만들어 볼까?","좋아, 시작해 보자! 뭐부터 건드려 볼까?","클로 준비 완료! 업무 시작이다!!"],"poke":["ㅎㅎ","간지러워!","파이팅!","좋아좋아","골골골…"],"held":["으앗 높다!","내려 줘~","어디 가는 거야?"],"landed":["휴~ 착지 성공!","!!","다시 한 번!"],"fed":["우와 맛있겠다!","잘먹겠습니다!!","우와 밥이다~~!!"],"caught":["잡았다!","헤헤 내가 이겼어","한 번 더!","나.. 혹시 사냥 천재..?"],"stop":["끝났다! 확인해 봐","짠! 답변 나왔다옹","작업 끝! 일동 박수!!","됐다옹! 한번 봐 줘"],"notifyPermission":["Bash 써도 되는지 물어봐!","Claude가 Bash 허락을 기다려","허락이 필요해!"],"lunch":["점심시간이닷!!!!!","오늘 뭐 먹을 거야?","바빠도 점심 꼭 챙겨 먹어!"],"late":["1시야… 오늘은 여기까지 할까?","이제 슬슬 졸리다. 우리 이제 자자","내일은 내일의 해가 뜨겠지.."]},"names":{"cat":"클로","dur":"2시간"},"motionNames":{"m-sojuchug":"소주 병나발","m-darkmode":"다크모드 전환","m-stockup":"주식 차트 떡상","m-deployrocket":"배포 성공 로켓","m-cicheck":"초록 체크 뱃지","m-enterwait":"엔터 키 대기","m-staticfur":"정전기 폭발","m-donebell":"끝났다옹 종 울리기","m-giantfist":"거대 주먹 쾅쾅","m-ufo":"UFO 납치","m-karaoke":"노래방 열창","m-raisehand":"저요 저요!","m-fooddream":"맛있는 상상","m-snot":"코풍선","m-zoomies":"우다다","m-box":"박스 들어가기","m-bath":"거품 목욕","m-coffee":"커피 한 잔","m-stretch":"기지개","m-hooray":"임무 완료","m-blowkiss":"하트 날리기","m-melt":"녹아내리기","m-slowblink":"고양이 키스 (천천히 깜빡)","m-startle":"화들짝","m-fishthink":"생선 상상하기","m-foodsign":"\"FOOD\" 피켓 시위","m-tapfoot":"발 동동 시계 보기","m-pray":"제발요 기도"},"randomMotions":["m-sojuchug","m-darkmode","m-stockup","m-deployrocket","m-cicheck","m-enterwait","m-staticfur","m-donebell","m-giantfist","m-ufo","m-karaoke","m-raisehand","m-fooddream","m-snot","m-zoomies","m-box","m-bath","m-coffee","m-stretch","m-hooray","m-blowkiss","m-melt","m-slowblink","m-startle","m-fishthink","m-foodsign","m-tapfoot","m-pray"],"term":[{"cmd":"fix the login redirect bug","out":["Reading src/auth/login.ts","Editing 2 files"],"ask":"Allow Bash: npm test?","after":["42 tests passed"],"done":"Done in 2m 14s","end":"m-donebell"},{"cmd":"add a dark mode toggle","out":["Reading src/theme.css","Writing src/ThemeToggle.tsx"],"ask":"Allow Bash: npm run build?","after":["Build succeeded"],"done":"Done in 1m 52s","end":"m-cicheck"},{"cmd":"deploy to staging","out":["Checking git status","Running release script"],"ask":"Allow Bash: npm run deploy?","after":["Uploaded 14 files"],"done":"Deployed in 3m 05s","end":"m-deployrocket"}],"foods":["churu","milk","anchovy","tuna","chicken","salmon","sushi","ramen","omurice","bento","creamtaiyaki","tempura","fishgrill","cookiemilk"],"toys":[["bubbles","비눗방울","마우스를 휘젓거나 클릭하면 방울 · 꾹 누르면 큰 방울이 고양이를 가둬 둥실 띄워요"],["ball","공","끌었다 놓으면 던지기 · 톡 누르면 뻥 차 올리기"],["domino","도미노","더미에서 도미노를 끌어다 세우고, 고양이 머리 위 시작 버튼을 눌러요"],["squirtgun","물총","클릭하면 물줄기 슝 · 꾹 누르면 연사"]],"ui":{"go":"시작","restand":"다시 세우기","away":"장난감을 넣었어요","feed":"밥이 떨어졌어요. 고양이가 가서 야금야금 먹어요","next":"다음"}};</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

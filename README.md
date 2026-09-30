@@ -4,6 +4,8 @@
 
 A pixel kitten that grows with your Claude Code (or Codex). It sits in the corner of your screen, works alongside you, and reminds you about lunch, breaks and bedtime.
 
+**Website: [elliott-json-park.github.io/kitcommit-releases](https://elliott-json-park.github.io/kitcommit-releases/)** — see the cat in motion and play with it in your browser.
+
 > **This is the only official place to download Kit Commit.**
 > Get it from **[Releases](https://github.com/elliott-json-park/kitcommit-releases/releases)** only. Copies on other websites, file-sharing services or app stores are not official and may have been modified. If you find one, please let us know in [Issues](https://github.com/elliott-json-park/kitcommit-releases/issues).
 

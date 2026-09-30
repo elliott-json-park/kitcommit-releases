@@ -4,6 +4,8 @@
 
 Claude Code(또는 Codex)를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 점심·휴식·잠잘 시간을 챙겨준다.
 
+**소개 사이트: [elliott-json-park.github.io/kitcommit-releases/ko](https://elliott-json-park.github.io/kitcommit-releases/ko/)** — 움직이는 고양이를 보고 브라우저에서 직접 놀아 볼 수 있다.
+
 > **킷커밋을 받을 수 있는 공식 창구는 여기 하나뿐입니다.**
 > 반드시 **[Releases](https://github.com/elliott-json-park/kitcommit-releases/releases)** 에서 받아 주세요. 다른 사이트·파일 공유 서비스·앱 스토어에 올라온 파일은 공식이 아니며, 고쳐진 파일일 수 있습니다. 발견하면 [Issues](https://github.com/elliott-json-park/kitcommit-releases/issues) 로 알려 주세요.
 
