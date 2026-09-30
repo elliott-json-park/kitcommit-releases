@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..', 'docs');
+// site.css · site.js 주소 뒤에 내용 해시를 붙인다: 고친 뒤에도 브라우저가 옛 파일(캐시)을 새 HTML 과 섞어 쓰지 않게
+const ver = (file) => require('crypto').createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'assets', file))).digest('hex').slice(0, 8);
 const REL = 'https://github.com/elliott-json-park/kitcommit-releases/releases/latest';
 const REPO = 'https://github.com/elliott-json-park/kitcommit-releases';
 
@@ -266,7 +268,7 @@ function page(t) {
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
-<link rel="stylesheet" href="${b}assets/site.css">
+<link rel="stylesheet" href="${b}assets/site.css?v=${ver('site.css')}">
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -401,7 +403,7 @@ function page(t) {
 </div></footer>
 
 <script>window.KC = ${JSON.stringify(KC)};</script>
-<script src="${b}assets/site.js"></script>
+<script src="${b}assets/site.js?v=${ver('site.js')}"></script>
 </body>
 </html>
 `;
