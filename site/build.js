@@ -43,6 +43,7 @@ const TEXT = {
     dlWin: '윈도우용 받기', dlMac: '맥용 받기', free: '무료',
     meta: '윈도우 10/11 · macOS (M칩·인텔) · 대화 내용은 읽지 않아요',
     hint: '<b>▸</b> 고양이를 눌러 쓰다듬고, 끌어서 들어 올려 보세요',
+    viewMobile: '모바일', viewDesktop: '데스크톱', swipe: '◂ 옆으로 넘겨 보세요 ▸',
     termTitle: 'claude — ~/my-app',
     names: { cat: '클로', dur: '2시간' },
     lines: {
@@ -65,10 +66,10 @@ const TEXT = {
     ],
     playEyebrow: '직접 해 보기', playTitle: '고양이랑 놀아 보세요', playLead: '앱에서와 똑같이 움직여요. 고양이를 쓰다듬고 끌어 올리고, 밥을 주고, 장난감을 꺼내 직접 놀아 주세요.',
     toys: [
-      ['bubbles', '비눗방울', '마우스를 휘젓거나 클릭하면 방울 · 꾹 누르면 큰 방울이 고양이를 가둬 둥실 띄워요'],
+      ['bubbles', '비눗방울', '마우스를 휘젓거나 클릭하면 방울 · 꾹 누르면 큰 방울이 고양이를 가둬 둥실 띄워요', '손가락으로 문지르거나 톡 누르면 방울 · 꾹 누르면 큰 방울이 고양이를 가둬 둥실 띄워요'],
       ['ball', '공', '끌었다 놓으면 던지기 · 톡 누르면 뻥 차 올리기'],
       ['domino', '도미노', '더미에서 도미노를 끌어다 세우고, 고양이 머리 위 시작 버튼을 눌러요'],
-      ['squirtgun', '물총', '클릭하면 물줄기 슝 · 꾹 누르면 연사'],
+      ['squirtgun', '물총', '클릭하면 물줄기 슝 · 꾹 누르면 연사', '톡 누르면 물줄기 슝 · 꾹 누르면 연사'],
     ],
     ui: { go: '시작', restand: '다시 세우기', away: '장난감을 넣었어요', feed: '밥이 떨어졌어요. 고양이가 가서 야금야금 먹어요', next: '다음' },
     likes: '좋아하는 것',
@@ -133,6 +134,8 @@ const TEXT = {
     dlWin: 'Download for Windows', dlMac: 'Download for Mac', free: 'Free',
     meta: 'Windows 10/11 · macOS (Apple Silicon & Intel) · never reads your conversations',
     hint: '<b>▸</b> Click the cat to pet it, drag it to pick it up',
+    hintTouch: '<b>▸</b> Tap the cat to pet it, drag it to pick it up',
+    viewMobile: 'Mobile', viewDesktop: 'Desktop', swipe: '◂ swipe ▸',
     termTitle: 'claude — ~/my-app',
     names: { cat: 'Klo', dur: '2h' },
     lines: {
@@ -155,14 +158,15 @@ const TEXT = {
     ],
     playEyebrow: 'Try it', playTitle: 'Play with the cat', playLead: 'It behaves just like the app. Pet the cat, pick it up, feed it, and take out a toy to play with it yourself.',
     toys: [
-      ['bubbles', 'Bubbles', 'Swirl the mouse or click for bubbles · hold to grow a giant bubble that traps the cat and floats it up'],
-      ['ball', 'Ball', 'Drag & release to throw · click to kick it sky-high'],
+      ['bubbles', 'Bubbles', 'Swirl the mouse or click for bubbles · hold to grow a giant bubble that traps the cat and floats it up', 'Swipe or tap for bubbles · hold to grow a giant bubble that traps the cat and floats it up'],
+      ['ball', 'Ball', 'Drag & release to throw · click to kick it sky-high', 'Drag & release to throw · tap to kick it sky-high'],
       ['domino', 'Dominoes', 'Drag dominoes from the pile to stand them up, then press start above the cat'],
-      ['squirtgun', 'Squirt gun', 'Click to squirt · hold for rapid fire'],
+      ['squirtgun', 'Squirt gun', 'Click to squirt · hold for rapid fire', 'Tap to squirt · hold for rapid fire'],
     ],
     ui: { go: 'Start', restand: 'Stand them up', away: 'Toys put away', feed: 'Food dropped. The cat walks over and nibbles it', next: 'next' },
     likes: 'Likes',
     playCaption: 'Click the cat to pet it, or drag it to pick it up',
+    playCaptionTouch: 'Tap the cat to pet it, or drag it to pick it up',
     acts: [['feed', '🍚', 'Feed'], ['toy', '🧸', 'Take out a toy'], ['work', '💻', 'Give it work'], ['notify', '❗', 'Ask permission'], ['lunch', '🍱', 'Lunch time'], ['sleep', '🌙', 'Bedtime'], ['motion', '🎲', 'Random motion']],
     dayEyebrow: 'One ordinary day', dayTitle: 'A day with your cat',
     dayLead: 'The cat follows what Claude Code or Codex is doing. The bubbles below are real lines from the app.',
@@ -222,6 +226,11 @@ const TERM = [
 ];
 
 const I = (lang) => (lang === 'ko' ? 0 : 1);
+// 손가락으로 쓰는 기기용 문구가 따로 있으면 data-touch 에 실어 둔다 (site.js 가 바꿔 끼운다)
+const touch = (s) => (s ? ` data-touch="${s.replace(/"/g, '&quot;')}"` : '');
+// 보기 방식(데스크톱 · 모바일)을 그리기 전에 정한다: 고른 값(localStorage kc-view)이 있으면 그것, 없으면 화면 폭.
+// 휴대폰에서 데스크톱 보기를 고르면 viewport 를 넓혀 데스크톱 배치 그대로 보여 준다. 모양은 site.css 의 [data-view="mobile"]
+const VIEW_JS = `(function(){var d=document.documentElement,u=navigator.userAgent||'',s=null;try{s=localStorage.getItem('kc-view')}catch(e){}if(/Android|iPhone|iPad|iPod|Mobile/i.test(u)||(/Mac/.test(u)&&navigator.maxTouchPoints>1))d.dataset.phone='1';var set=function(){d.dataset.view=s==='mobile'||s==='desktop'?s:Math.min(innerWidth||9999,screen.width||9999)<=760?'mobile':'desktop'};set();if(d.dataset.view==='desktop'&&screen.width&&screen.width<=760)document.querySelector('meta[name=viewport]').content='width=1100';if(!s)addEventListener('resize',set)})();`;
 const sp = (name, extra = '') => `<canvas data-sp="${name}" ${extra} aria-hidden="true"></canvas>`;
 const WIN_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>';
 const MAC_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.9c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.6 2.8-1.3z"/></svg>';
@@ -245,6 +254,7 @@ function page(t) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>${VIEW_JS}</script>
 <title>${t.title}</title>
 <meta name="description" content="${t.desc}">
 <meta property="og:title" content="${t.title}">
@@ -263,6 +273,7 @@ function page(t) {
   <a class="brand" href="./"><img src="${b}assets/icon.png" alt="">Kit Commit</a>
   <nav class="nav"><a href="#play">${t.nav[0]}</a><a href="#day">${t.nav[1]}</a><a href="#gallery">${t.nav[2]}</a><a href="#download">${t.nav[3]}</a></nav>
   <a class="lang" href="${otherHref}">${t.otherLabel}</a>
+  <button type="button" class="lang view" data-view-toggle><span class="to-mobile">${t.viewMobile}</span><span class="to-desktop">${t.viewDesktop}</span></button>
   <a class="btn primary sm" href="#download">${t.nav[3]}</a>
 </div></header>
 
@@ -285,7 +296,7 @@ function page(t) {
           <div class="pet"><div class="bubble"></div><canvas></canvas></div>
         </div>
       </div>
-      <p class="hint">${t.hint}</p>
+      <p class="hint"${touch(t.hintTouch)}>${t.hint}</p>
     </div>
   </div>
 </div></section>
@@ -307,7 +318,7 @@ function page(t) {
       <canvas class="field" aria-hidden="true"></canvas>
       <div class="pet"><div class="bubble"></div><canvas></canvas></div>
       <button type="button" class="go" hidden></button>
-      <div class="caption">${t.playCaption}</div>
+      <div class="caption"${touch(t.playCaptionTouch)}>${t.playCaption}</div>
     </div>
     <div class="actions">
       ${t.acts.map(([a, ico, label]) => `<button class="btn" data-act="${a}" data-label="${label}"><span class="ico">${ico}</span>${label}${a === 'toy' ? ' <small></small>' : ''}</button>`).join('\n      ')}
@@ -322,6 +333,7 @@ function page(t) {
   <div class="day">
     ${t.day.map(([time, s, h, line, cls]) => `<div class="moment"><span class="time">${time}</span><div class="card"><div class="sp-box"><div class="bubble ${cls}">${line}</div>${sp(s)}</div><h3>${h}</h3></div></div>`).join('\n    ')}
   </div>
+  <p class="swipe">${t.swipe}</p>
 </div></section>
 
 <section class="alt" id="gallery"><div class="wrap center">

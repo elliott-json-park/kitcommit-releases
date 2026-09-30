@@ -7,6 +7,9 @@
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  // 손가락으로 쓰는 기기면 "클릭" 대신 "탭" 문구로 (html 의 data-phone 은 머리의 작은 스크립트가 붙인다)
+  const phone = !!document.documentElement.dataset.phone;
+  if (phone) $$('[data-touch]').forEach((el) => (el.innerHTML = el.dataset.touch));
 
   // ---------- 프레임 재생 ----------
   const imgs = {};
@@ -845,7 +848,8 @@
       toyN = (toyN + 1) % (KC.toys.length + 1);
       nextLabel();
       if (toyN >= KC.toys.length) return setCap(KC.ui.away);
-      const [key, name, how] = KC.toys[toyN];
+      const [key, name, mouseHow, touchHow] = KC.toys[toyN];
+      const how = (phone && touchHow) || mouseHow;
       toy = TOYS[key]();
       toy.hint = `${name} — ${how}`;
       stage.classList.toggle('tool', !!toy.cursor);
@@ -933,6 +937,14 @@
     $$('[data-panel]').forEach((p) => (p.hidden = p.dataset.panel !== b.dataset.tab));
     const note = $('#tab-note');
     if (note) note.textContent = b.dataset.note || '';
+  }));
+
+  // ---------- 보기 방식 바꾸기 (데스크톱 ↔ 모바일). 화면 폭으로 저절로 정해질 값과 같으면 고른 값을 지운다 ----------
+  $$('[data-view-toggle]').forEach((b) => b.addEventListener('click', () => {
+    const next = document.documentElement.dataset.view === 'mobile' ? 'desktop' : 'mobile';
+    const auto = Math.min(innerWidth || 9999, screen.width || 9999) <= 760 ? 'mobile' : 'desktop';
+    try { if (next === auto) localStorage.removeItem('kc-view'); else localStorage.setItem('kc-view', next); } catch (e) { return; }
+    location.reload();
   }));
 
   // ---------- 보는 사람의 기기에 맞춰: 맥이면 맥 버튼을 앞에 두고, 휴대폰이면 PC 에서 열라고 알려 준다 ----------
