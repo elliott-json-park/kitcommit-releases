@@ -235,6 +235,8 @@ section.alt { background: var(--soft-2); border-block: var(--line); }
 .tabs button.on { background: var(--ink); color: var(--bg); }
 .tabs button i { font-style: normal; font-family: var(--pixel); font-weight: 400; font-size: 12px; opacity: 0.7; margin-left: 2px; }
 .tab-note { color: var(--muted); font-size: 14px; margin: 14px 0 0; }
+.tabs button i .of { opacity: 0.6; }
+.gal-more { color: var(--muted); font-size: 14px; margin: 18px 0 0; }
 .grid[data-panel] { margin-top: 22px; }
 
 /* ---------- 숫자 ---------- */
@@ -249,7 +251,8 @@ section.alt { background: var(--soft-2); border-block: var(--line); }
 .todo .ico { font-size: 26px; line-height: 1.2; flex: none; }
 .todo h3 { margin: 0 0 4px; font-size: 17px; }
 /* 스크린샷 */
-.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+@media (max-width: 1100px) { .shots { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 760px) { .shots { grid-template-columns: 1fr; } }
 .shots figure { margin: 0; }
 .shots img { width: 100%; border: var(--line); border-radius: 12px; box-shadow: var(--pop); image-rendering: auto; display: block; }
@@ -375,7 +378,7 @@ html[data-view="mobile"] { background: var(--soft); }
 /* 갤러리: 3열 */
 [data-view="mobile"] .tabs { margin-top: 18px; gap: 6px; }
 [data-view="mobile"] .tabs button { font-size: 13px; padding: 7px 11px; }
-[data-view="mobile"] .tab-note { font-size: 13px; }
+[data-view="mobile"] .tab-note, [data-view="mobile"] .gal-more { font-size: 13px; }
 [data-view="mobile"] .grid.g6 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
 [data-view="mobile"] .g6 .tile { padding: 6px 5px 8px; border-width: 2px; border-radius: 10px; box-shadow: 2px 2px 0 var(--ink); }
 [data-view="mobile"] .g6 .tile canvas { width: 100%; height: auto; aspect-ratio: 1; margin-bottom: 5px; border-radius: 6px; }
@@ -423,3 +426,8 @@ html[data-view="mobile"] { background: var(--soft); }
 [data-view="mobile"] .cta .stage { height: 210px; margin-top: 12px; }
 [data-view="mobile"] .cta .pet { width: 216px; height: 216px; left: calc(50% - 108px); }
 [data-view="mobile"] footer { padding: 26px 0 40px; font-size: 13px; }
+
+/* 휴대폰 'PC로 보내기' (8차) */
+.mobile-note .mail { margin: 0 4px; }
+.mobile-note [hidden] { display: none !important; }
+[data-view="mobile"] .mobile-note .mail { display: block; margin: 10px 0 0; text-align: center; font-weight: 700; color: var(--ink); }

@@ -11,10 +11,10 @@ const REL = 'https://github.com/elliott-json-park/kitcommit-releases/releases/la
 const REPO = 'https://github.com/elliott-json-park/kitcommit-releases';
 
 // 그림 이름 → 장 수 (docs/assets/sprites/<이름>.png)
-const SPRITES = {"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-seonbi":30,"c-beesuit":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36};
+const SPRITES = {"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-xfrostmonarch":30,"c-xphoenixking":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36};
 
 // 앱 i18n 의 이름 [한, 영]
-const NAMES = {"m":{"sojuchug":["소주 병나발","Soju straight from the bottle"],"darkmode":["다크모드 전환","Dark mode switch"],"stockup":["주식 차트 떡상","Stock to the moon"],"deployrocket":["배포 성공 로켓","Deploy rocket"],"cicheck":["초록 체크 뱃지","Green CI check"],"enterwait":["엔터 키 대기","Waiting on Enter"],"staticfur":["정전기 폭발","Static shock"],"donebell":["끝났다옹 종 울리기","Done! bell"],"giantfist":["거대 주먹 쾅쾅","Giant fist smash"],"ufo":["UFO 납치","UFO abduction"],"karaoke":["노래방 열창","Karaoke belter"],"coffee":["커피 한 잔","Coffee break"],"stretch":["기지개","Big stretch"],"fishthink":["생선 상상하기","Daydreaming of fish"],"hooray":["임무 완료","Mission complete"],"nodoff":["꾸벅꾸벅","Nodding off"],"foodsign":["\"FOOD\" 피켓 시위","\"FOOD\" protest"],"zoomies":["우다다","Zoomies"],"box":["박스 들어가기","If it fits, I sits"],"bath":["거품 목욕","Bubble bath"],"blowkiss":["하트 날리기","Blowing hearts"],"melt":["녹아내리기","Melting"],"startle":["화들짝","Startled"],"slowblink":["고양이 키스 (천천히 깜빡)","Slow blink"],"tapfoot":["발 동동 시계 보기","Foot-tapping clock watch"],"pray":["제발요 기도","Pretty please"],"snot":["코풍선","Snot bubble"],"raisehand":["저요 저요!","Me! Me!"],"fooddream":["맛있는 상상","Daydreaming of food"]},"c":{"magicalgirl":["야옹나라 냥냥공주","Magical girl ☆ Lumi"],"holyknight":["츄르를 수호하는 신의 기사단","Holy Knight Sworn to Guard Churu"],"sunwukong":["근두운 할부 중인 제천대성","Great Sage on a Cloud Payment Plan"],"dinosuit":["크아앙 공룡 잠옷","Rawr dino onesie"],"ironcat":["아이언냥 Mk. 1","Iron Cat Mk. 1"],"mondaydev":["월요일 아침 배포 개발자","Monday-deploy developer"],"overtimer":["야근 요정 김대리 (사원증 포함)","Overtime office fairy"],"seonbi":["과거 낙방 7수 선비","Joseon scholar (7th attempt)"],"beesuit":["꿀 빠는 꿀벌","Busy bee suit"],"nyangwarts":["빗자루 면허 없는 냥그와트 1학년","Meowgwarts First Year (No Broom License)"]},"f":{"pigeon":["구구단","Times Table"],"hedgehog":["고도리","Godori"],"raccoon":["라면이","Ramen"],"dust":["먼지","Dusty"],"coal":["연탄이","Coal"],"tofu":["두부","Tofu"],"bolt":["최번개","Bolt Choi"],"dondon":["돈돈까스","Don Donkatsu"]}};
+const NAMES = {"m":{"sojuchug":["소주 병나발","Soju straight from the bottle"],"darkmode":["다크모드 전환","Dark mode switch"],"stockup":["주식 차트 떡상","Stock to the moon"],"deployrocket":["배포 성공 로켓","Deploy rocket"],"cicheck":["초록 체크 뱃지","Green CI check"],"enterwait":["엔터 키 대기","Waiting on Enter"],"staticfur":["정전기 폭발","Static shock"],"donebell":["끝났다옹 종 울리기","Done! bell"],"giantfist":["거대 주먹 쾅쾅","Giant fist smash"],"ufo":["UFO 납치","UFO abduction"],"karaoke":["노래방 열창","Karaoke belter"],"coffee":["커피 한 잔","Coffee break"],"stretch":["기지개","Big stretch"],"fishthink":["생선 상상하기","Daydreaming of fish"],"hooray":["임무 완료","Mission complete"],"nodoff":["꾸벅꾸벅","Nodding off"],"foodsign":["\"FOOD\" 피켓 시위","\"FOOD\" protest"],"zoomies":["우다다","Zoomies"],"box":["박스 들어가기","If it fits, I sits"],"bath":["거품 목욕","Bubble bath"],"blowkiss":["하트 날리기","Blowing hearts"],"melt":["녹아내리기","Melting"],"startle":["화들짝","Startled"],"slowblink":["고양이 키스 (천천히 깜빡)","Slow blink"],"tapfoot":["발 동동 시계 보기","Foot-tapping clock watch"],"pray":["제발요 기도","Pretty please"],"snot":["코풍선","Snot bubble"],"raisehand":["저요 저요!","Me! Me!"],"fooddream":["맛있는 상상","Daydreaming of food"]},"c":{"xfrostmonarch":["서리 군주","Frost Monarch"],"xphoenixking":["불사조 왕","Phoenix King"],"magicalgirl":["야옹나라 냥냥공주","Magical girl ☆ Lumi"],"holyknight":["츄르를 수호하는 신의 기사단","Holy Knight Sworn to Guard Churu"],"sunwukong":["근두운 할부 중인 제천대성","Great Sage on a Cloud Payment Plan"],"dinosuit":["크아앙 공룡 잠옷","Rawr dino onesie"],"ironcat":["아이언냥 Mk. 1","Iron Cat Mk. 1"],"mondaydev":["월요일 아침 배포 개발자","Monday-deploy developer"],"overtimer":["야근 요정 김대리 (사원증 포함)","Overtime office fairy"],"nyangwarts":["빗자루 면허 없는 냥그와트 1학년","Meowgwarts First Year (No Broom License)"]},"f":{"pigeon":["구구단","Times Table"],"hedgehog":["고도리","Godori"],"raccoon":["라면이","Ramen"],"dust":["먼지","Dusty"],"coal":["연탄이","Coal"],"tofu":["두부","Tofu"],"bolt":["최번개","Bolt Choi"],"dondon":["돈돈까스","Don Donkatsu"]}};
 
 // 동네 친구 소개 (앱 i18n 의 fr.<id>.nick · species · home · like) [한, 영]
 const FRIENDS = {
@@ -89,21 +89,24 @@ const TEXT = {
       ['18:40', 'f-raccoon', '동네 친구가 놀러 옴', '라면이가 놀러 왔어!', ''],
       ['01:10', 'm-nodoff', '늦은 밤', '1시야… 오늘은 여기까지 할까?', ''],
     ],
-    galEyebrow: '모션 87개 · 코스튬 264개', galTitle: '매일 다른 모습', galLead: '상황마다 모션을 고르고, 코인으로 새 모션과 옷을 사요.',
-    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 87개 가운데 일부예요.'], ['costumes', '코스튬 세트', '머리부터 발끝까지 한 벌이에요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러낼 수 있어요.']],
+    galEyebrow: '모션 87개 · 코스튬 320개', galTitle: '매일 다른 모습', galMore: '여기 보이는 건 맛보기예요. 앱에는 모션 87개, 코스튬 320개가 있어요.', galLead: '상황마다 모션을 고르고, 코인으로 새 모션과 옷을 사요.',
+    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 여기는 87개 가운데 몇 개만 골라 보여 드려요.'], ['costumes', '코스튬', '코스튬 320개 가운데 머리부터 발끝까지 한 벌인 세트 몇 벌만 골랐어요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러낼 수 있어요.']],
     growEyebrow: '모으고 꾸미고', growTitle: '쓸수록 할 게 많아져요',
     growLead: '레벨이 오르면 새 물건이 열리고, 놀 거리와 모을 거리가 계속 생겨요.',
     todo: [
       ['🎮', '같이 하는 게임', '두더지 잡기 · 가위바위보 · 도미노 · 줄다리기 · 트램펄린. 기록이 남아요.'],
       ['💎', '깜짝 보물과 공방', '고양이가 가끔 보물을 물어 와요. 38가지를 모아 공방에서만 나오는 코스튬 24벌을 만들어요.'],
-      ['📜', '퀘스트와 업적', '한 번에 퀘스트 3개, 업적은 161개. 깨면 경험치와 간식 · 코인을 받아요.'],
-      ['📊', '통계와 자랑하기', '요일 × 시간 히트맵과 누적 기록을 보고, 카드 이미지로 복사해 자랑해요.'],
+      ['📜', '퀘스트와 업적', '한 번에 퀘스트 3개, 업적은 165개. 깨면 경험치와 간식 · 코인을 받아요.'],
+      ['📊', '나의 기록', '요일 × 시간 히트맵, 가장 바빴던 날, 연속 기록까지 한눈에 봐요.'],
+      ['🖼️', '내 맘대로 자랑 카드', '이번 달 · 지난달 · 처음부터 중에 고르고, 넣을 숫자 · 색 · 고양이 자세 · 한 줄 문구까지 골라 이미지 한 장으로 자랑해요.'],
+      ['🌟', 'Lv80 다음은 별 상점', '최고 레벨을 찍은 뒤에도 끝이 아니에요. 쌓이는 별로만 사는 끝판왕 코스튬과 움직이는 털색이 기다려요.'],
+      ['💾', '컴퓨터를 바꿔도 그대로', '기록을 파일 하나로 내보내고 새 컴퓨터에서 가져와요. 하루 한 번 자동 백업도 돼요.'],
       ['💡', 'AI 활용 팁', '하루 몇 번, 고양이가 말풍선으로 쓸 만한 팁을 하나씩 알려 줘요.'],
       ['🔕', '방해하지 않아요', '크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드가 있어요.'],
     ],
-    mobile: '킷커밋은 PC(윈도우 · 맥)에서 쓰는 앱이에요. 주소를 복사해 두었다가 PC에서 열어 보세요.', copy: '주소 복사', copied: '복사했어요!',
-    stats: [['87', '모션'], ['264', '코스튬'], ['55', '밥 · 간식'], ['30', '장난감'], ['8', '동네 친구'], ['161', '업적']],
-    shots: [['home', '홈 — 오늘의 고양이'], ['shop', '상점 — 코인으로 꾸미기'], ['stats', '통계 — 나의 코딩 기록']],
+    mobile: '킷커밋은 PC(윈도우 · 맥)에서 쓰는 앱이에요. 나에게 보내 두었다가 PC에서 열어 보세요.', copy: '주소 복사', copied: '복사했어요!', send: 'PC로 보내기', sendTitle: '킷커밋 — PC에서 받기', sendText: 'PC에서 열어서 받기: ', mail: '메일로 보내기',
+    stats: [['87', '모션'], ['320', '코스튬'], ['55', '밥 · 간식'], ['30', '장난감'], ['8', '동네 친구'], ['165', '업적']],
+    shots: [['home', '홈 — 오늘의 고양이'], ['shop', '상점 — 코인으로 꾸미기'], ['stats', '통계 — 나의 기록'], ['card', '자랑 카드 — 내 맘대로 골라 만들기']],
     shotsNote: '스크린샷은 데모 기록으로 찍은 영어 화면이에요.',
     toolsTitle: 'Claude Code 도, Codex 도', toolsLead: '처음 안내나 설정에서 쓰는 도구를 고르면 돼요. 도구마다 고양이가 따로 자라요.',
     tools: [['mood-thinking', 'Claude Code', '대화 기록으로 자라고, hook 으로 실시간 반응해요.'], ['c-mondaydev', 'Codex', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.']],
@@ -182,21 +185,24 @@ const TEXT = {
       ['18:40', 'f-raccoon', 'A neighbor drops by', 'Ramen came to visit!', ''],
       ['01:10', 'm-nodoff', 'Late at night', '1 a.m.… shall we stop here?', ''],
     ],
-    galEyebrow: '87 motions · 264 costumes', galTitle: 'Different every day', galLead: 'Pick a motion for each situation, and buy new motions and outfits with coins.',
-    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. These are a few of the 87.'], ['costumes', 'Costume sets', 'A full outfit from head to toe. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over.']],
+    galEyebrow: '87 motions · 320 costumes', galTitle: 'Different every day', galMore: 'This is just a taste. The app has 87 motions and 320 costumes.', galLead: 'Pick a motion for each situation, and buy new motions and outfits with coins.',
+    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. This is just a handful of the 87.'], ['costumes', 'Costumes', 'A few full head-to-toe sets out of 320 costumes. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over.']],
     growEyebrow: 'Collect & dress up', growTitle: 'More to do the more you use it',
     growLead: 'Levels unlock new items, and there is always something more to play with and collect.',
     todo: [
       ['🎮', 'Games to play together', 'Whack-a-cat, rock-paper-scissors, dominoes, tug of war and a trampoline. Your records are kept.'],
       ['💎', 'Treasures & workshop', 'The cat sometimes brings back a treasure. Collect all 38 kinds and craft 24 workshop-only costumes.'],
-      ['📜', 'Quests & achievements', 'Three quests at a time and 161 achievements, paying out XP, snacks and coins.'],
-      ['📊', 'Stats to show off', 'A weekday × hour heatmap and lifetime totals, with a card image you can copy and share.'],
+      ['📜', 'Quests & achievements', 'Three quests at a time and 165 achievements, paying out XP, snacks and coins.'],
+      ['📊', 'Your history', 'A weekday × hour heatmap, your busiest day and your longest streak at a glance.'],
+      ['🖼️', 'A show-off card, your way', 'Pick this month, last month or all time, then choose the stats, colors, cat pose and your own line. One image, ready to share.'],
+      ['🌟', 'After Lv80: the star shop', 'Max level is not the end. Stars keep piling up and buy end-game costumes and animated fur you cannot get any other way.'],
+      ['💾', 'New computer, same cat', 'Export your progress to one file and import it on your new PC. Daily auto backup too.'],
       ['💡', 'AI tips', 'A few times a day the cat shares a handy tip in a speech bubble.'],
       ['🔕', 'Stays out of your way', 'Resize it, mute it, hide it for an hour, or switch on do-not-disturb.'],
     ],
-    mobile: 'Kit Commit runs on a PC (Windows or Mac). Copy the link and open it on your computer.', copy: 'Copy link', copied: 'Copied!',
-    stats: [['87', 'motions'], ['264', 'costumes'], ['55', 'foods & snacks'], ['30', 'toys'], ['8', 'neighbors'], ['161', 'achievements']],
-    shots: [['home', 'Home — today with your cat'], ['shop', 'Shop — dress up with coins'], ['stats', 'Stats — your coding history']],
+    mobile: 'Kit Commit runs on a PC (Windows or Mac). Send the link to yourself and open it on your computer.', copy: 'Copy link', copied: 'Copied!', send: 'Send to my PC', sendTitle: 'Kit Commit — get it on your PC', sendText: 'Open this on your computer: ', mail: 'Email it to me',
+    stats: [['87', 'motions'], ['320', 'costumes'], ['55', 'foods & snacks'], ['30', 'toys'], ['8', 'neighbors'], ['165', 'achievements']],
+    shots: [['home', 'Home — today with your cat'], ['shop', 'Shop — dress up with coins'], ['stats', 'Stats — your history'], ['card', 'Show-off card — make it your way']],
     shotsNote: 'Screenshots use made-up demo history.',
     toolsTitle: 'Claude Code or Codex', toolsLead: 'Pick your tool in the intro or in Settings. Each tool raises its own cat.',
     tools: [['mood-thinking', 'Claude Code', 'Grows from your history and reacts in real time through hooks.'], ['c-mondaydev', 'Codex', 'Grows from your Codex sessions and tells you about permission requests and finished replies.']],
@@ -246,6 +252,8 @@ function page(t) {
   const gc = Object.keys(NAMES.c).map((k) => `<div class="tile">${sp('c-' + k)}<b>${NAMES.c[k][i]}</b></div>`).join('');
   const gf = Object.keys(FRIENDS).map((k) => `<div class="tile friend">${sp('f-' + k)}<b>${NAMES.f[k][i]}</b><em>${FRIENDS[k].nick[i]}</em><p>${FRIENDS[k].who[i]}</p><p><i>${t.likes}</i> ${FRIENDS[k].like[i]}</p></div>`).join('');
   const counts = { motions: GALLERY.length, costumes: Object.keys(NAMES.c).length, friends: Object.keys(FRIENDS).length };
+  // 모션 · 세트는 일부만 보여 주니 전체 수를 같이 단다 (동네 친구는 전부)
+  const totals = { motions: 87, costumes: 320 };
   const motionNames = Object.fromEntries(GALLERY.map((k) => ['m-' + k, NAMES.m[k][i]]));
   const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: GALLERY.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui };
   const dlButtons = `
@@ -288,7 +296,7 @@ function page(t) {
       <div class="ctas">${dlButtons}
       </div>
       <p class="meta">${t.meta} · <span data-ver></span></p>
-      <p class="mobile-note" hidden>${t.mobile} <button type="button" data-copy data-done="${t.copied}">${t.copy}</button></p>
+      <p class="mobile-note" hidden>${t.mobile} <button type="button" data-send data-title="${t.sendTitle}" data-text="${t.sendText}" hidden>${t.send}</button> <a class="mail" data-mail data-title="${t.sendTitle}" data-text="${t.sendText}" href="#">${t.mail}</a> <button type="button" data-copy data-done="${t.copied}">${t.copy}</button></p>
     </div>
     <div>
       <div class="screen">
@@ -342,11 +350,12 @@ function page(t) {
   <span class="eyebrow">${t.galEyebrow}</span>
   <h2>${t.galTitle}</h2>
   <p class="lead">${t.galLead}</p>
-  <div class="tabs" role="tablist">${t.tabs.map(([k, l, note], j) => `<button role="tab" data-tab="${k}" data-note="${note}" aria-selected="${j ? 'false' : 'true'}" class="${j ? '' : 'on'}">${l} <i>${counts[k]}</i></button>`).join('')}</div>
+  <div class="tabs" role="tablist">${t.tabs.map(([k, l, note], j) => `<button role="tab" data-tab="${k}" data-note="${note}" aria-selected="${j ? 'false' : 'true'}" class="${j ? '' : 'on'}">${l} <i>${counts[k]}${totals[k] ? `<span class="of"> / ${totals[k]}</span>` : ''}</i></button>`).join('')}</div>
   <p class="tab-note" id="tab-note">${t.tabs[0][2]}</p>
   <div class="grid g6" data-panel="motions">${gm}</div>
   <div class="grid g6" data-panel="costumes" hidden>${gc}</div>
   <div class="grid g4" data-panel="friends" hidden>${gf}</div>
+  <p class="gal-more">${t.galMore}</p>
 </div></section>
 
 <section><div class="wrap center">

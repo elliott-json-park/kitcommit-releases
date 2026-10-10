@@ -957,6 +957,14 @@
     });
   }
   if (mobile) $$('.mobile-note').forEach((el) => (el.hidden = false));
+  // 휴대폰에서 'PC로 보내기': 공유 시트로 나에게 보내기(카톡 나와의 채팅 · 메모 · 메일 등). 공유 시트가 없으면 메일 · 복사만
+  const pcLink = location.origin + location.pathname;
+  $$('[data-send]').forEach((b) => {
+    if (!navigator.share) return;
+    b.hidden = false;
+    b.addEventListener('click', () => navigator.share({ title: b.dataset.title, text: b.dataset.text, url: pcLink }).catch(() => {}));
+  });
+  $$('[data-mail]').forEach((a) => (a.href = 'mailto:?subject=' + encodeURIComponent(a.dataset.title) + '&body=' + encodeURIComponent(a.dataset.text + pcLink)));
   $$('[data-copy]').forEach((b) => b.addEventListener('click', () => {
     const done = () => { b.textContent = b.dataset.done; };
     if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, () => {});
