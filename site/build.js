@@ -9,6 +9,7 @@ const ROOT = path.join(__dirname, '..', 'docs');
 const ver = (file) => require('crypto').createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'assets', file))).digest('hex').slice(0, 8);
 const REL = 'https://github.com/elliott-json-park/kitcommit-releases/releases/latest';
 const REPO = 'https://github.com/elliott-json-park/kitcommit-releases';
+const SITE = 'https://elliott-json-park.github.io/kitcommit-releases/';
 
 // 그림 이름 → 장 수 (docs/assets/sprites/<이름>.png)
 const SPRITES = {"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-xfrostmonarch":30,"c-xphoenixking":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36};
@@ -31,7 +32,9 @@ const FRIENDS = {
 const FOODS = ['churu', 'milk', 'anchovy', 'tuna', 'chicken', 'salmon', 'sushi', 'ramen', 'omurice', 'bento', 'creamtaiyaki', 'tempura', 'fishgrill', 'cookiemilk'];
 
 // 모션 갤러리에 거는 순서 (새 것 먼저)
-const GALLERY = ['sojuchug', 'darkmode', 'stockup', 'deployrocket', 'cicheck', 'enterwait', 'staticfur', 'donebell', 'giantfist', 'ufo', 'karaoke', 'raisehand', 'fooddream', 'snot', 'zoomies', 'box', 'bath', 'coffee', 'stretch', 'hooray', 'blowkiss', 'melt', 'slowblink', 'startle', 'fishthink', 'foodsign', 'tapfoot', 'pray'];
+const GALLERY = ['deployrocket', 'cicheck', 'darkmode', 'stockup', 'enterwait', 'donebell', 'giantfist', 'ufo', 'karaoke', 'staticfur', 'raisehand', 'zoomies', 'box', 'bath', 'coffee', 'blowkiss', 'melt', 'slowblink'];
+// 무작위 모션 단추는 갤러리에 없는 것까지 고른다
+const RANDOM = [...GALLERY, 'sojuchug', 'fooddream', 'snot', 'stretch', 'hooray', 'startle', 'fishthink', 'foodsign', 'tapfoot', 'pray'];
 
 const TEXT = {
   ko: {
@@ -92,24 +95,21 @@ const TEXT = {
       ['01:10', 'm-nodoff', '늦은 밤', '1시야… 오늘은 여기까지 할까?', ''],
     ],
     galEyebrow: '모션 87개 · 코스튬 320개', galTitle: '매일 다른 모습', galMore: '여기 보이는 건 맛보기예요. 앱에는 모션 87개, 코스튬 320개가 있어요.', galLead: '상황마다 모션을 고르고, 코인으로 새 모션과 옷을 사요.',
-    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 여기는 87개 가운데 몇 개만 골라 보여 드려요.'], ['costumes', '코스튬', '코스튬 320개 가운데 머리부터 발끝까지 한 벌인 세트 몇 벌만 골랐어요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러내고 선물한 옷을 갈아입힐 수 있어요.']],
+    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 여기는 87개 가운데 18개만 골라 보여 드려요.'], ['costumes', '코스튬', '코스튬 320개 가운데 머리부터 발끝까지 한 벌인 세트 몇 벌만 골랐어요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러내고 선물한 옷을 갈아입힐 수 있어요.']],
     growEyebrow: '모으고 꾸미고', growTitle: '쓸수록 할 게 많아져요',
     growLead: '레벨이 오르면 새 물건이 열리고, 놀 거리와 모을 거리가 계속 생겨요.',
     todo: [
       ['🎮', '게임과 장난감 36가지', '두더지 잡기 · 가위바위보 · 줄다리기 같은 게임에, 레이저 포인터 · 비눗방울 · 어항 · 야바위 상자까지. 고양이가 진짜로 쫓아다녀요.'],
       ['💎', '깜짝 보물과 공방', '고양이가 가끔 보물을 물어 와요. 38가지를 모아 공방에서만 나오는 코스튬 24벌을 만들어요.'],
       ['📜', '퀘스트와 업적', '한 번에 퀘스트 3개, 업적은 175개. 깨면 경험치와 간식 · 코인을 받아요.'],
-      ['📊', '나의 기록', '요일 × 시간 히트맵, 가장 바빴던 날, 연속 기록까지 한눈에 봐요.'],
       ['🖼️', '내 맘대로 자랑 카드', '기본 · RPG 상태창 · 영수증 세 가지 모양에 칭호 13가지. 기간 · 숫자 · 색 · 고양이 자세 · 한 줄 문구까지 골라 이미지 한 장으로 자랑해요.'],
       ['🌟', 'Lv80 다음은 별 상점', '최고 레벨을 찍은 뒤에도 끝이 아니에요. 쌓이는 별로만 사는 끝판왕 코스튬과 움직이는 털색이 기다려요.'],
       ['💾', '컴퓨터를 바꿔도 그대로', '기록을 파일 하나로 내보내고 새 컴퓨터에서 가져와요. 하루 한 번 자동 백업도 돼요.'],
-      ['🧠', '컨텍스트 알림과 AI 팁', '세션이 70%를 넘으면 /compact 를, 웹 대화가 길어지면 새 대화를 권해요. 쓰는 도구에 맞는 팁도 하루 한 번.'],
-      ['🔕', '방해하지 않아요', '말풍선은 꼭 필요할 때만. 크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드도 있어요.'],
     ],
     mobile: '킷커밋은 PC(윈도우 · 맥)에서 쓰는 앱이에요. 나에게 보내 두었다가 PC에서 열어 보세요.', copy: '주소 복사', copied: '복사했어요!', send: 'PC로 보내기', sendTitle: '킷커밋 — PC에서 받기', sendText: 'PC에서 열어서 받기: ', mail: '메일로 보내기',
     stats: [['87', '모션'], ['320', '코스튬'], ['55', '밥 · 간식'], ['36', '장난감'], ['8', '동네 친구'], ['175', '업적']],
-    shots: [['home', '홈 — 오늘의 고양이'], ['shop', '상점 — 코인으로 꾸미기'], ['stats', '통계 — 나의 기록'], ['card', '자랑 카드 — 내 맘대로 골라 만들기']],
-    shotsNote: '스크린샷은 데모 기록으로 찍은 영어 화면이에요.',
+    shots: [['home', '홈 — 오늘의 고양이'], ['chat', '대화 — 오늘의 냥운세까지'], ['shop', '상점 — 코인으로 꾸미기'], ['card', '자랑 카드 — RPG 상태창'], ['stats', '통계 — 나의 기록']],
+    shotsNote: '스크린샷은 데모 기록으로 찍은 0.5.0 화면이에요. 누르면 크게 보여요.', close: '닫기',
     talk: {
       eyebrow: 'NEW · 동료 고양이', title: '이제 고양이와 대화해요',
       lead: '내가 쓰는 AI를 연결하면 고양이가 진짜로 대답해요. 수다 · 고민 상담 · 간단한 질문에 같이 하는 말놀이까지. 일 비서가 아니라 친구예요.',
@@ -121,6 +121,7 @@ const TEXT = {
       connectTitle: '연결은 셋 중 하나면 돼요',
       connect: [['Claude 구독', 'Claude Code 에 로그인돼 있으면 키 없이'], ['ChatGPT 구독', 'Codex CLI 에 로그인돼 있으면 키 없이'], ['Gemini 무료 키', '구독이 없어도 무료로 · 카드 필요 없음']],
       connectNote: 'Anthropic · OpenAI API 키도 돼요. 대화는 이 컴퓨터에 저장되고, 내가 연결한 AI 로만 가요.',
+      cta: '앱 받고 대화해 보기 →', ctaNote: 'AI를 연결하지 않아도 고양이는 자라요',
       demoTitle: '맛보기 대화창', demoNote: '냥운세 · 초성 퀴즈는 여기서도 진짜로 돼요. 운세는 앱과 같은 결과예요.',
       persona: '성격', placeholder: '앱에서는 여기에 자유롭게 말을 걸어요', placeholderQuiz: '정답을 써 보세요', send: '보내기',
       sample: '예시 · 앱에서는 연결한 AI가 이어 가요',
@@ -146,7 +147,7 @@ const TEXT = {
       twenty: [['user', '스무고개 하자!'], ['cat', '하나 생각했어! 예 / 아니오로 물어봐 (0/20)'], ['user', '먹을 수 있는 거야?'], ['cat', '응! 먹을 수 있어 (1/20)']],
       chosung: { right: '정답! 「{word}」 맞아! 🎉', wrong: '땡! 아니야~', hint: '힌트: 앞 글자는 「{c}」야. 기회는 그대로!', again: '한 판 더' },
     },
-    toolsEyebrow: '어떤 AI를 쓰든', toolsTitle: '쓰는 도구에 맞춰 연결해요', toolsLead: '처음 켤 때 쓰는 도구를 고르면 연결 방법을 한 단계씩 안내해요. 도구마다 고양이가 따로 자라요.',
+    toolsEyebrow: '어떤 AI를 쓰든', toolsTitle: '쓰는 도구에 맞춰 연결해요', toolsLead: '터미널에서 쓰든 브라우저에서 쓰든 괜찮아요. 처음 켤 때 쓰는 도구를 고르면 연결 방법을 한 단계씩 안내해요.',
     tools: [
       ['mood-thinking', 'Claude Code', '터미널 · IDE 에서', '대화 기록으로 자라고, hook 으로 허락 요청 · 작업 끝에 바로 반응해요.'],
       ['c-mondaydev', 'Codex', '터미널 · IDE 에서', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.'],
@@ -232,24 +233,21 @@ const TEXT = {
       ['01:10', 'm-nodoff', 'Late at night', '1 a.m.… shall we stop here?', ''],
     ],
     galEyebrow: '87 motions · 320 costumes', galTitle: 'Different every day', galMore: 'This is just a taste. The app has 87 motions and 320 costumes.', galLead: 'Pick a motion for each situation, and buy new motions and outfits with coins.',
-    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. This is just a handful of the 87.'], ['costumes', 'Costumes', 'A few full head-to-toe sets out of 320 costumes. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over and dressed in the outfits you gave them.']],
+    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. Here are 18 of the 87.'], ['costumes', 'Costumes', 'A few full head-to-toe sets out of 320 costumes. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over and dressed in the outfits you gave them.']],
     growEyebrow: 'Collect & dress up', growTitle: 'More to do the more you use it',
     growLead: 'Levels unlock new items, and there is always something more to play with and collect.',
     todo: [
       ['🎮', 'Games and 36 toys', 'Whack-a-cat, rock-paper-scissors and tug of war, plus a laser pointer, bubbles, a fishbowl, a shell game and more. The cat really chases them.'],
       ['💎', 'Treasures & workshop', 'The cat sometimes brings back a treasure. Collect all 38 kinds and craft 24 workshop-only costumes.'],
       ['📜', 'Quests & achievements', 'Three quests at a time and 175 achievements, paying out XP, snacks and coins.'],
-      ['📊', 'Your history', 'A weekday × hour heatmap, your busiest day and your longest streak at a glance.'],
       ['🖼️', 'A show-off card, your way', 'Classic, RPG status window or Receipt, with 13 titles. Choose the period, stats, colors, cat pose and your own line. One image, ready to share.'],
       ['🌟', 'After Lv80: the star shop', 'Max level is not the end. Stars keep piling up and buy end-game costumes and animated fur you cannot get any other way.'],
       ['💾', 'New computer, same cat', 'Export your progress to one file and import it on your new PC. Daily auto backup too.'],
-      ['🧠', 'Context alerts & AI tips', 'Past 70% context it suggests /compact; when a web chat gets long, a fresh chat. Plus one tip a day for the tool you use.'],
-      ['🔕', 'Stays out of your way', 'Bubbles only when it matters. Resize it, mute it, hide it for an hour, or switch on do-not-disturb.'],
     ],
     mobile: 'Kit Commit runs on a PC (Windows or Mac). Send the link to yourself and open it on your computer.', copy: 'Copy link', copied: 'Copied!', send: 'Send to my PC', sendTitle: 'Kit Commit — get it on your PC', sendText: 'Open this on your computer: ', mail: 'Email it to me',
     stats: [['87', 'motions'], ['320', 'costumes'], ['55', 'foods & snacks'], ['36', 'toys'], ['8', 'neighbors'], ['175', 'achievements']],
-    shots: [['home', 'Home — today with your cat'], ['shop', 'Shop — dress up with coins'], ['stats', 'Stats — your history'], ['card', 'Show-off card — make it your way']],
-    shotsNote: 'Screenshots use made-up demo history.',
+    shots: [['home', 'Home — today with your cat'], ['chat', 'Chat — even today’s fortune'], ['shop', 'Shop — dress up with coins'], ['card', 'Show-off card — RPG status window'], ['stats', 'Stats — your history']],
+    shotsNote: 'Screenshots of 0.5.0 with made-up demo history. Click to enlarge.', close: 'Close',
     talk: {
       eyebrow: 'NEW · Buddy cat', title: 'Now you can talk to your cat',
       lead: 'Connect the AI you already use and your cat really answers: small talk, worries, simple questions and word games. A friend, not a work assistant.',
@@ -261,6 +259,7 @@ const TEXT = {
       connectTitle: 'Connect any one of these',
       connect: [['Claude subscription', 'No key if you are signed in to Claude Code'], ['ChatGPT subscription', 'No key if you are signed in to Codex CLI'], ['Free Gemini key', 'No subscription needed · no card']],
       connectNote: 'Anthropic and OpenAI API keys work too. Chats are saved on your computer and only go to the AI you connected.',
+      cta: 'Get the app and say hi →', ctaNote: 'Your cat grows even without connecting an AI',
       demoTitle: 'Try the chat', demoNote: 'Fortune and the initials quiz really work here. The fortune matches the app.',
       persona: 'Personality', placeholder: 'In the app, you can say anything here', placeholderQuiz: 'Type your answer', send: 'Send',
       sample: 'Example · in the app, your connected AI plays along',
@@ -286,7 +285,7 @@ const TEXT = {
       twenty: [['user', 'Let’s play twenty questions!'], ['cat', 'I’ve got one! Ask me yes/no questions (0/20)'], ['user', 'Can you eat it?'], ['cat', 'Yes! You can eat it (1/20)']],
       chosung: { right: 'Correct! It’s “{word}”! 🎉', wrong: 'Nope, not that one~', hint: 'Hint: it starts with “{c}”. No try used!', again: 'Play again' },
     },
-    toolsEyebrow: 'Whatever AI you use', toolsTitle: 'Connects the way you work', toolsLead: 'Pick your tool the first time you open it and the app walks you through connecting, one step at a time. Each tool raises its own cat.',
+    toolsEyebrow: 'Whatever AI you use', toolsTitle: 'Connects the way you work', toolsLead: 'Terminal or browser, it works either way. Pick your tool the first time you open it and the app walks you through connecting, one step at a time.',
     tools: [
       ['mood-thinking', 'Claude Code', 'In the terminal or IDE', 'Grows from your history and reacts right away to permission requests and finished work through hooks.'],
       ['c-mondaydev', 'Codex', 'In the terminal or IDE', 'Grows from your Codex sessions and tells you about permission requests and finished replies.'],
@@ -346,9 +345,9 @@ function page(t) {
   const counts = { motions: GALLERY.length, costumes: Object.keys(NAMES.c).length, friends: Object.keys(FRIENDS).length };
   // 모션 · 세트는 일부만 보여 주니 전체 수를 같이 단다 (동네 친구는 전부)
   const totals = { motions: 87, costumes: 320 };
-  const motionNames = Object.fromEntries(GALLERY.map((k) => ['m-' + k, NAMES.m[k][i]]));
+  const motionNames = Object.fromEntries(RANDOM.map((k) => ['m-' + k, NAMES.m[k][i]]));
   const chat = CHAT[t.lang];
-  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: GALLERY.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui,
+  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: RANDOM.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui,
     chat: { ...chat, talk: t.talk, lang: t.lang } };
   const dlButtons = `
         <a class="btn primary" data-dl="win" href="${REL}">${WIN_ICON}${t.dlWin} <small>${t.free}</small></a>
@@ -364,9 +363,19 @@ function page(t) {
 <meta property="og:title" content="${t.title}">
 <meta property="og:description" content="${t.desc}">
 <meta property="og:image" content="https://elliott-json-park.github.io/kitcommit-releases/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
+<meta property="og:url" content="${SITE}${t.lang === 'en' ? '' : 'ko/'}">
+<meta property="og:locale" content="${t.lang === 'en' ? 'en_US' : 'ko_KR'}">
+<meta property="og:site_name" content="Kit Commit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#faf6ef">
+<link rel="canonical" href="${SITE}${t.lang === 'en' ? '' : 'ko/'}">
+<link rel="alternate" hreflang="en" href="${SITE}">
+<link rel="alternate" hreflang="ko" href="${SITE}ko/">
+<link rel="alternate" hreflang="x-default" href="${SITE}">
 <link rel="icon" href="${b}assets/icon.png">
-<link rel="alternate" hreflang="${t.other}" href="${otherHref}">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
@@ -406,7 +415,16 @@ function page(t) {
   </div>
 </div></section>
 
-<section><div class="wrap center">
+<section class="alt" id="tools"><div class="wrap center">
+  <span class="eyebrow">${t.toolsEyebrow}</span>
+  <h2>${t.toolsTitle}</h2>
+  <p class="lead">${t.toolsLead}</p>
+  <div class="tools">
+    ${t.tools.map(([s, h, where, p]) => `<div class="card">${sp(s)}<div><span class="where">${where}</span><h3>${h}</h3><p>${p}</p></div></div>`).join('\n    ')}
+  </div>
+</div></section>
+
+<section id="features"><div class="wrap center">
   <h2>${t.featTitle}</h2>
   <p class="lead">${t.featLead}</p>
   <div class="grid g3">
@@ -443,6 +461,7 @@ function page(t) {
         <ol>${t.talk.connect.map(([h, p]) => `<li><b>${h}</b><span>${p}</span></li>`).join('')}</ol>
         <p class="note">${t.talk.connectNote}</p>
       </div>
+      <p class="talk-cta"><a class="btn primary" href="#download">${t.talk.cta}</a><span>${t.talk.ctaNote}</span></p>
     </div>
     <div class="talk-demo">
       <div class="chatdemo" id="chatdemo">
@@ -457,7 +476,7 @@ function page(t) {
   </div>
 </div></section>
 
-<section id="day"><div class="wrap center">
+<section class="alt" id="day"><div class="wrap center">
   <span class="eyebrow">${t.dayEyebrow}</span>
   <h2>${t.dayTitle}</h2>
   <p class="lead">${t.dayLead}</p>
@@ -467,7 +486,7 @@ function page(t) {
   <p class="swipe">${t.swipe}</p>
 </div></section>
 
-<section class="alt" id="gallery"><div class="wrap center">
+<section id="gallery"><div class="wrap center">
   <span class="eyebrow">${t.galEyebrow}</span>
   <h2>${t.galTitle}</h2>
   <p class="lead">${t.galLead}</p>
@@ -479,23 +498,14 @@ function page(t) {
   <p class="gal-more">${t.galMore}</p>
 </div></section>
 
-<section><div class="wrap center">
+<section class="alt" id="more"><div class="wrap center">
   <span class="eyebrow">${t.growEyebrow}</span>
   <h2>${t.growTitle}</h2>
   <p class="lead">${t.growLead}</p>
   <div class="stats">${t.stats.map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
   <div class="todo">${t.todo.map(([ico, h, p]) => `<div class="card"><span class="ico">${ico}</span><div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>
-  <div class="shots">${t.shots.map(([f, c]) => `<figure><img src="${b}assets/shots/${f}.png" alt="${c}" loading="lazy"><figcaption>${c}</figcaption></figure>`).join('')}</div>
+  <div class="shots" data-close-label="${t.close}">${t.shots.map(([f, c]) => `<figure><button type="button" class="shot" aria-label="${c}"><img src="${b}assets/shots/${t.lang}/${f}.png" alt="${c}" width="544" height="741" loading="lazy"></button><figcaption>${c}</figcaption></figure>`).join('')}</div>
   <p class="note">${t.shotsNote}</p>
-</div></section>
-
-<section class="alt" id="tools"><div class="wrap center">
-  <span class="eyebrow">${t.toolsEyebrow}</span>
-  <h2>${t.toolsTitle}</h2>
-  <p class="lead">${t.toolsLead}</p>
-  <div class="tools">
-    ${t.tools.map(([s, h, where, p]) => `<div class="card">${sp(s)}<div><span class="where">${where}</span><h3>${h}</h3><p>${p}</p></div></div>`).join('\n    ')}
-  </div>
 </div></section>
 
 <section id="download"><div class="wrap center">
@@ -513,7 +523,7 @@ function page(t) {
   <p class="official">${t.official} <a href="${REPO}/blob/main/${t.lang === 'ko' ? 'README.ko.md' : 'README.md'}">${t.installMore} →</a></p>
 </div></section>
 
-<section class="alt"><div class="wrap center">
+<section class="alt" id="faq"><div class="wrap center">
   <h2>${t.faqTitle}</h2>
   <div class="faq">${t.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
 </div></section>

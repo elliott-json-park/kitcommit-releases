@@ -23,7 +23,7 @@
       this.c = canvas;
       canvas.width = canvas.height = G;
       this.g = canvas.getContext('2d');
-      this.visible = true;
+      this.visible = false; // 화면 가까이 오면 IntersectionObserver 가 켠다 (그때 그림을 받는다)
       this.set(name);
       all.add(this);
     }
@@ -34,11 +34,13 @@
       this.t0 = performance.now();
       this.once = once;
       this.then = then;
-      this.img = img(name);
+      this.img = this.visible ? img(name) : null;
       this.last = -1;
     }
     draw(now) {
-      if (!this.visible || !this.img.complete) return;
+      if (!this.visible) return;
+      if (!this.img) this.img = img(this.name);
+      if (!this.img.complete) return;
       let f = Math.floor(((now - this.t0) / 1000) * FPS);
       if (this.once && f >= this.n) {
         const cb = this.then;
@@ -55,7 +57,7 @@
       this.g.drawImage(this.img, f * G, 0, G, G, 0, 0, G, G);
     }
   }
-  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.target._sp) e.target._sp.visible = e.isIntersecting; }), { rootMargin: '120px' });
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.target._sp) e.target._sp.visible = e.isIntersecting; }), { rootMargin: '400px' });
   const mount = (canvas, name) => {
     const s = new Sprite(canvas, name || canvas.dataset.sp);
     canvas._sp = s;
@@ -188,9 +190,8 @@
       for (const ch of text) { d.textContent += ch; await sleep(40 + Math.random() * 50); }
       d.classList.remove('cur');
     };
-    await sleep(700);
     h.act('a-wave'); // 세션 시작은 손 흔들기만 (0.5.0: 말풍선은 꼭 필요할 때만)
-    await sleep(2400);
+    await sleep(250);
     for (let i = 0; ; i++) {
       const s = KC.term[i % KC.term.length];
       term.innerHTML = '';
@@ -1147,6 +1148,28 @@
     const seen = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { seen.disconnect(); greet(true); } }, { threshold: 0.3 });
     seen.observe(root);
   }
+
+  // ---------- 스크린샷 크게 보기 (누르면 열리고, 바깥 · 닫기 · Esc 로 닫힌다) ----------
+  $$('.shots .shot').forEach((b) => b.addEventListener('click', () => {
+    const img = $('img', b);
+    const cap = b.parentNode.querySelector('figcaption');
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.innerHTML = `<figure><img alt=""><figcaption></figcaption></figure><button type="button"></button>`;
+    $('img', box).src = img.src;
+    $('img', box).alt = img.alt;
+    $('figcaption', box).textContent = cap ? cap.textContent : '';
+    const close = $('button', box);
+    close.textContent = b.closest('.shots').dataset.closeLabel || '×';
+    const done = () => { box.remove(); removeEventListener('keydown', key); b.focus(); };
+    const key = (e) => { if (e.key === 'Escape') done(); };
+    box.addEventListener('click', done);
+    addEventListener('keydown', key);
+    document.body.appendChild(box);
+    close.focus();
+  }));
 
   // ---------- 갤러리 탭 (고른 칸만 보인다) ----------
   $$('.tabs button').forEach((b) => b.addEventListener('click', () => {
