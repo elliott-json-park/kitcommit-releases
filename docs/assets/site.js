@@ -189,7 +189,7 @@
       d.classList.remove('cur');
     };
     await sleep(700);
-    h.say('session');
+    h.act('a-wave'); // 세션 시작은 손 흔들기만 (0.5.0: 말풍선은 꼭 필요할 때만)
     await sleep(2400);
     for (let i = 0; ; i++) {
       const s = KC.term[i % KC.term.length];
@@ -209,7 +209,7 @@
       await sleep(900);
       line('d', s.done);
       h.act(s.end);
-      h.say('stop', '', 3600);
+      if (s.long) h.say('stopLong', '', 3600); // 오래 걸린 답만 말풍선, 짧은 답은 모션만
       await sleep(Math.max(4200, ((KC.sprites[s.end] || 48) / FPS) * 1000 + 600));
       h.idle();
       await sleep(2600);
@@ -867,7 +867,7 @@
         scene = { anim: 'mood-thinking' };
         bubble.textContent = '…';
         bubble.className = 'bubble show';
-        setTimeout(() => { if (id !== sceneId) return; scene = null; once('m-donebell'); talk('stop'); }, 2800);
+        setTimeout(() => { if (id !== sceneId) return; scene = null; once('m-donebell'); talk('stopLong'); }, 2800);
       },
       notify: () => {
         endToy();
@@ -929,6 +929,223 @@
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
+  }
+
+  // ---------- 대화 맛보기 (0.5.0): 앱의 대화창처럼 생긴 작은 창 ----------
+  // 냥운세 · 초성 퀴즈 · 밸런스 게임은 여기서도 진짜로 돈다. 냥운세는 앱 companion.js 와 같은 날짜 시드라 앱과 같은 결과가 나온다.
+  // 끝말잇기 · 스무고개는 AI 가 있어야 해서 예시 대화만. 자유롭게 쓴 말에는 '앱에서 AI를 연결하면 돼'라고 답한다
+  const cdRoot = $('#chatdemo');
+  if (cdRoot && KC.chat) chatDemo(cdRoot, KC.chat);
+  function chatDemo(root, C) {
+    const log = $('.cd-log', root);
+    const form = $('.cd-input', root);
+    const input = $('input', form);
+    const catCv = $('.cd-cat', root);
+    const F = C.fortune;
+    let persona = 'angel';
+    let game = null;
+    let queue = Promise.resolve();
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const html = (s) => esc(s).replace(/\n/g, '<br>');
+    // 앱 i18n 의 {sign#은/는} 조사 고르기: 받침이 있으면 앞, 없으면 뒤
+    const josa = (w, a, b) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return c >= 0 && c < 11172 && c % 28 ? a : b; };
+    const fmt = (s, v = {}) => String(s).replace(/\{(\w+)(?:#([^/}]+)\/([^}]+))?\}/g, (m, k, a, b) => (k in v ? v[k] + (a ? josa(v[k], a, b) : '') : m));
+    const motion = (name) => { const s = catCv && catCv._sp; if (s && KC.sprites[name]) s.set(name, true, () => s.set('mood-idle')); };
+
+    // 줄 하나 붙이기. 새 줄이 오면 지난 줄의 단추(별자리 · 고르기)는 끈다 (앱도 마지막 줄에만 단추를 단다)
+    const add = (cls, inner) => {
+      $$('button', log).forEach((b) => { if (!b.classList.contains('keep')) b.disabled = true; });
+      const d = document.createElement('div');
+      d.className = 'cd-msg ' + cls;
+      d.innerHTML = inner;
+      log.appendChild(d);
+      while (log.children.length > 40) log.firstChild.remove();
+      log.scrollTop = log.scrollHeight;
+      return d;
+    };
+    const q = (fn) => (queue = queue.then(fn).catch(() => {}));
+    const me = (s) => q(async () => { add('me', html(s)); await sleep(180); });
+    const sys = (s) => q(() => { add('sys', esc(s)); });
+    // 고양이 말: 반투명 점 세 개(입력 중)를 잠깐 보였다가 바꿔 낀다
+    const cat = (inner, act, wait = 650) => q(async () => {
+      const d = add('cat', '<span class="dots" aria-label="…"><i></i><i></i><i></i></span>');
+      await sleep(wait);
+      d.innerHTML = inner;
+      log.scrollTop = log.scrollHeight;
+      if (act) motion(act);
+    });
+    const setQuiz = (on) => { input.placeholder = on ? C.talk.placeholderQuiz : C.talk.placeholder; root.classList.toggle('quiz', on); };
+
+    // ----- 오늘의 냥운세: 앱 companion.js 의 seeded · rankingOf · fortuneOf 그대로 -----
+    const seeded = (str) => {
+      let h = 2166136261;
+      for (let i = 0; i < str.length; i++) h = Math.imul(h ^ str.charCodeAt(i), 16777619);
+      let a = h >>> 0;
+      return () => {
+        a = (a + 0x6d2b79f5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    };
+    const SIGNS = F.signs.map((x) => x[0]);
+    const COLORS = [['mint', '#7fd6b8'], ['yellow', '#ffd35c'], ['pink', '#ff9bb8'], ['sky', '#8fc8ff'], ['purple', '#b89cff'], ['orange', '#ff9e57'], ['green', '#7bc96f'], ['white', '#f4f4f4'], ['red', '#e85a4f'], ['navy', '#3b4a7a']];
+    const rankingOf = (day) => {
+      const rnd = seeded(`${day}|ranking`);
+      const list = [...SIGNS];
+      for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(rnd() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+      return list;
+    };
+    const fortuneOf = (day, sign) => {
+      const rank = rankingOf(day).indexOf(sign) + 1;
+      const tier = rank === 1 ? 0 : rank <= 4 ? 1 : rank <= 8 ? 2 : rank <= 11 ? 3 : 4;
+      const rnd = seeded(`${day}|${sign}|lucky`);
+      const [color, hex] = COLORS[Math.floor(rnd() * COLORS.length)];
+      const item = Math.floor(rnd() * 24);
+      const hour = 8 + Math.floor(rnd() * 15);
+      const msgs = F.msg[tier];
+      return { day, sign, signName: F.signs[SIGNS.indexOf(sign)][1], rank, tier, stars: [5, 4, 3, 2, 1][tier], item: F.items[item], color: F.colors[color], hex, hour, msg: msgs[Math.floor(rnd() * msgs.length)] };
+    };
+    const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+    const card = (c) => {
+      const stars = Array.from({ length: 5 }, (_, i) => `<span class="${i < c.stars ? 'on' : ''}">★</span>`).join('');
+      const date = new Date(c.day + 'T12:00').toLocaleDateString(C.lang === 'en' ? 'en-US' : 'ko-KR', { month: 'long', day: 'numeric' });
+      return `<div class="fortune g${c.tier}"><div class="f-top"><span>${esc(F.s.title)}</span><span>${esc(date)}</span></div>
+        <div class="f-sign">${esc(c.signName)}</div><div class="f-grade">${esc(fmt(F.s.rank, { rank: c.rank }))}</div><div class="f-stars">${stars}</div>
+        <dl><dt>${esc(c.rank === 12 ? F.s.rescue : F.s.item)}</dt><dd>${esc(c.item)}</dd><dt>${esc(F.s.color)}</dt><dd><i class="swatch" style="background:${c.hex}"></i>${esc(c.color)}</dd><dt>${esc(F.s.hour)}</dt><dd>${esc(fmt(F.s.hourV, { h: c.hour }))}</dd></dl>
+        <p class="f-msg">🐾 ${esc(c.msg)}</p><button class="f-change" type="button" data-sign="change">${esc(F.s.change)}</button></div>`;
+    };
+    const saved = () => { try { return localStorage.getItem('kc-sign'); } catch (e) { return null; } };
+    const save = (v) => { try { if (v) localStorage.setItem('kc-sign', v); else localStorage.removeItem('kc-sign'); } catch (e) { /* 저장이 안 되면 매번 묻는다 */ } };
+    function fortune(sign) {
+      if (sign === 'change') save(null);
+      else if (sign) save(sign);
+      const mine = sign && sign !== 'change' ? sign : saved();
+      if (!SIGNS.includes(mine)) {
+        cat(html(F.s.askSign) + `<div class="cd-signs">${F.signs.map(([k, n, d]) => `<button type="button" data-sign="${k}">${esc(n)}<small>${esc(d)}</small></button>`).join('')}</div>`, 'a-happy');
+        return;
+      }
+      if (sign) me(F.signs[SIGNS.indexOf(mine)][1]);
+      const c = fortuneOf(today(), mine);
+      const intro = c.rank === 1 ? F.s.introTop : c.rank === 12 ? F.s.introLast : F.s.intro;
+      cat(html(fmt(intro, { sign: c.signName, rank: c.rank })) + card(c), c.rank <= 3 ? 'a-levelup' : 'a-happy', 900);
+    }
+
+    // ----- 초성 퀴즈: 앱처럼 문제 · 초성 · 판정을 이쪽에서 (힌트는 앞 글자 하나, 기회를 안 쓴다) -----
+    const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+    const initialsOf = (w) => (C.lang !== 'ko'
+      ? w[0].toUpperCase() + ' ' + Array(w.length - 1).fill('_').join(' ')
+      : [...w].map((ch) => { const c = ch.charCodeAt(0) - 0xac00; return c >= 0 && c < 11172 ? CHO[Math.floor(c / 588)] : ch; }).join(''));
+    const norm = (s) => String(s || '').toLowerCase().replace(/[\s.,!?~'"“”‘’()[\]-]/g, '');
+    function chosung() {
+      const topics = Object.keys(C.chosung.pool);
+      const topic = pick(topics);
+      const word = pick(C.chosung.pool[topic]);
+      game = { key: 'chosung', word, tries: 3, hinted: false };
+      setQuiz(true);
+      cat(html(fmt(C.chosung.start, { topic, init: initialsOf(word), n: 3 })) + `<div class="cd-row"><button type="button" class="keep" data-hint>${esc(C.chosung.hint)}</button></div>`, 'a-happy');
+      setTimeout(() => input.focus({ preventScroll: true }), 900);
+    }
+    function guess(s) {
+      const g = game;
+      me(s);
+      if (norm(s) === norm(g.word)) {
+        game = null;
+        setQuiz(false);
+        cat(html(fmt(C.talk.chosung.right, { word: g.word })) + again(), 'a-levelup');
+        return;
+      }
+      g.tries--;
+      if (g.tries <= 0) {
+        game = null;
+        setQuiz(false);
+        cat(html(fmt(C.chosung.answer, { word: g.word })) + again(), 'm-startle');
+        return;
+      }
+      cat(html(C.talk.chosung.wrong + ' ' + fmt(C.chosung.left, { n: g.tries })));
+    }
+    const again = () => `<div class="cd-row"><button type="button" data-game="chosung">${esc(C.talk.chosung.again)}</button></div>`;
+
+    // ----- 밸런스 게임: 미리 써 둔 질문 3판. 고양이도 하나 골라서 통했는지 말한다 -----
+    function balance() {
+      const order = [...C.talk.balance.pairs].sort(() => Math.random() - 0.5).slice(0, 3);
+      game = { key: 'balance', order, n: 0 };
+      setQuiz(false);
+      askBalance();
+    }
+    function askBalance() {
+      const [a, b] = game.order[game.n];
+      cat(html(fmt(C.talk.balance.q, { n: game.n + 1 })) + `<div class="cd-row">${[a, b].map((o) => `<button type="button" data-choice="${esc(o)}">${esc(o)}</button>`).join('')}</div>`);
+    }
+    function choose(x) {
+      const g = game;
+      if (!g || g.key !== 'balance') return;
+      const pair = g.order[g.n];
+      const mine = pick(pair);
+      me(x);
+      const same = mine === x;
+      cat(html(fmt(pick(same ? C.talk.balance.same : C.talk.balance.diff), { x, y: mine })), same ? 'a-happy' : null);
+      g.n++;
+      if (g.n < g.order.length) askBalance();
+      else { game = null; cat(html(C.talk.balance.end), 'a-wave'); }
+    }
+
+    function play(key) {
+      const label = C.games[key][0];
+      if (key === 'fortune') { game = null; setQuiz(false); me(label); fortune(); return; }
+      if (key === 'chosung') { me(label); chosung(); return; }
+      if (key === 'balance') { me(label); balance(); return; }
+      // 끝말잇기 · 스무고개: 예시 대화
+      game = null;
+      setQuiz(false);
+      for (const [who, s] of C.talk[key]) (who === 'user' ? me(s) : cat(html(s), null, 550));
+      sys(C.talk.sample);
+    }
+
+    function greet(first) {
+      game = null;
+      setQuiz(false);
+      if (first) log.innerHTML = '';
+      cat(html(C.talk.greet[persona]), 'a-wave', first ? 400 : 650);
+      // 말풍선도 같은 성격으로 말한다 (앱의 성격별 점심 대사)
+      if (!first && C.bubble[persona] && C.bubble[persona].length) sys(C.talk.bubbleNote + ' “' + pick(C.bubble[persona]) + '”');
+    }
+
+    root.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b || b.disabled || !root.contains(b)) return;
+      if (b.dataset.persona) {
+        if (b.dataset.persona === persona) return;
+        persona = b.dataset.persona;
+        $$('[data-persona]', root).forEach((x) => x.setAttribute('aria-checked', x === b ? 'true' : 'false'));
+        greet(false);
+      } else if (b.dataset.game) play(b.dataset.game);
+      else if (b.dataset.sign) fortune(b.dataset.sign);
+      else if (b.dataset.choice) choose(b.dataset.choice);
+      else if ('hint' in b.dataset && game && game.key === 'chosung' && !game.hinted) {
+        game.hinted = true;
+        b.disabled = true;
+        const w = game.word;
+        cat(html(fmt(C.talk.chosung.hint, { c: C.lang === 'ko' ? w[0] : w.slice(0, 2) })));
+      }
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const s = input.value.trim();
+      if (!s) return;
+      input.value = '';
+      if (game && game.key === 'chosung') return guess(s);
+      if (game && game.key === 'balance') return choose(s);
+      me(s);
+      cat(html(C.talk.noAi), 'm-fishthink');
+    });
+    // 화면에 처음 보일 때 인사 (안 보이는 곳에서 미리 말하지 않게)
+    const seen = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { seen.disconnect(); greet(true); } }, { threshold: 0.3 });
+    seen.observe(root);
   }
 
   // ---------- 갤러리 탭 (고른 칸만 보인다) ----------

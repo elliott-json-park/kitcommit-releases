@@ -37,11 +37,12 @@ const TEXT = {
   ko: {
     lang: 'ko', other: 'en', otherLabel: 'English',
     title: '킷커밋 — AI와 일할수록 자라는 도트 고양이',
-    desc: 'Claude Code 나 Codex 를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 작업이 끝나면 알려 주고, 점심·휴식·잠잘 시간을 챙겨 줘요. 무료.',
-    nav: ['놀아 보기', '고양이의 하루', '모션', '받기'],
-    eyebrow: 'Claude Code · Codex 데스크톱 펫',
+    desc: 'Claude Code · Codex, 브라우저의 Claude · ChatGPT · Gemini 를 쓸수록 자라는 데스크톱 도트 고양이. 같이 일하고, 필요할 때 알려 주고, 수다도 떨고, 점심·휴식·잠잘 시간을 챙겨 줘요. 무료.',
+    nav: [['#play', '놀아 보기'], ['#talk', '대화'], ['#day', '고양이의 하루'], ['#gallery', '모션'], ['#download', '받기']],
+    eyebrow: 'Claude Code · Codex · 웹 AI 데스크톱 펫',
+    news: ['NEW 0.5', '고양이와 대화 · 브라우저의 Claude · ChatGPT · Gemini 지원'],
     h1: 'AI와 일할수록 자라는<br><em>도트 고양이</em>',
-    lead: '토큰을 먹고 자라는 작은 고양이가 화면 구석에서 같이 일해요. 답이 끝나면 박수를 치고, 허락이 필요하면 손을 흔들고, 새벽 1시엔 이제 자자고 해요.',
+    lead: '토큰을 먹고 자라는 작은 고양이가 화면 구석에서 같이 일해요. 허락이 필요하면 손을 흔들고, 새벽 1시엔 이제 자자고 해요. 이제는 말을 걸면 대답도 해요.',
     dlWin: '윈도우용 받기', dlMac: '맥용 받기', free: '무료',
     meta: '윈도우 10/11 · macOS (M칩·인텔) · 대화 내용은 읽지 않아요',
     hint: '<b>▸</b> 고양이를 눌러 쓰다듬고, 끌어서 들어 올려 보세요',
@@ -56,6 +57,7 @@ const TEXT = {
       fed: ['우와 맛있겠다!', '잘먹겠습니다!!', '우와 밥이다~~!!'],
       caught: ['잡았다!', '헤헤 내가 이겼어', '한 번 더!', '나.. 혹시 사냥 천재..?'],
       stop: ['끝났다! 확인해 봐', '짠! 답변 나왔다옹', '작업 끝! 일동 박수!!', '됐다옹! 한번 봐 줘'],
+      stopLong: ['7분 걸린 답 나왔어! 확인해 봐', '기다렸지? 7분짜리 답 도착!'],
       notifyPermission: ['Bash 써도 되는지 물어봐!', 'Claude가 Bash 허락을 기다려', '허락이 필요해!'],
       lunch: ['점심시간이닷!!!!!', '오늘 뭐 먹을 거야?', '바빠도 점심 꼭 챙겨 먹어!'],
       late: ['1시야… 오늘은 여기까지 할까?', '이제 슬슬 졸리다. 우리 이제 자자', '내일은 내일의 해가 뜨겠지..'],
@@ -63,7 +65,7 @@ const TEXT = {
     featTitle: '그냥 귀엽기만 한 게 아니에요', featLead: 'AI와 함께 일하는 하루에 맞춰 같이 움직이는 고양이예요.',
     feats: [
       ['a-levelup', '토큰을 먹고 자라요', '보낸 메시지와 출력 토큰만큼 경험치가 쌓여 레벨이 오르고, 코인으로 옷·모션·간식을 사요.'],
-      ['m-donebell', '같이 일하고 알려 줘요', '답을 만드는 동안 노트북으로 같이 타이핑하고, 끝나면 말풍선으로, 허락이 필요하면 손을 흔들어 알려 줘요.'],
+      ['m-donebell', '같이 일하고 알려 줘요', '답을 만드는 동안 노트북으로 같이 타이핑하고, 허락이 필요하면 손을 흔들고, 오래 걸린 답이 끝나면 말풍선으로 알려 줘요. 짧은 답엔 폴짝 뛰기만 해요.'],
       ['m-stretch', '생활을 챙겨 줘요', '점심·저녁 시간, 두 시간째 일할 때의 스트레칭, 늦은 밤 작업할 때 건네는 위로의 말까지. 고양이가 내 생활을 챙겨 줘요.'],
     ],
     playEyebrow: '직접 해 보기', playTitle: '고양이랑 놀아 보세요', playLead: '앱에서와 똑같이 움직여요. 고양이를 쓰다듬고 끌어 올리고, 밥을 주고, 장난감을 꺼내 직접 놀아 주세요.',
@@ -78,38 +80,78 @@ const TEXT = {
     playCaption: '고양이를 눌러 쓰다듬거나, 끌어서 들어 올려 보세요',
     acts: [['feed', '🍚', '밥 주기'], ['toy', '🧸', '장난감 꺼내기'], ['work', '💻', '일 시키기'], ['notify', '❗', '허락 요청'], ['lunch', '🍱', '점심시간'], ['sleep', '🌙', '재우기'], ['motion', '🎲', '아무 모션']],
     dayEyebrow: '어느 하루', dayTitle: '고양이와 함께하는 하루',
-    dayLead: 'Claude Code 나 Codex 가 일하는 흐름에 맞춰 고양이도 움직여요. 아래 말풍선은 앱 속 실제 대사예요.',
+    dayLead: 'AI가 일하는 흐름에 맞춰 고양이도 움직여요. 말풍선은 꼭 필요할 때만 띄워요. 아래 말풍선은 앱 속 실제 대사예요.',
     day: [
-      ['09:02', 'a-wave', '세션 시작', '새 세션이다! 오늘은 뭘 만들어 볼까?', ''],
-      ['10:15', 'mood-thinking', '같이 일하는 중', '(노트북 타닥타닥…)', ''],
+      ['09:02', 'a-wave', '세션 시작', '(반갑게 손 흔들기)', 'act'],
       ['10:48', 'm-enterwait', '허락이 필요할 때', 'Claude가 Bash 허락을 기다려', 'notify'],
-      ['10:51', 'm-donebell', '답이 끝났을 때', '작업 끝! 일동 박수!!', ''],
+      ['11:20', 'm-donebell', '오래 걸린 답이 끝났을 때', '7분 걸린 답 나왔어! 확인해 봐', ''],
       ['12:00', 'a-eat', '점심시간', '점심시간이닷!!!!!', ''],
+      ['14:30', 'm-fishthink', '컨텍스트가 70%를 넘으면', '머릿속이 72% 찼대! 지금 /compact 하면 깔끔해져', ''],
       ['15:30', 'm-stretch', '오래 일했을 때', '벌써 2시간째야. 스트레칭 한 번 할까?', ''],
       ['18:40', 'f-raccoon', '동네 친구가 놀러 옴', '라면이가 놀러 왔어!', ''],
       ['01:10', 'm-nodoff', '늦은 밤', '1시야… 오늘은 여기까지 할까?', ''],
     ],
     galEyebrow: '모션 87개 · 코스튬 320개', galTitle: '매일 다른 모습', galMore: '여기 보이는 건 맛보기예요. 앱에는 모션 87개, 코스튬 320개가 있어요.', galLead: '상황마다 모션을 고르고, 코인으로 새 모션과 옷을 사요.',
-    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 여기는 87개 가운데 몇 개만 골라 보여 드려요.'], ['costumes', '코스튬', '코스튬 320개 가운데 머리부터 발끝까지 한 벌인 세트 몇 벌만 골랐어요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러낼 수 있어요.']],
+    tabs: [['motions', '모션', '일할 때 · 기다릴 때 · 배고플 때 · 잘 때… 상황마다 하나씩 골라 둬요. 여기는 87개 가운데 몇 개만 골라 보여 드려요.'], ['costumes', '코스튬', '코스튬 320개 가운데 머리부터 발끝까지 한 벌인 세트 몇 벌만 골랐어요. 모자 · 안경 · 목도리처럼 부위별로 따로 입힐 수도 있어요.'], ['friends', '동네 친구', '2시간쯤마다 한 마리씩 놀러 와요. 밥을 주고 보물을 바꾸면 친해지고, 단짝이 되면 불러내고 선물한 옷을 갈아입힐 수 있어요.']],
     growEyebrow: '모으고 꾸미고', growTitle: '쓸수록 할 게 많아져요',
     growLead: '레벨이 오르면 새 물건이 열리고, 놀 거리와 모을 거리가 계속 생겨요.',
     todo: [
-      ['🎮', '같이 하는 게임', '두더지 잡기 · 가위바위보 · 도미노 · 줄다리기 · 트램펄린. 기록이 남아요.'],
+      ['🎮', '게임과 장난감 36가지', '두더지 잡기 · 가위바위보 · 줄다리기 같은 게임에, 레이저 포인터 · 비눗방울 · 어항 · 야바위 상자까지. 고양이가 진짜로 쫓아다녀요.'],
       ['💎', '깜짝 보물과 공방', '고양이가 가끔 보물을 물어 와요. 38가지를 모아 공방에서만 나오는 코스튬 24벌을 만들어요.'],
-      ['📜', '퀘스트와 업적', '한 번에 퀘스트 3개, 업적은 165개. 깨면 경험치와 간식 · 코인을 받아요.'],
+      ['📜', '퀘스트와 업적', '한 번에 퀘스트 3개, 업적은 175개. 깨면 경험치와 간식 · 코인을 받아요.'],
       ['📊', '나의 기록', '요일 × 시간 히트맵, 가장 바빴던 날, 연속 기록까지 한눈에 봐요.'],
-      ['🖼️', '내 맘대로 자랑 카드', '이번 달 · 지난달 · 처음부터 중에 고르고, 넣을 숫자 · 색 · 고양이 자세 · 한 줄 문구까지 골라 이미지 한 장으로 자랑해요.'],
+      ['🖼️', '내 맘대로 자랑 카드', '기본 · RPG 상태창 · 영수증 세 가지 모양에 칭호 13가지. 기간 · 숫자 · 색 · 고양이 자세 · 한 줄 문구까지 골라 이미지 한 장으로 자랑해요.'],
       ['🌟', 'Lv80 다음은 별 상점', '최고 레벨을 찍은 뒤에도 끝이 아니에요. 쌓이는 별로만 사는 끝판왕 코스튬과 움직이는 털색이 기다려요.'],
       ['💾', '컴퓨터를 바꿔도 그대로', '기록을 파일 하나로 내보내고 새 컴퓨터에서 가져와요. 하루 한 번 자동 백업도 돼요.'],
-      ['💡', 'AI 활용 팁', '하루 몇 번, 고양이가 말풍선으로 쓸 만한 팁을 하나씩 알려 줘요.'],
-      ['🔕', '방해하지 않아요', '크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드가 있어요.'],
+      ['🧠', '컨텍스트 알림과 AI 팁', '세션이 70%를 넘으면 /compact 를, 웹 대화가 길어지면 새 대화를 권해요. 쓰는 도구에 맞는 팁도 하루 한 번.'],
+      ['🔕', '방해하지 않아요', '말풍선은 꼭 필요할 때만. 크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드도 있어요.'],
     ],
     mobile: '킷커밋은 PC(윈도우 · 맥)에서 쓰는 앱이에요. 나에게 보내 두었다가 PC에서 열어 보세요.', copy: '주소 복사', copied: '복사했어요!', send: 'PC로 보내기', sendTitle: '킷커밋 — PC에서 받기', sendText: 'PC에서 열어서 받기: ', mail: '메일로 보내기',
-    stats: [['87', '모션'], ['320', '코스튬'], ['55', '밥 · 간식'], ['30', '장난감'], ['8', '동네 친구'], ['165', '업적']],
+    stats: [['87', '모션'], ['320', '코스튬'], ['55', '밥 · 간식'], ['36', '장난감'], ['8', '동네 친구'], ['175', '업적']],
     shots: [['home', '홈 — 오늘의 고양이'], ['shop', '상점 — 코인으로 꾸미기'], ['stats', '통계 — 나의 기록'], ['card', '자랑 카드 — 내 맘대로 골라 만들기']],
     shotsNote: '스크린샷은 데모 기록으로 찍은 영어 화면이에요.',
-    toolsTitle: 'Claude Code 도, Codex 도', toolsLead: '처음 안내나 설정에서 쓰는 도구를 고르면 돼요. 도구마다 고양이가 따로 자라요.',
-    tools: [['mood-thinking', 'Claude Code', '대화 기록으로 자라고, hook 으로 실시간 반응해요.'], ['c-mondaydev', 'Codex', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.']],
+    talk: {
+      eyebrow: 'NEW · 동료 고양이', title: '이제 고양이와 대화해요',
+      lead: '내가 쓰는 AI를 연결하면 고양이가 진짜로 대답해요. 수다 · 고민 상담 · 간단한 질문에 같이 하는 말놀이까지. 일 비서가 아니라 친구예요.',
+      points: [
+        ['🎭', '성격 7가지', '다정한 · 츤데레 · 장난꾸러기 · 시크한 · 수다쟁이 · 애늙은이 철학자 · 귀차니스트. 직접 설명을 더할 수 있고, 말풍선도 같은 성격으로 말해요.'],
+        ['📝', '기억하고 챙겨 줘요', '기억 노트에 내 얘기를 적어 두고, "30분 뒤에 양치하라고 알려줘" 하면 진짜로 알려 줘요. 집중 시간 타이머도 있어요.'],
+        ['⌨️', '언제든 불러요', '<b>Ctrl+Alt+K</b> (맥은 ⌘+Option+K), 트레이, 고양이에 마우스를 올리면 뜨는 "말 걸기"로 열어요.'],
+      ],
+      connectTitle: '연결은 셋 중 하나면 돼요',
+      connect: [['Claude 구독', 'Claude Code 에 로그인돼 있으면 키 없이'], ['ChatGPT 구독', 'Codex CLI 에 로그인돼 있으면 키 없이'], ['Gemini 무료 키', '구독이 없어도 무료로 · 카드 필요 없음']],
+      connectNote: 'Anthropic · OpenAI API 키도 돼요. 대화는 이 컴퓨터에 저장되고, 내가 연결한 AI 로만 가요.',
+      demoTitle: '맛보기 대화창', demoNote: '냥운세 · 초성 퀴즈는 여기서도 진짜로 돼요. 운세는 앱과 같은 결과예요.',
+      persona: '성격', placeholder: '앱에서는 여기에 자유롭게 말을 걸어요', placeholderQuiz: '정답을 써 보세요', send: '보내기',
+      sample: '예시 · 앱에서는 연결한 AI가 이어 가요',
+      noAi: '여기선 맛보기라 자유 대화는 못 해… 앱에서 AI를 연결하면 뭐든 얘기할 수 있어!',
+      greet: {
+        angel: '왔구나! 오늘 하루 어땠어? 아래 놀이도 눌러 봐 🐾',
+        tsundere: '흥, 이제야 왔어? …딱히 기다린 건 아니거든',
+        playful: '헤헤 왔다! 오늘은 뭐 하고 놀까? 나 심심했단 말이야~',
+        chic: '왔네. 할 얘기 있으면 해.',
+        chatty: '왔어?! 나 오늘 창밖에서 비둘기 세 마리 봤다? 아 맞다, 너는 오늘 뭐 했어?',
+        sage: '어서 오게. 오늘은 어떤 생각을 품고 왔는가',
+        lazy: '어… 왔어…? 누워서 얘기해도 되지…?',
+      },
+      bubbleNote: '말풍선도 이 말투예요:',
+      balance: {
+        q: '{n}번째! 둘 중 하나만 고른다면?',
+        pairs: [['평생 여름', '평생 겨울'], ['라면만 먹기', '치킨만 먹기'], ['버그 없는 코드', '야근 없는 회사'], ['고양이랑 말하기', '고양이처럼 낮잠 자기'], ['답장 1초 만에 하는 친구', '선물 잘 고르는 친구']],
+        same: ['나도 {x}! 통했다냥', '{x} 고른 거 완전 내 취향!'],
+        diff: ['난 {y}… 우리 취향 다르다냥', '앗, 나는 {y} 골랐는데! 그래도 좋아'],
+        end: '3판 끝! 앱에서는 매번 새 질문으로 5판 해요 🐾',
+      },
+      wordchain: [['user', '끝말잇기 하자!'], ['cat', '좋아! 내가 먼저 할게. 「고양이」!'], ['user', '이불'], ['cat', '불고기! 이번엔 「기」로 시작해 봐~']],
+      twenty: [['user', '스무고개 하자!'], ['cat', '하나 생각했어! 예 / 아니오로 물어봐 (0/20)'], ['user', '먹을 수 있는 거야?'], ['cat', '응! 먹을 수 있어 (1/20)']],
+      chosung: { right: '정답! 「{word}」 맞아! 🎉', wrong: '땡! 아니야~', hint: '힌트: 앞 글자는 「{c}」야. 기회는 그대로!', again: '한 판 더' },
+    },
+    toolsEyebrow: '어떤 AI를 쓰든', toolsTitle: '쓰는 도구에 맞춰 연결해요', toolsLead: '처음 켤 때 쓰는 도구를 고르면 연결 방법을 한 단계씩 안내해요. 도구마다 고양이가 따로 자라요.',
+    tools: [
+      ['mood-thinking', 'Claude Code', '터미널 · IDE 에서', '대화 기록으로 자라고, hook 으로 허락 요청 · 작업 끝에 바로 반응해요.'],
+      ['c-mondaydev', 'Codex', '터미널 · IDE 에서', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.'],
+      ['mood-active', 'Claude · ChatGPT · Gemini', '브라우저에서', '작은 확장(크롬 · 엣지 · 웨일)을 넣으면 웹에서 쓸 때 자라요. 보냈다 · 답 끝 · 글자 수만 알려요.'],
+    ],
     dlEyebrow: '무료', dlTitle: '지금 받기', dlLead: '설치는 1분이면 끝나요.',
     win: { title: '윈도우', steps: ['설치 파일을 실행하면 관리자 권한 없이 설치되고 바로 켜져요.', '"Windows의 PC 보호" 창이 뜨면 <b>추가 정보 → 실행</b>.', '<b>새 버전은 자동으로</b> 받아서 설치해요.'], req: '윈도우 10 / 11 (64비트)' },
     mac: { title: '맥', steps: ['dmg 를 열고 Kit Commit 을 응용 프로그램 폴더로 끌어 놓아요.', '처음 한 번만 <b>시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기</b>.', '새 버전이 나오면 새 dmg 로 덮어 설치해요.'], req: 'macOS · M칩 · 인텔' },
@@ -117,25 +159,28 @@ const TEXT = {
     official: '<b>공식 다운로드는 이 사이트와 GitHub Releases 뿐이에요.</b> 다른 곳에 올라온 파일은 고쳐진 것일 수 있어요. 받은 파일의 SHA-256 을 위 값과 비교해 확인할 수 있어요.',
     faqTitle: '자주 묻는 질문',
     faq: [
-      ['제 대화 내용을 읽나요?', '아니요. 이 컴퓨터의 기록 파일에서 <b>개수 · 토큰 수 · 시각 · 도구 이름만</b> 세고, 대화 내용은 저장하지도 어디로 보내지도 않아요. 계산은 모두 이 컴퓨터 안에서 해요.'],
+      ['제 대화 내용을 읽나요?', '아니요. Claude Code · Codex 는 이 컴퓨터의 기록 파일에서 <b>개수 · 토큰 수 · 시각 · 도구 이름만</b> 세고, 브라우저 확장은 <b>보냈다 · 답이 끝났다 · 글자 수 · 시각만</b> 앱에 알려요. 대화 내용은 저장하지도 어디로 보내지도 않아요.'],
+      ['고양이와 대화하려면 돈이 드나요?', 'Claude · ChatGPT 구독이 있으면 따로 낼 돈 없이 그 구독으로 대화해요 (구독 사용량을 조금 써요). 구독이 없으면 Gemini 무료 키로 시작할 수 있어요. 오늘의 냥운세는 AI 없이도 돼요. 고양이와 나눈 대화는 이 컴퓨터에 저장되고, 내가 연결한 AI 로만 가요.'],
+      ['Claude Code 나 Codex 없이 브라우저에서만 써도 되나요?', '네. 처음 안내에서 "브라우저"를 고르고 작은 확장(크롬 · 엣지 · 웨일)을 넣으면 claude.ai · chatgpt.com · gemini.google.com 을 쓸 때 고양이가 자라요. 설치는 앱이 한 단계씩 안내해요.'],
       ['무료인가요?', '네, 무료예요. 결제나 광고가 없어요.'],
-      ['Anthropic · OpenAI 가 만든 공식 앱인가요?', '아니요. 개인이 만든 비공식 팬메이드 앱이에요. 두 회사와 관련이 없어요.'],
+      ['Anthropic · OpenAI · Google 이 만든 공식 앱인가요?', '아니요. 개인이 만든 비공식 팬메이드 앱이에요. 세 회사와 관련이 없어요.'],
       ['hook 은 뭐고, 꼭 연결해야 하나요?', 'Claude Code / Codex 가 일을 시작하고 끝낼 때 고양이에게 알려 주는 연결이에요. 연결하지 않아도 기록 파일로 자라지만, 연결하면 작업 끝 · 허락 요청에 바로 반응해요. 기존 설정은 그대로 두고 백업도 만들어요.'],
-      ['방해되지 않나요?', '고양이는 화면 맨 아래를 걸어 다니고, 클릭은 고양이 몸 위에서만 받아요. 크기 조절, 음소거, 한 시간 숨기기, 방해 금지 모드가 있어요.'],
+      ['방해되지 않나요?', '고양이는 화면 맨 아래를 걸어 다니고, 클릭은 고양이 몸 위에서만 받아요. 말풍선은 꼭 필요할 때만 띄우고, 크기 조절 · 음소거 · 한 시간 숨기기 · 방해 금지 모드가 있어요.'],
       ['맥은 왜 경고가 뜨나요?', 'Apple 개발자 서명(유료)이 없는 베타라서, 처음 한 번만 설정에서 열어 줘야 해요. 그다음부터는 그냥 열려요.'],
     ],
     ctaTitle: '오늘부터 같이 일할 고양이', ctaLead: '작은 고양이 한 마리가 일하는 하루를 조금 더 즐겁게 만들어 줄 거예요.',
-    footer: ['킷커밋은 비공식 팬메이드 앱으로, Anthropic · OpenAI 와 관련이 없고 두 회사가 만들거나 보증하지 않습니다. Claude 와 Claude Code 는 Anthropic 의 상표이고, Codex 는 OpenAI 의 상표입니다.', '© 2026 Elliott Park. 무료로 쓸 수 있지만 오픈소스가 아니며, 재배포 · 수정을 허용하지 않습니다.'],
+    footer: ['킷커밋은 비공식 팬메이드 앱으로, Anthropic · OpenAI · Google 과 관련이 없고 세 회사가 만들거나 보증하지 않습니다. Claude 와 Claude Code 는 Anthropic 의, ChatGPT 와 Codex 는 OpenAI 의, Gemini 는 Google 의 상표입니다.', '© 2026 Elliott Park. 무료로 쓸 수 있지만 오픈소스가 아니며, 재배포 · 수정을 허용하지 않습니다.'],
     footLinks: [['GitHub Releases', REL], ['라이선스', REPO + '/blob/main/LICENSE'], ['버그 · 의견', REPO + '/issues']],
   },
   en: {
     lang: 'en', other: 'ko', otherLabel: '한국어',
     title: 'Kit Commit — a pixel cat that grows as you work with AI',
-    desc: 'A desktop pixel cat that grows with your Claude Code or Codex. It works alongside you, tells you when a reply is done, and reminds you about lunch, breaks and bedtime. Free.',
-    nav: ['Play', 'A day', 'Motions', 'Download'],
-    eyebrow: 'A desktop pet for Claude Code · Codex',
+    desc: 'A desktop pixel cat that grows with Claude Code, Codex, and Claude · ChatGPT · Gemini in your browser. It works alongside you, tells you when it matters, chats with you, and reminds you about lunch, breaks and bedtime. Free.',
+    nav: [['#play', 'Play'], ['#talk', 'Chat'], ['#day', 'A day'], ['#gallery', 'Motions'], ['#download', 'Download']],
+    eyebrow: 'A desktop pet for Claude Code · Codex · web AI',
+    news: ['NEW 0.5', 'Talk to your cat · Claude, ChatGPT and Gemini in the browser'],
     h1: 'A pixel cat that grows<br><em>as you work with AI</em>',
-    lead: 'A tiny cat feeds on your tokens and works in the corner of your screen. It claps when a reply is done, waves when your OK is needed, and tells you to go to bed at 1 a.m.',
+    lead: 'A tiny cat feeds on your tokens and works in the corner of your screen. It waves when your OK is needed, tells you to go to bed at 1 a.m., and now it talks back when you say hi.',
     dlWin: 'Download for Windows', dlMac: 'Download for Mac', free: 'Free',
     meta: 'Windows 10/11 · macOS (Apple Silicon & Intel) · never reads your conversations',
     hint: '<b>▸</b> Click the cat to pet it, drag it to pick it up',
@@ -151,6 +196,7 @@ const TEXT = {
       fed: ['Looks yummy!', 'Thank you!'],
       caught: ['Gotcha!', 'Hehe, I win', 'Again!'],
       stop: ['Done! Take a look', 'Ta-da!', 'Ooh, this one looks good', 'Finished! Applause please'],
+      stopLong: ['A 7m answer is ready! Take a look', 'Worth the wait? 7m answer arrived!'],
       notifyPermission: ['Can Claude use Bash? It is asking!', 'Claude needs your OK for Bash', 'Permission needed!'],
       lunch: ['Lunch time! Eat well so the afternoon goes well', "Hungry? Let's eat first!"],
       late: ['1 a.m.… shall we stop here?', 'Yawn… let us sleep', 'Tomorrow-you will handle it'],
@@ -158,7 +204,7 @@ const TEXT = {
     featTitle: "It's not just cute", featLead: 'A cat that keeps pace with your day of working with AI.',
     feats: [
       ['a-levelup', 'Grows on your tokens', 'Messages and output tokens become XP. Level up, then spend coins on outfits, motions and snacks.'],
-      ['m-donebell', 'Works with you, tells you', 'Types along on a laptop while a reply is being written, pops a bubble when it is done, and waves when your OK is needed.'],
+      ['m-donebell', 'Works with you, tells you', 'Types along on a laptop while a reply is being written, waves when your OK is needed, and pops a bubble when a long reply is done. Short replies just get a happy hop.'],
       ['m-stretch', 'Looks after you', 'Lunch and dinner, a stretch when you are two hours in, and a kind word when you are working late. The cat looks after your day.'],
     ],
     playEyebrow: 'Try it', playTitle: 'Play with the cat', playLead: 'It behaves just like the app. Pet the cat, pick it up, feed it, and take out a toy to play with it yourself.',
@@ -174,38 +220,78 @@ const TEXT = {
     playCaptionTouch: 'Tap the cat to pet it, or drag it to pick it up',
     acts: [['feed', '🍚', 'Feed'], ['toy', '🧸', 'Take out a toy'], ['work', '💻', 'Give it work'], ['notify', '❗', 'Ask permission'], ['lunch', '🍱', 'Lunch time'], ['sleep', '🌙', 'Bedtime'], ['motion', '🎲', 'Random motion']],
     dayEyebrow: 'One ordinary day', dayTitle: 'A day with your cat',
-    dayLead: 'The cat follows what Claude Code or Codex is doing. The bubbles below are real lines from the app.',
+    dayLead: 'The cat follows what your AI is doing, and only speaks up when it matters. The bubbles below are real lines from the app.',
     day: [
-      ['09:02', 'a-wave', 'Session starts', 'New session! What are we making today?', ''],
-      ['10:15', 'mood-thinking', 'Working together', '(tap tap tap on the laptop…)', ''],
+      ['09:02', 'a-wave', 'Session starts', '(a happy wave)', 'act'],
       ['10:48', 'm-enterwait', 'When your OK is needed', 'Claude needs your OK for Bash', 'notify'],
-      ['10:51', 'm-donebell', 'When a reply is done', 'Finished! Applause please', ''],
+      ['11:20', 'm-donebell', 'When a long reply is done', 'A 7m answer is ready! Take a look', ''],
       ['12:00', 'a-eat', 'Lunch time', 'Lunch time! Eat well so the afternoon goes well', ''],
+      ['14:30', 'm-fishthink', 'When context passes 70%', 'My head is 72% full! A /compact now tidies it up', ''],
       ['15:30', 'm-stretch', 'After a long stretch of work', '2h already. Stretch with me?', ''],
       ['18:40', 'f-raccoon', 'A neighbor drops by', 'Ramen came to visit!', ''],
       ['01:10', 'm-nodoff', 'Late at night', '1 a.m.… shall we stop here?', ''],
     ],
     galEyebrow: '87 motions · 320 costumes', galTitle: 'Different every day', galMore: 'This is just a taste. The app has 87 motions and 320 costumes.', galLead: 'Pick a motion for each situation, and buy new motions and outfits with coins.',
-    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. This is just a handful of the 87.'], ['costumes', 'Costumes', 'A few full head-to-toe sets out of 320 costumes. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over.']],
+    tabs: [['motions', 'Motions', 'Working, waiting, hungry, asleep… pick one for each situation. This is just a handful of the 87.'], ['costumes', 'Costumes', 'A few full head-to-toe sets out of 320 costumes. You can also mix hats, glasses and scarves piece by piece.'], ['friends', 'Neighbors', 'One drops by every two hours or so. Feed them and trade treasures to become friends; a best friend can be called over and dressed in the outfits you gave them.']],
     growEyebrow: 'Collect & dress up', growTitle: 'More to do the more you use it',
     growLead: 'Levels unlock new items, and there is always something more to play with and collect.',
     todo: [
-      ['🎮', 'Games to play together', 'Whack-a-cat, rock-paper-scissors, dominoes, tug of war and a trampoline. Your records are kept.'],
+      ['🎮', 'Games and 36 toys', 'Whack-a-cat, rock-paper-scissors and tug of war, plus a laser pointer, bubbles, a fishbowl, a shell game and more. The cat really chases them.'],
       ['💎', 'Treasures & workshop', 'The cat sometimes brings back a treasure. Collect all 38 kinds and craft 24 workshop-only costumes.'],
-      ['📜', 'Quests & achievements', 'Three quests at a time and 165 achievements, paying out XP, snacks and coins.'],
+      ['📜', 'Quests & achievements', 'Three quests at a time and 175 achievements, paying out XP, snacks and coins.'],
       ['📊', 'Your history', 'A weekday × hour heatmap, your busiest day and your longest streak at a glance.'],
-      ['🖼️', 'A show-off card, your way', 'Pick this month, last month or all time, then choose the stats, colors, cat pose and your own line. One image, ready to share.'],
+      ['🖼️', 'A show-off card, your way', 'Classic, RPG status window or Receipt, with 13 titles. Choose the period, stats, colors, cat pose and your own line. One image, ready to share.'],
       ['🌟', 'After Lv80: the star shop', 'Max level is not the end. Stars keep piling up and buy end-game costumes and animated fur you cannot get any other way.'],
       ['💾', 'New computer, same cat', 'Export your progress to one file and import it on your new PC. Daily auto backup too.'],
-      ['💡', 'AI tips', 'A few times a day the cat shares a handy tip in a speech bubble.'],
-      ['🔕', 'Stays out of your way', 'Resize it, mute it, hide it for an hour, or switch on do-not-disturb.'],
+      ['🧠', 'Context alerts & AI tips', 'Past 70% context it suggests /compact; when a web chat gets long, a fresh chat. Plus one tip a day for the tool you use.'],
+      ['🔕', 'Stays out of your way', 'Bubbles only when it matters. Resize it, mute it, hide it for an hour, or switch on do-not-disturb.'],
     ],
     mobile: 'Kit Commit runs on a PC (Windows or Mac). Send the link to yourself and open it on your computer.', copy: 'Copy link', copied: 'Copied!', send: 'Send to my PC', sendTitle: 'Kit Commit — get it on your PC', sendText: 'Open this on your computer: ', mail: 'Email it to me',
-    stats: [['87', 'motions'], ['320', 'costumes'], ['55', 'foods & snacks'], ['30', 'toys'], ['8', 'neighbors'], ['165', 'achievements']],
+    stats: [['87', 'motions'], ['320', 'costumes'], ['55', 'foods & snacks'], ['36', 'toys'], ['8', 'neighbors'], ['175', 'achievements']],
     shots: [['home', 'Home — today with your cat'], ['shop', 'Shop — dress up with coins'], ['stats', 'Stats — your history'], ['card', 'Show-off card — make it your way']],
     shotsNote: 'Screenshots use made-up demo history.',
-    toolsTitle: 'Claude Code or Codex', toolsLead: 'Pick your tool in the intro or in Settings. Each tool raises its own cat.',
-    tools: [['mood-thinking', 'Claude Code', 'Grows from your history and reacts in real time through hooks.'], ['c-mondaydev', 'Codex', 'Grows from your Codex sessions and tells you about permission requests and finished replies.']],
+    talk: {
+      eyebrow: 'NEW · Buddy cat', title: 'Now you can talk to your cat',
+      lead: 'Connect the AI you already use and your cat really answers: small talk, worries, simple questions and word games. A friend, not a work assistant.',
+      points: [
+        ['🎭', '7 personalities', 'Sweet, tsundere, playful, chic, chatty, old-soul philosopher or lazy, plus your own description. Speech bubbles use the same personality.'],
+        ['📝', 'Remembers and reminds', 'It keeps memory notes about you, and "remind me to brush my teeth in 30 minutes" just works. There is a focus timer too.'],
+        ['⌨️', 'Always a shortcut away', '<b>Ctrl+Alt+K</b> (⌘+Option+K on Mac), the tray, or "Talk" when you hover over the cat.'],
+      ],
+      connectTitle: 'Connect any one of these',
+      connect: [['Claude subscription', 'No key if you are signed in to Claude Code'], ['ChatGPT subscription', 'No key if you are signed in to Codex CLI'], ['Free Gemini key', 'No subscription needed · no card']],
+      connectNote: 'Anthropic and OpenAI API keys work too. Chats are saved on your computer and only go to the AI you connected.',
+      demoTitle: 'Try the chat', demoNote: 'Fortune and the initials quiz really work here. The fortune matches the app.',
+      persona: 'Personality', placeholder: 'In the app, you can say anything here', placeholderQuiz: 'Type your answer', send: 'Send',
+      sample: 'Example · in the app, your connected AI plays along',
+      noAi: 'This is just a preview, so I can’t chat freely here… Connect an AI in the app and we can talk about anything!',
+      greet: {
+        angel: 'You’re here! How was your day? Try a game below 🐾',
+        tsundere: 'Hmph, finally. …Not that I was waiting or anything',
+        playful: 'Hehe, you came! What shall we play? I was soooo bored~',
+        chic: 'Oh, hi. Talk if you want.',
+        chatty: 'Hi hi! I saw three pigeons outside today! Oh wait, what did you do today?',
+        sage: 'Welcome. What thoughts have you brought with you today?',
+        lazy: 'Oh… you’re here…? Can we talk lying down…?',
+      },
+      bubbleNote: 'Its bubbles talk like this too:',
+      balance: {
+        q: 'Round {n}! If you could only pick one?',
+        pairs: [['Summer forever', 'Winter forever'], ['Only ramen', 'Only fried chicken'], ['Bug-free code', 'No overtime ever'], ['Talk to cats', 'Nap like a cat'], ['A friend who replies in 1 second', 'A friend who picks perfect gifts']],
+        same: ['Me too, {x}! Great minds', '{x}? Totally my taste!'],
+        diff: ['I picked {y}… different tastes, meow', 'Oh, I went with {y}! Still love you'],
+        end: 'That’s 3 rounds! In the app I bring new questions every time, 5 rounds 🐾',
+      },
+      wordchain: [['user', 'Let’s play word chain!'], ['cat', 'Okay! I’ll start: “cat”!'], ['user', 'tiger'], ['cat', 'Rabbit! Your turn, start with “t”~']],
+      twenty: [['user', 'Let’s play twenty questions!'], ['cat', 'I’ve got one! Ask me yes/no questions (0/20)'], ['user', 'Can you eat it?'], ['cat', 'Yes! You can eat it (1/20)']],
+      chosung: { right: 'Correct! It’s “{word}”! 🎉', wrong: 'Nope, not that one~', hint: 'Hint: it starts with “{c}”. No try used!', again: 'Play again' },
+    },
+    toolsEyebrow: 'Whatever AI you use', toolsTitle: 'Connects the way you work', toolsLead: 'Pick your tool the first time you open it and the app walks you through connecting, one step at a time. Each tool raises its own cat.',
+    tools: [
+      ['mood-thinking', 'Claude Code', 'In the terminal or IDE', 'Grows from your history and reacts right away to permission requests and finished work through hooks.'],
+      ['c-mondaydev', 'Codex', 'In the terminal or IDE', 'Grows from your Codex sessions and tells you about permission requests and finished replies.'],
+      ['mood-active', 'Claude · ChatGPT · Gemini', 'In the browser', 'Add a small extension (Chrome, Edge, Whale) and it grows while you chat on the web. It only reports sent, answered and length.'],
+    ],
     dlEyebrow: 'Free', dlTitle: 'Get it now', dlLead: 'Installing takes about a minute.',
     win: { title: 'Windows', steps: ['Run the installer. It installs for your account (no admin rights) and opens right away.', 'If "Windows protected your PC" appears, click <b>More info → Run anyway</b>.', '<b>New versions install automatically.</b>'], req: 'Windows 10 / 11 (64-bit)' },
     mac: { title: 'Mac', steps: ['Open the dmg and drag Kit Commit into Applications.', 'The first time only: <b>System Settings → Privacy & Security → Open Anyway</b>.', 'For a new version, install the new dmg over the old one.'], req: 'macOS · Apple Silicon · Intel' },
@@ -213,25 +299,31 @@ const TEXT = {
     official: '<b>The only official downloads are this site and GitHub Releases.</b> Files posted anywhere else may have been modified. You can check a download by comparing its SHA-256 with the value above.',
     faqTitle: 'FAQ',
     faq: [
-      ['Does it read my conversations?', 'No. It counts <b>only message counts, token numbers, timestamps and tool names</b> from the history files on your computer. Conversation content is never stored or sent anywhere, and everything is calculated locally.'],
+      ['Does it read my conversations?', 'No. For Claude Code and Codex it counts <b>only message counts, token numbers, timestamps and tool names</b> from the history files on your computer, and the browser extension reports <b>only sent, answered, length and time</b>. Conversation content is never stored or sent anywhere.'],
+      ['Does talking to the cat cost money?', 'With a Claude or ChatGPT subscription, the cat talks through that subscription at no extra cost (it uses a little of your plan). No subscription? Start with a free Gemini key. Today’s fortune works with no AI at all. Your chats with the cat are saved on your computer and only go to the AI you connected.'],
+      ['Can I use it with only the browser, without Claude Code or Codex?', 'Yes. Choose "Browser" in the intro and add the small extension (Chrome, Edge, Whale). The cat then grows while you use claude.ai, chatgpt.com or gemini.google.com. The app walks you through the install step by step.'],
       ['Is it free?', 'Yes. No payments, no ads.'],
-      ['Is this an official Anthropic or OpenAI app?', 'No. It is an unofficial fan-made app, not affiliated with either company.'],
+      ['Is this an official Anthropic, OpenAI or Google app?', 'No. It is an unofficial fan-made app, not affiliated with any of them.'],
       ['What are hooks? Do I have to connect them?', 'Hooks let Claude Code / Codex tell the cat when work starts and ends. The cat grows from your history files either way, but with hooks it reacts instantly to finished replies and permission requests. Your existing settings are kept, and a backup is made.'],
-      ['Will it get in my way?', 'The cat walks along the bottom of the screen and only takes clicks on its own body. You can resize it, mute it, hide it for an hour, or turn on do-not-disturb.'],
+      ['Will it get in my way?', 'The cat walks along the bottom of the screen and only takes clicks on its own body. Bubbles appear only when it matters, and you can resize it, mute it, hide it for an hour, or turn on do-not-disturb.'],
       ['Why does my Mac show a warning?', 'This beta is not signed with a paid Apple Developer account, so you allow it once in System Settings. After that it opens normally.'],
     ],
     ctaTitle: 'A cat to work with, starting today', ctaLead: 'One small cat can make a working day a little more fun.',
-    footer: ['Kit Commit is an unofficial fan-made app. It is not affiliated with, made by, or endorsed by Anthropic or OpenAI. Claude and Claude Code are trademarks of Anthropic. Codex is a trademark of OpenAI.', '© 2026 Elliott Park. Free to use, but not open source; redistribution and modification are not permitted.'],
+    footer: ['Kit Commit is an unofficial fan-made app. It is not affiliated with, made by, or endorsed by Anthropic, OpenAI or Google. Claude and Claude Code are trademarks of Anthropic; ChatGPT and Codex are trademarks of OpenAI; Gemini is a trademark of Google.', '© 2026 Elliott Park. Free to use, but not open source; redistribution and modification are not permitted.'],
     footLinks: [['GitHub Releases', REL], ['License', REPO + '/blob/main/LICENSE'], ['Bugs & ideas', REPO + '/issues']],
   },
 };
 
 // 첫 화면 터미널 연기 (영어 그대로). 단계: p 입력 · o 출력 · a 허락 묻기 · d 끝. 고양이가 단계마다 따라 움직인다 (site.js)
 const TERM = [
-  { cmd: 'fix the login redirect bug', out: ['Reading src/auth/login.ts', 'Editing 2 files'], ask: 'Allow Bash: npm test?', after: ['42 tests passed'], done: 'Done in 2m 14s', end: 'm-donebell' },
+  { cmd: 'fix the login redirect bug', out: ['Reading src/auth/login.ts', 'Editing 2 files'], ask: 'Allow Bash: npm test?', after: ['42 tests passed'], done: 'Done in 7m 12s', end: 'm-donebell', long: true },
   { cmd: 'add a dark mode toggle', out: ['Reading src/theme.css', 'Writing src/ThemeToggle.tsx'], ask: 'Allow Bash: npm run build?', after: ['Build succeeded'], done: 'Done in 1m 52s', end: 'm-cicheck' },
   { cmd: 'deploy to staging', out: ['Checking git status', 'Running release script'], ask: 'Allow Bash: npm run deploy?', after: ['Uploaded 14 files'], done: 'Deployed in 3m 05s', end: 'm-deployrocket' },
 ];
+
+// 대화 맛보기 (0.5.0): 냥운세 · 초성 퀴즈 문제 · 성격 이름 · 성격별 점심 말풍선은 앱에서 그대로 뽑아 온다
+// (스크래치패드 extract-chat.js: 앱 src/renderer/i18n.js + src/main/companion.js → site/chat.json). 운세는 앱과 같은 날짜 시드라 결과도 같다
+const CHAT = JSON.parse(fs.readFileSync(path.join(__dirname, 'chat.json'), 'utf8'));
 
 const I = (lang) => (lang === 'ko' ? 0 : 1);
 // 손가락으로 쓰는 기기용 문구가 따로 있으면 data-touch 에 실어 둔다 (site.js 가 바꿔 끼운다)
@@ -255,7 +347,9 @@ function page(t) {
   // 모션 · 세트는 일부만 보여 주니 전체 수를 같이 단다 (동네 친구는 전부)
   const totals = { motions: 87, costumes: 320 };
   const motionNames = Object.fromEntries(GALLERY.map((k) => ['m-' + k, NAMES.m[k][i]]));
-  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: GALLERY.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui };
+  const chat = CHAT[t.lang];
+  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: GALLERY.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui,
+    chat: { ...chat, talk: t.talk, lang: t.lang } };
   const dlButtons = `
         <a class="btn primary" data-dl="win" href="${REL}">${WIN_ICON}${t.dlWin} <small>${t.free}</small></a>
         <a class="btn primary" data-dl="mac" href="${REL}">${MAC_ICON}${t.dlMac} <small>${t.free}</small></a>`;
@@ -281,15 +375,16 @@ function page(t) {
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="./"><img src="${b}assets/icon.png" alt="">Kit Commit</a>
-  <nav class="nav"><a href="#play">${t.nav[0]}</a><a href="#day">${t.nav[1]}</a><a href="#gallery">${t.nav[2]}</a><a href="#download">${t.nav[3]}</a></nav>
+  <nav class="nav">${t.nav.map(([h, l]) => `<a href="${h}">${l}</a>`).join('')}</nav>
   <a class="lang" href="${otherHref}">${t.otherLabel}</a>
   <button type="button" class="lang view" data-view-toggle><span class="to-mobile">${t.viewMobile}</span><span class="to-desktop">${t.viewDesktop}</span></button>
-  <a class="btn primary sm" href="#download">${t.nav[3]}</a>
+  <a class="btn primary sm" href="#download">${t.nav[t.nav.length - 1][1]}</a>
 </div></header>
 
 <section class="hero"><div class="wrap">
   <div class="hero-grid">
     <div>
+      <a class="news" href="#talk"><b>${t.news[0]}</b><span>${t.news[1]}</span><i>→</i></a>
       <span class="eyebrow">${t.eyebrow}</span>
       <h1>${t.h1}</h1>
       <p class="lead">${t.lead}</p>
@@ -336,6 +431,32 @@ function page(t) {
   </div>
 </div></section>
 
+<section id="talk"><div class="wrap">
+  <div class="talk-grid">
+    <div class="talk-copy">
+      <span class="eyebrow">${t.talk.eyebrow}</span>
+      <h2>${t.talk.title}</h2>
+      <p class="lead">${t.talk.lead}</p>
+      <ul class="talk-points">${t.talk.points.map(([ico, h, p]) => `<li><span class="ico">${ico}</span><div><h3>${h}</h3><p>${p}</p></div></li>`).join('')}</ul>
+      <div class="connect">
+        <h3>${t.talk.connectTitle}</h3>
+        <ol>${t.talk.connect.map(([h, p]) => `<li><b>${h}</b><span>${p}</span></li>`).join('')}</ol>
+        <p class="note">${t.talk.connectNote}</p>
+      </div>
+    </div>
+    <div class="talk-demo">
+      <div class="chatdemo" id="chatdemo">
+        <div class="cd-head">${sp('a-wave', 'class="cd-cat"')}<div><b>${t.names.cat}</b><span>${t.talk.demoTitle}</span></div></div>
+        <div class="cd-persona" role="radiogroup" aria-label="${t.talk.persona}"><span>${t.talk.persona}</span>${chat.personas.map(([k, l], j) => `<button type="button" role="radio" data-persona="${k}" aria-checked="${j ? 'false' : 'true'}">${l}</button>`).join('')}</div>
+        <div class="cd-log" aria-live="polite"></div>
+        <div class="cd-chips">${['wordchain', 'twenty', 'balance', 'chosung', 'fortune'].map((g) => `<button type="button" data-game="${g}">${g === 'fortune' ? '✨ ' : ''}${chat.games[g][1]}</button>`).join('')}</div>
+        <form class="cd-input"><input type="text" maxlength="40" autocomplete="off" placeholder="${t.talk.placeholder}" aria-label="${t.talk.placeholder}"><button type="submit">${t.talk.send}</button></form>
+      </div>
+      <p class="note">${t.talk.demoNote}</p>
+    </div>
+  </div>
+</div></section>
+
 <section id="day"><div class="wrap center">
   <span class="eyebrow">${t.dayEyebrow}</span>
   <h2>${t.dayTitle}</h2>
@@ -368,11 +489,12 @@ function page(t) {
   <p class="note">${t.shotsNote}</p>
 </div></section>
 
-<section class="alt"><div class="wrap center">
+<section class="alt" id="tools"><div class="wrap center">
+  <span class="eyebrow">${t.toolsEyebrow}</span>
   <h2>${t.toolsTitle}</h2>
   <p class="lead">${t.toolsLead}</p>
   <div class="tools">
-    ${t.tools.map(([s, h, p]) => `<div class="card">${sp(s)}<div><h3>${h}</h3><p>${p}</p></div></div>`).join('\n    ')}
+    ${t.tools.map(([s, h, where, p]) => `<div class="card">${sp(s)}<div><span class="where">${where}</span><h3>${h}</h3><p>${p}</p></div></div>`).join('\n    ')}
   </div>
 </div></section>
 

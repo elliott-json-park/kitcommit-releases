@@ -2,7 +2,7 @@
 
 # Kit Commit — Official downloads
 
-A pixel kitten that grows with your Claude Code (or Codex). It sits in the corner of your screen, works alongside you, and reminds you about lunch, breaks and bedtime.
+A pixel kitten that grows with your Claude Code or Codex, or with Claude, ChatGPT and Gemini in your browser. It sits in the corner of your screen, works alongside you, and reminds you about lunch, breaks and bedtime. Connect your AI subscription or a free Gemini key and you can talk with it too.
 
 **Website: [elliott-json-park.github.io/kitcommit-releases](https://elliott-json-park.github.io/kitcommit-releases/)** — see the cat in motion and play with it in your browser.
 
@@ -56,11 +56,14 @@ There is no auto-update on Mac yet. When a new version comes out, install the ne
 
 Kit Commit reads your local Claude Code (`~/.claude/projects`) or Codex (`~/.codex/sessions`) history files and keeps **only counts, token numbers, timestamps and tool names**. Conversation content is never stored or sent anywhere. Everything is calculated on your computer.
 
+- **Browser extension (web mode)**: on claude.ai, chatgpt.com and gemini.google.com it only tells the app "sent", "answered", the answer's length and the time. It never sends what you or the AI wrote, and it only talks to the app on your own computer.
+- **Talking to your cat**: your chats with the cat are saved on your computer and go only to the AI you connected (your Claude or ChatGPT subscription through Claude Code / Codex CLI, or your own Gemini, Anthropic or OpenAI API key). API keys are encrypted with your operating system's secure storage.
+
 ## License
 
 Free to download and use, but **not open source. All rights reserved.** You may not re-upload, sell or modify the app, or reuse its code, pixel art or characters. See [LICENSE](LICENSE).
 
-> **An unofficial fan-made app.** Not affiliated with, made by, or endorsed by Anthropic or OpenAI. Claude and Claude Code are trademarks of Anthropic. Codex is a trademark of OpenAI.
+> **An unofficial fan-made app.** Not affiliated with, made by, or endorsed by Anthropic, OpenAI or Google. Claude and Claude Code are trademarks of Anthropic. ChatGPT and Codex are trademarks of OpenAI. Gemini is a trademark of Google.
 
 ## Feedback
 

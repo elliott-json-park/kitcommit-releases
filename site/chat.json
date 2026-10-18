@@ -1,0 +1,585 @@
+{
+ "ko": {
+  "fortune": {
+   "s": {
+    "title": "오늘의 냥운세",
+    "item": "행운의 아이템",
+    "rescue": "구원 아이템",
+    "color": "행운의 색",
+    "hour": "행운의 시간",
+    "hourV": "{h}시",
+    "rank": "{rank}위",
+    "askSign": "네 오늘 운세를 봐 줄게! 너는 무슨 별자리야?",
+    "change": "별자리 바꾸기",
+    "intro": "오늘 {sign#은/는} {rank}위야!",
+    "introTop": "대박! 오늘 {sign#이/가} 1위야!",
+    "introLast": "오늘 {sign#은/는} 12위… 그래도 걱정 마, 구원 아이템이 있어!",
+    "again": "오늘 운세는 이미 봤지롱. 다시 보여 줄게!"
+   },
+   "msg": [
+    [
+     "오늘은 뭘 해도 술술! 미뤄 둔 일을 시작하기 딱 좋은 날이야",
+     "최고의 하루! 하고 싶던 말은 오늘 꼭 해",
+     "별이 다 네 편이야. 새로운 도전에 운이 따라"
+    ],
+    [
+     "좋은 소식이 꼬리를 물고 와. 연락 온 사람한테 바로 답장해 봐",
+     "작은 칭찬을 듣게 될지도? 기분 좋은 하루",
+     "평소 하던 대로만 해도 일이 잘 풀려"
+    ],
+    [
+     "무난하고 편안한 하루. 물 자주 마시면 운이 올라가",
+     "한 걸음씩 가면 저녁엔 뿌듯할 거야",
+     "정리 정돈을 하면 좋은 생각이 떠올라"
+    ],
+    [
+     "조금 서두르면 꼬일 수 있어. 한 번 더 확인!",
+     "무리하지 말고 쉬엄쉬엄. 간식 하나 추천해",
+     "중요한 결정은 하룻밤 자고 정해도 늦지 않아"
+    ],
+    [
+     "살짝 꼬일 수 있는 날… 하지만 구원 아이템이 지켜 줄 거야!",
+     "오늘은 천천히 가는 게 이기는 거야. 내가 응원할게",
+     "작은 실수는 그냥 웃어넘기자. 내일은 올라갈 일만 남았어"
+    ]
+   ],
+   "items": [
+    "따뜻한 차",
+    "파란 펜",
+    "손수건",
+    "운동화",
+    "초콜릿",
+    "노트",
+    "이어폰",
+    "머그컵",
+    "우산",
+    "귤",
+    "텀블러",
+    "포스트잇",
+    "핸드크림",
+    "줄무늬 양말",
+    "사탕",
+    "가방 고리",
+    "김밥",
+    "책갈피",
+    "손거울",
+    "작은 화분",
+    "고양이 사진",
+    "좋아하는 노래",
+    "산책",
+    "아이스 아메리카노"
+   ],
+   "colors": {
+    "mint": "민트",
+    "yellow": "노랑",
+    "pink": "분홍",
+    "sky": "하늘",
+    "purple": "보라",
+    "orange": "주황",
+    "green": "초록",
+    "white": "하양",
+    "red": "빨강",
+    "navy": "남색"
+   },
+   "signs": [
+    [
+     "aries",
+     "양자리",
+     "3.21~4.19"
+    ],
+    [
+     "taurus",
+     "황소자리",
+     "4.20~5.20"
+    ],
+    [
+     "gemini",
+     "쌍둥이자리",
+     "5.21~6.21"
+    ],
+    [
+     "cancer",
+     "게자리",
+     "6.22~7.22"
+    ],
+    [
+     "leo",
+     "사자자리",
+     "7.23~8.22"
+    ],
+    [
+     "virgo",
+     "처녀자리",
+     "8.23~9.22"
+    ],
+    [
+     "libra",
+     "천칭자리",
+     "9.23~10.22"
+    ],
+    [
+     "scorpio",
+     "전갈자리",
+     "10.23~11.21"
+    ],
+    [
+     "sagittarius",
+     "사수자리",
+     "11.22~12.21"
+    ],
+    [
+     "capricorn",
+     "염소자리",
+     "12.22~1.19"
+    ],
+    [
+     "aquarius",
+     "물병자리",
+     "1.20~2.18"
+    ],
+    [
+     "pisces",
+     "물고기자리",
+     "2.19~3.20"
+    ]
+   ]
+  },
+  "chosung": {
+   "pool": {
+    "동물": [
+     "고양이",
+     "강아지",
+     "호랑이",
+     "코끼리",
+     "기린",
+     "펭귄",
+     "다람쥐",
+     "거북이",
+     "고슴도치",
+     "판다",
+     "햄스터",
+     "코알라",
+     "앵무새",
+     "돌고래"
+    ],
+    "음식": [
+     "떡볶이",
+     "김밥",
+     "라면",
+     "비빔밥",
+     "치킨",
+     "피자",
+     "아이스크림",
+     "초콜릿",
+     "붕어빵",
+     "팥빙수",
+     "만두",
+     "샌드위치",
+     "고등어",
+     "참치"
+    ],
+    "물건": [
+     "우산",
+     "안경",
+     "시계",
+     "냉장고",
+     "청소기",
+     "노트북",
+     "휴대폰",
+     "선풍기",
+     "이불",
+     "거울",
+     "연필",
+     "가방",
+     "열쇠"
+    ],
+    "장소": [
+     "도서관",
+     "놀이공원",
+     "바닷가",
+     "편의점",
+     "영화관",
+     "수영장",
+     "공원",
+     "학교",
+     "병원",
+     "시장"
+    ]
+   },
+   "start": "초성 퀴즈 시작! 주제는 「{topic}」이야.\n초성: 【 {init} 】\n기회는 {n}번! 정답을 말해 봐. 모르겠으면 힌트를 눌러~",
+   "left": "남은 기회: {n}번",
+   "hint": "💡 힌트",
+   "answer": "정답은 「{word}」였어!"
+  },
+  "games": {
+   "wordchain": [
+    "끝말잇기",
+    "끝말잇기"
+   ],
+   "twenty": [
+    "스무고개",
+    "스무고개"
+   ],
+   "balance": [
+    "밸런스 게임",
+    "밸런스"
+   ],
+   "chosung": [
+    "초성 퀴즈",
+    "초성 퀴즈"
+   ],
+   "fortune": [
+    "오늘의 냥운세",
+    "냥운세"
+   ]
+  },
+  "personas": [
+   [
+    "angel",
+    "다정한"
+   ],
+   [
+    "tsundere",
+    "츤데레"
+   ],
+   [
+    "playful",
+    "장난꾸러기"
+   ],
+   [
+    "chic",
+    "시크한"
+   ],
+   [
+    "chatty",
+    "수다쟁이"
+   ],
+   [
+    "sage",
+    "애늙은이 철학자"
+   ],
+   [
+    "lazy",
+    "귀차니스트"
+   ]
+  ],
+  "bubble": {
+   "angel": [
+    "점심시간이닷!!!!!",
+    "바빠도 점심 꼭 챙겨 먹어!",
+    "오늘 뭐 먹을 거야?"
+   ],
+   "tsundere": [
+    "점심시간이야. 굶으면… 내가 신경 쓰이잖아",
+    "흥, 밥 먹고 와. 기다려 줄 테니까"
+   ],
+   "playful": [
+    "점심이다! 오늘 메뉴 뽑기 돌리자~",
+    "밥 먹으러 가자! 늦으면 내가 다 먹는다?"
+   ],
+   "chic": [
+    "밥 먹고 와.",
+    "점심."
+   ],
+   "chatty": [
+    "점심시간이야! 오늘 뭐 먹을 거야? 나는 생선이면 다 좋아!",
+    "밥 먹으러 가자! 배고프면 일도 잘 안 되는 거 알지?"
+   ],
+   "sage": [
+    "점심일세. 배가 든든해야 생각도 깊어지지",
+    "때가 되면 먹는 것도 도(道)라네"
+   ],
+   "lazy": [
+    "밥 시간이야… 먹고 와… 난 여기 누워 있을게…",
+    "점심… 밥 먹고 낮잠 자자…"
+   ]
+  }
+ },
+ "en": {
+  "fortune": {
+   "s": {
+    "title": "Today's fortune",
+    "item": "Lucky item",
+    "rescue": "Rescue item",
+    "color": "Lucky color",
+    "hour": "Lucky hour",
+    "hourV": "{h}:00",
+    "rank": "No. {rank}",
+    "askSign": "I'll read your fortune for today! What's your zodiac sign?",
+    "change": "Change sign",
+    "intro": "{sign} is number {rank} today!",
+    "introTop": "Wow! {sign} is number 1 today!",
+    "introLast": "{sign} is number 12 today… don't worry, you have a rescue item!",
+    "again": "Already read today. Here it is again!"
+   },
+   "msg": [
+    [
+     "Everything goes smoothly! Perfect day to start what you put off",
+     "Best day ever! Say what you wanted to say",
+     "The stars are on your side. New challenges bring luck"
+    ],
+    [
+     "Good news comes in a row. Reply to messages right away",
+     "You might get a small compliment today",
+     "Just your usual self makes things go well"
+    ],
+    [
+     "A calm, steady day. Drinking water boosts your luck",
+     "Step by step, a proud evening awaits",
+     "Tidying up brings good ideas"
+    ],
+    [
+     "Rushing may tangle things. Double-check!",
+     "Take it easy today. A snack is recommended",
+     "Big decisions can wait until tomorrow"
+    ],
+    [
+     "A slightly bumpy day… but your rescue item has your back!",
+     "Slow and steady wins today. I am cheering for you",
+     "Laugh off small mistakes. Tomorrow only goes up"
+    ]
+   ],
+   "items": [
+    "Warm tea",
+    "Blue pen",
+    "Handkerchief",
+    "Sneakers",
+    "Chocolate",
+    "Notebook",
+    "Earphones",
+    "Mug",
+    "Umbrella",
+    "Tangerine",
+    "Tumbler",
+    "Sticky notes",
+    "Hand cream",
+    "Striped socks",
+    "Candy",
+    "Bag charm",
+    "Rice roll",
+    "Bookmark",
+    "Pocket mirror",
+    "Small plant",
+    "Cat photo",
+    "Favorite song",
+    "A walk",
+    "Iced americano"
+   ],
+   "colors": {
+    "mint": "Mint",
+    "yellow": "Yellow",
+    "pink": "Pink",
+    "sky": "Sky blue",
+    "purple": "Purple",
+    "orange": "Orange",
+    "green": "Green",
+    "white": "White",
+    "red": "Red",
+    "navy": "Navy"
+   },
+   "signs": [
+    [
+     "aries",
+     "Aries",
+     "3/21–4/19"
+    ],
+    [
+     "taurus",
+     "Taurus",
+     "4/20–5/20"
+    ],
+    [
+     "gemini",
+     "Gemini",
+     "5/21–6/21"
+    ],
+    [
+     "cancer",
+     "Cancer",
+     "6/22–7/22"
+    ],
+    [
+     "leo",
+     "Leo",
+     "7/23–8/22"
+    ],
+    [
+     "virgo",
+     "Virgo",
+     "8/23–9/22"
+    ],
+    [
+     "libra",
+     "Libra",
+     "9/23–10/22"
+    ],
+    [
+     "scorpio",
+     "Scorpio",
+     "10/23–11/21"
+    ],
+    [
+     "sagittarius",
+     "Sagittarius",
+     "11/22–12/21"
+    ],
+    [
+     "capricorn",
+     "Capricorn",
+     "12/22–1/19"
+    ],
+    [
+     "aquarius",
+     "Aquarius",
+     "1/20–2/18"
+    ],
+    [
+     "pisces",
+     "Pisces",
+     "2/19–3/20"
+    ]
+   ]
+  },
+  "chosung": {
+   "pool": {
+    "animal": [
+     "cat",
+     "puppy",
+     "tiger",
+     "elephant",
+     "giraffe",
+     "penguin",
+     "squirrel",
+     "turtle",
+     "hedgehog",
+     "panda",
+     "hamster",
+     "koala",
+     "parrot",
+     "dolphin"
+    ],
+    "food": [
+     "pizza",
+     "noodles",
+     "sushi",
+     "pancake",
+     "burger",
+     "cookie",
+     "popcorn",
+     "sandwich",
+     "donut",
+     "tuna",
+     "mackerel"
+    ],
+    "object": [
+     "umbrella",
+     "glasses",
+     "clock",
+     "fridge",
+     "laptop",
+     "pillow",
+     "mirror",
+     "pencil",
+     "backpack",
+     "key"
+    ],
+    "place": [
+     "library",
+     "beach",
+     "museum",
+     "park",
+     "school",
+     "cinema",
+     "market",
+     "bakery"
+    ]
+   },
+   "start": "Initials quiz! The topic is \"{topic}\".\nLetters: 【 {init} 】\nYou have {n} tries. Say your answer, or tap Hint~",
+   "left": "Tries left: {n}",
+   "hint": "💡 Hint",
+   "answer": "The answer was \"{word}\"!"
+  },
+  "games": {
+   "wordchain": [
+    "Word chain",
+    "Word chain"
+   ],
+   "twenty": [
+    "20 questions",
+    "20 questions"
+   ],
+   "balance": [
+    "Would you rather",
+    "This or that"
+   ],
+   "chosung": [
+    "Initials quiz",
+    "Initials"
+   ],
+   "fortune": [
+    "Today's fortune",
+    "Fortune"
+   ]
+  },
+  "personas": [
+   [
+    "angel",
+    "Sweet"
+   ],
+   [
+    "tsundere",
+    "Tsundere"
+   ],
+   [
+    "playful",
+    "Playful"
+   ],
+   [
+    "chic",
+    "Chic"
+   ],
+   [
+    "chatty",
+    "Chatty"
+   ],
+   [
+    "sage",
+    "Old soul"
+   ],
+   [
+    "lazy",
+    "Lazy napper"
+   ]
+  ],
+  "bubble": {
+   "angel": [
+    "Lunch time! Eat well so the afternoon goes well",
+    "Hungry? Let's eat first!"
+   ],
+   "tsundere": [
+    "Hmph, go eat. I'll wait",
+    "Lunch time. If you skip it… it bothers me"
+   ],
+   "playful": [
+    "Lunch! Spin the menu wheel~",
+    "Food time! Late and I eat it all"
+   ],
+   "chic": [
+    "Go eat.",
+    "Lunch."
+   ],
+   "chatty": [
+    "Lunch time! What are you having? I like anything fishy!",
+    "Let's eat! Work goes badly on an empty tummy, you know?"
+   ],
+   "sage": [
+    "Eating on time is a path too",
+    "Lunch. A full belly makes deep thoughts"
+   ],
+   "lazy": [
+    "Food time… go eat… I'll stay lying here…",
+    "Lunch… then a nap…"
+   ]
+  }
+ }
+}

@@ -259,10 +259,12 @@ section.alt { background: var(--soft-2); border-block: var(--line); }
 .shots figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 10px; }
 
 /* ---------- 두 도구 ---------- */
-.tools { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
-@media (max-width: 700px) { .tools { grid-template-columns: 1fr; } }
-.tools .card { display: flex; gap: 16px; align-items: center; }
-.tools canvas { width: 144px; height: 144px; flex: none; background: var(--soft); border-radius: 10px; }
+.tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.tools .card { display: flex; flex-direction: column; gap: 14px; }
+.tools canvas { width: 100%; height: 150px; object-fit: contain; flex: none; background: var(--soft); border-radius: 10px; }
+.tools h3 { margin: 6px 0 6px; }
+.where { display: inline-block; font-family: var(--pixel); font-size: 12px; color: var(--accent); border: 2px solid var(--accent); border-radius: 999px; padding: 1px 9px; }
+@media (max-width: 900px) { .tools { grid-template-columns: 1fr; } .tools .card { flex-direction: row; align-items: center; } .tools canvas { width: 120px; height: 120px; } }
 
 /* ---------- 받기 ---------- */
 .dl { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
@@ -406,7 +408,7 @@ html[data-view="mobile"] { background: var(--soft); }
 
 /* 두 도구 · 받기 · FAQ · 마지막 */
 [data-view="mobile"] .tools { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 24px; }
-[data-view="mobile"] .tools .card { padding: 14px; gap: 14px; }
+[data-view="mobile"] .tools .card { padding: 14px; gap: 14px; flex-direction: row; align-items: center; }
 [data-view="mobile"] .tools canvas { width: 96px; height: 96px; }
 [data-view="mobile"] .tools h3 { font-size: 17px; margin: 0 0 4px; }
 [data-view="mobile"] .tools p { font-size: 14px; line-height: 1.5; }
@@ -431,3 +433,96 @@ html[data-view="mobile"] { background: var(--soft); }
 .mobile-note .mail { margin: 0 4px; }
 .mobile-note [hidden] { display: none !important; }
 [data-view="mobile"] .mobile-note .mail { display: block; margin: 10px 0 0; text-align: center; font-weight: 700; color: var(--ink); }
+
+/* ---------- 0.5.0: 새 소식 띠 ---------- */
+.news { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; margin-bottom: 18px; padding: 5px 12px 5px 5px; border: 2px solid var(--ink); border-radius: 999px; background: var(--panel); box-shadow: 2px 2px 0 var(--ink); text-decoration: none; font-size: 14px; transition: transform 0.1s, box-shadow 0.1s; }
+.news:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+.news b { font-family: var(--pixel); font-weight: 400; font-size: 12px; background: var(--accent); color: #fff; border-radius: 999px; padding: 2px 9px; flex: none; }
+.news span { min-width: 0; }
+.news i { font-style: normal; color: var(--accent); font-weight: 700; flex: none; }
+/* 하루: 말 대신 하는 행동 */
+.moment .bubble.act { font-style: italic; color: var(--muted); background: var(--soft-2); }
+.moment .bubble.act::after { background: var(--soft-2); }
+
+/* ---------- 0.5.0: 고양이와 대화 ---------- */
+.talk-grid { display: grid; grid-template-columns: 1fr minmax(0, 440px); gap: 48px; align-items: start; }
+@media (max-width: 960px) { .talk-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; } .talk-demo { max-width: 480px; margin-inline: auto; width: 100%; } }
+.talk-copy .lead { max-width: none; }
+.talk-points { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
+.talk-points li { display: flex; gap: 12px; align-items: flex-start; }
+.talk-points .ico { font-size: 22px; line-height: 1.3; flex: none; width: 30px; text-align: center; }
+.talk-points h3 { font-size: 17px; margin: 0 0 2px; }
+.talk-points p { margin: 0; color: var(--muted); font-size: 15px; }
+.connect { margin-top: 26px; padding: 18px 20px; border: var(--line); border-radius: var(--r); background: var(--panel); box-shadow: var(--pop); }
+.connect h3 { font-size: 17px; margin: 0 0 10px; }
+.connect ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.connect li { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; background: var(--soft-2); font-size: 13px; color: var(--muted); line-height: 1.45; }
+.connect li b { color: var(--ink); font-size: 15px; }
+.connect .note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+@media (max-width: 640px) { .connect ol { grid-template-columns: minmax(0, 1fr); } }
+.talk-demo > .note { text-align: center; color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+
+/* 맛보기 대화창 (앱 대화창과 비슷한 모양) */
+.chatdemo { display: flex; flex-direction: column; height: 560px; border: var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--pop); overflow: hidden; text-align: left; }
+.cd-head { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-bottom: 2px solid var(--soft); background: var(--soft-2); }
+.cd-head canvas { width: 84px; height: 84px; flex: none; margin: -30px -16px -12px -18px; }
+.cd-head b { display: block; font-family: var(--pixel); font-weight: 400; font-size: 15px; }
+.cd-head span { font-size: 12px; color: var(--muted); }
+.cd-persona { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; padding: 8px 12px; border-bottom: 2px solid var(--soft); }
+.cd-persona::-webkit-scrollbar { display: none; }
+.cd-persona > span { font-size: 12px; color: var(--muted); flex: none; margin-right: 2px; }
+.cd-persona button, .cd-chips button, .cd-row button, .cd-signs button { font: 600 13px var(--body); color: var(--ink); background: var(--panel); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 11px; cursor: pointer; flex: none; white-space: nowrap; transition: background 0.1s; }
+.cd-persona button:hover, .cd-chips button:hover, .cd-row button:hover:not(:disabled), .cd-signs button:hover:not(:disabled) { background: var(--soft-2); }
+.cd-persona button { padding: 3px 9px; font-size: 12.5px; }
+.cd-persona button[aria-checked="true"] { background: var(--ink); color: #fff; }
+.cd-log { flex: 1; overflow-y: auto; padding: 14px 14px 6px; display: flex; flex-direction: column; gap: 8px; scroll-behavior: smooth; overscroll-behavior: contain; }
+.cd-msg { max-width: 86%; font-size: 14.5px; line-height: 1.5; }
+.cd-msg.cat { align-self: flex-start; background: var(--soft-2); border: 2px solid var(--ink); border-radius: 4px 14px 14px 14px; padding: 8px 12px; }
+.cd-msg.me { align-self: flex-end; background: var(--accent); color: #fff; border-radius: 14px 4px 14px 14px; padding: 7px 12px; }
+.cd-msg.sys { align-self: center; max-width: 100%; text-align: center; font-size: 12px; color: var(--muted); }
+.cd-msg .dots { display: inline-flex; gap: 4px; padding: 4px 2px; }
+.cd-msg .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); opacity: 0.18; animation: cdDot 1s infinite; }
+.cd-msg .dots i:nth-child(2) { animation-delay: 0.15s; }
+.cd-msg .dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes cdDot { 0%, 60%, 100% { opacity: 0.18; } 30% { opacity: 0.5; } }
+.cd-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.cd-row button { white-space: normal; text-align: left; border-radius: 12px; }
+.cd-signs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 8px; }
+.cd-signs button { display: flex; flex-direction: column; align-items: center; border-radius: 10px; padding: 4px; line-height: 1.25; }
+.cd-signs small { font-size: 10px; font-weight: 400; opacity: 0.7; }
+.chatdemo button:disabled { opacity: 0.45; cursor: default; }
+.cd-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; border-top: 2px solid var(--soft); }
+.cd-chips button { padding: 4px 10px; font-size: 12.5px; }
+.cd-input { display: flex; gap: 8px; padding: 0 12px 12px; }
+.cd-input input { flex: 1; min-width: 0; font: 14px var(--body); color: var(--ink); border: 2px solid var(--ink); border-radius: 12px; padding: 9px 12px; background: #fff; }
+.cd-input input::placeholder { color: #b49c8d; }
+.chatdemo.quiz .cd-input input { border-color: var(--accent); box-shadow: 0 0 0 3px #f6d9cd; }
+.cd-input button { font: 700 14px var(--body); color: #fff; background: var(--accent); border: 2px solid var(--ink); border-radius: 12px; padding: 0 14px; cursor: pointer; }
+/* 냥운세 카드 (앱과 같은 모양) */
+.fortune { margin-top: 8px; padding: 10px 12px 9px; border-radius: 10px; border: 2px solid var(--ink); background: #fff8e8; font-family: var(--pixel); box-shadow: 3px 3px 0 var(--ink); min-width: 220px; }
+.fortune .f-top { display: flex; justify-content: space-between; font-size: 11px; opacity: 0.75; }
+.fortune .f-sign { text-align: center; font-size: 14px; font-weight: 700; margin-top: 6px; }
+.fortune .f-grade { font-size: 26px; font-weight: 700; text-align: center; color: #d85a3a; letter-spacing: 1px; }
+.fortune.g0 .f-grade { color: #e0952a; text-shadow: 1px 1px 0 #ffe08a; }
+.fortune.g3 .f-grade, .fortune.g4 .f-grade { color: #6a7a8c; }
+.fortune .f-stars { display: flex; justify-content: center; gap: 2px; margin-bottom: 6px; color: #e9b93a; font-size: 13px; }
+.fortune .f-stars span { opacity: 0.2; }
+.fortune .f-stars span.on { opacity: 1; }
+.fortune dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; font-size: 12px; }
+.fortune dt { opacity: 0.7; }
+.fortune dd { margin: 0; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.fortune .swatch { width: 10px; height: 10px; border: 1.5px solid var(--ink); display: inline-block; }
+.fortune .f-msg { margin: 8px 0 0; padding-top: 6px; border-top: 1px dashed #c9b28d; font-size: 12.5px; font-family: var(--body); }
+.fortune .f-change { display: block; margin: 6px auto 0; font: 12px var(--body); color: #9a7b58; background: none; border: 0; text-decoration: underline; cursor: pointer; padding: 2px; }
+/* 모바일 보기 */
+[data-view="mobile"] .talk-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+[data-view="mobile"] .talk-points { margin-top: 18px; gap: 10px; }
+[data-view="mobile"] .talk-points p { font-size: 14px; }
+[data-view="mobile"] .connect { padding: 14px; }
+[data-view="mobile"] .connect ol { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+[data-view="mobile"] .connect li { flex-direction: row; flex-wrap: wrap; gap: 0 8px; align-items: baseline; padding: 8px 10px; }
+[data-view="mobile"] .chatdemo { height: 500px; }
+[data-view="mobile"] .news { font-size: 13px; margin-bottom: 14px; }
+
+/* 첫 화면 터미널 속 말풍선은 줄을 바꿔 무대 밖으로 잘리지 않게 */
+.screen .bubble { white-space: normal; width: max-content; max-width: min(260px, 70vw); text-align: center; }

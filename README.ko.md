@@ -2,7 +2,7 @@
 
 # Kit Commit (킷커밋) — 공식 다운로드
 
-Claude Code(또는 Codex)를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 점심·휴식·잠잘 시간을 챙겨준다.
+Claude Code · Codex, 또는 브라우저의 Claude · ChatGPT · Gemini 를 쓸수록 자라는 데스크톱 도트 고양이. 화면 구석에서 같이 일하고, 점심·휴식·잠잘 시간을 챙겨준다. AI 구독이나 무료 Gemini 키를 연결하면 고양이와 대화도 할 수 있다.
 
 **소개 사이트: [elliott-json-park.github.io/kitcommit-releases/ko](https://elliott-json-park.github.io/kitcommit-releases/ko/)** — 움직이는 고양이를 보고 브라우저에서 직접 놀아 볼 수 있다.
 
@@ -56,11 +56,14 @@ xattr -dr com.apple.quarantine "/Applications/Kit Commit.app"
 
 킷커밋은 이 컴퓨터의 Claude Code(`~/.claude/projects`) 또는 Codex(`~/.codex/sessions`) 기록 파일을 읽고 **개수·토큰 수·시각·도구 이름만** 남긴다. 대화 내용은 저장하지도, 어디로 보내지도 않는다. 계산은 모두 이 컴퓨터 안에서 한다.
 
+- **브라우저 확장 (웹 모드)**: claude.ai · chatgpt.com · gemini.google.com 에서 '보냈다 · 답이 끝났다 · 답 글자 수 · 시각'만 앱에 알린다. 내가 쓴 말이나 AI 의 답은 보내지 않고, 이 컴퓨터 안의 앱하고만 이야기한다.
+- **고양이와 대화**: 고양이와 나눈 대화는 이 컴퓨터에 저장되고, 내가 연결한 AI(Claude Code · Codex CLI 를 통한 Claude · ChatGPT 구독, 또는 내 Gemini · Anthropic · OpenAI API 키)로만 간다. API 키는 운영체제의 보안 저장소로 암호화해 둔다.
+
 ## 라이선스
 
 무료로 받아 쓸 수 있지만 **오픈소스가 아니며 모든 권리는 저작자에게 있다.** 앱을 다른 곳에 다시 올리거나 팔거나 고쳐 배포할 수 없고, 코드·도트 그림·캐릭터를 다른 곳에 쓸 수 없다. 자세한 내용은 [LICENSE](LICENSE).
 
-> **비공식 팬메이드 앱입니다.** Anthropic·OpenAI 와 관련이 없고, 두 회사가 만들거나 보증하지 않습니다. Claude 와 Claude Code 는 Anthropic 의 상표이고, Codex 는 OpenAI 의 상표입니다.
+> **비공식 팬메이드 앱입니다.** Anthropic·OpenAI·Google 과 관련이 없고, 세 회사가 만들거나 보증하지 않습니다. Claude 와 Claude Code 는 Anthropic 의, ChatGPT 와 Codex 는 OpenAI 의, Gemini 는 Google 의 상표입니다.
 
 ## 의견 보내기
 
