@@ -12,7 +12,7 @@ const REPO = 'https://github.com/elliott-json-park/kitcommit-releases';
 const SITE = 'https://elliott-json-park.github.io/kitcommit-releases/';
 
 // 그림 이름 → 장 수 (docs/assets/sprites/<이름>.png)
-const SPRITES = {"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-xfrostmonarch":30,"c-xphoenixking":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36};
+const SPRITES = {"mood-idle":48,"mood-active":36,"mood-thinking":36,"mood-waiting":36,"mood-sleeping":48,"walk":12,"m-sojuchug":65,"m-darkmode":62,"m-stockup":67,"m-deployrocket":62,"m-cicheck":43,"m-enterwait":62,"m-staticfur":58,"m-donebell":46,"m-giantfist":65,"m-ufo":65,"m-karaoke":48,"m-coffee":53,"a-happy":14,"a-wave":25,"a-eat":88,"a-yawn":34,"a-pounce":13,"a-groom":58,"a-levelup":30,"held":24,"mood-hungry":36,"mood-sleepy":36,"m-stretch":46,"m-fishthink":48,"m-hooray":34,"m-nodoff":50,"m-foodsign":29,"m-zoomies":31,"m-box":48,"m-bath":53,"m-blowkiss":34,"m-melt":41,"m-startle":26,"m-slowblink":36,"m-tapfoot":36,"m-pray":29,"c-magicalgirl":30,"c-holyknight":30,"c-sunwukong":30,"c-dinosuit":30,"c-ironcat":30,"c-mondaydev":30,"c-overtimer":30,"c-xfrostmonarch":30,"c-xphoenixking":30,"c-nyangwarts":30,"f-pigeon":48,"f-hedgehog":48,"f-raccoon":48,"f-dust":36,"f-coal":36,"f-tofu":36,"m-snot":55,"m-raisehand":19,"m-fooddream":58,"t-yarn":29,"t-tangle":31,"t-kick":34,"t-high":43,"t-bat":16,"a-nibble":16,"t-chatter":14,"t-leap":11,"t-pop":8,"t-swipe":8,"t-float":29,"t-wet":17,"t-sulk":24,"t-yay":14,"t-deadpan":24,"f-bolt":36,"f-dondon":36,"tool-web":36,"tool-claude":36,"tool-codex":36};
 
 // 앱 i18n 의 이름 [한, 영]
 const NAMES = {"m":{"sojuchug":["소주 병나발","Soju straight from the bottle"],"darkmode":["다크모드 전환","Dark mode switch"],"stockup":["주식 차트 떡상","Stock to the moon"],"deployrocket":["배포 성공 로켓","Deploy rocket"],"cicheck":["초록 체크 뱃지","Green CI check"],"enterwait":["엔터 키 대기","Waiting on Enter"],"staticfur":["정전기 폭발","Static shock"],"donebell":["끝났다옹 종 울리기","Done! bell"],"giantfist":["거대 주먹 쾅쾅","Giant fist smash"],"ufo":["UFO 납치","UFO abduction"],"karaoke":["노래방 열창","Karaoke belter"],"coffee":["커피 한 잔","Coffee break"],"stretch":["기지개","Big stretch"],"fishthink":["생선 상상하기","Daydreaming of fish"],"hooray":["임무 완료","Mission complete"],"nodoff":["꾸벅꾸벅","Nodding off"],"foodsign":["\"FOOD\" 피켓 시위","\"FOOD\" protest"],"zoomies":["우다다","Zoomies"],"box":["박스 들어가기","If it fits, I sits"],"bath":["거품 목욕","Bubble bath"],"blowkiss":["하트 날리기","Blowing hearts"],"melt":["녹아내리기","Melting"],"startle":["화들짝","Startled"],"slowblink":["고양이 키스 (천천히 깜빡)","Slow blink"],"tapfoot":["발 동동 시계 보기","Foot-tapping clock watch"],"pray":["제발요 기도","Pretty please"],"snot":["코풍선","Snot bubble"],"raisehand":["저요 저요!","Me! Me!"],"fooddream":["맛있는 상상","Daydreaming of food"]},"c":{"xfrostmonarch":["서리 군주","Frost Monarch"],"xphoenixking":["불사조 왕","Phoenix King"],"magicalgirl":["야옹나라 냥냥공주","Magical girl ☆ Lumi"],"holyknight":["츄르를 수호하는 신의 기사단","Holy Knight Sworn to Guard Churu"],"sunwukong":["근두운 할부 중인 제천대성","Great Sage on a Cloud Payment Plan"],"dinosuit":["크아앙 공룡 잠옷","Rawr dino onesie"],"ironcat":["아이언냥 Mk. 1","Iron Cat Mk. 1"],"mondaydev":["월요일 아침 배포 개발자","Monday-deploy developer"],"overtimer":["야근 요정 김대리 (사원증 포함)","Overtime office fairy"],"nyangwarts":["빗자루 면허 없는 냥그와트 1학년","Meowgwarts First Year (No Broom License)"]},"f":{"pigeon":["구구단","Times Table"],"hedgehog":["고도리","Godori"],"raccoon":["라면이","Ramen"],"dust":["먼지","Dusty"],"coal":["연탄이","Coal"],"tofu":["두부","Tofu"],"bolt":["최번개","Bolt Choi"],"dondon":["돈돈까스","Don Donkatsu"]}};
@@ -50,7 +50,12 @@ const TEXT = {
     meta: '윈도우 10/11 · macOS (M칩·인텔) · 대화 내용은 읽지 않아요',
     hint: '<b>▸</b> 고양이를 눌러 쓰다듬고, 끌어서 들어 올려 보세요',
     viewMobile: '모바일', viewDesktop: '데스크톱', swipe: '◂ 옆으로 넘겨 보세요 ▸',
-    termTitle: 'claude — ~/my-app',
+    app: { title: 'AI 채팅', new: '새 채팅', placeholder: '무엇이든 물어보세요', you: '나' },
+    scenes: [
+      { q: '다음 주 발표 목차 좀 짜 줘', a: ['좋아요! 이렇게 짜 볼게요.', '1. 지금 무엇이 문제인지', '2. 어떻게 풀었는지', '3. 결과와 다음 단계'] },
+      { q: '이 보고서 전체를 자연스럽게 다듬어 줘', a: ['처음부터 끝까지 다듬었어요.', '문장 42곳을 고치고 흐름을 정리했어요.'], meta: '7분 동안 작성함', long: true },
+      { q: '지금까지 얘기한 거 표로 정리해 줘', a: ['네, 한눈에 보이게 정리했어요.', '항목 · 결정 · 담당 · 마감'], ctx: true },
+    ],
     names: { cat: '클로', dur: '2시간' },
     lines: {
       session: ['새 세션이다! 오늘은 뭘 만들어 볼까?', '좋아, 시작해 보자! 뭐부터 건드려 볼까?', '클로 준비 완료! 업무 시작이다!!'],
@@ -61,6 +66,7 @@ const TEXT = {
       caught: ['잡았다!', '헤헤 내가 이겼어', '한 번 더!', '나.. 혹시 사냥 천재..?'],
       stop: ['끝났다! 확인해 봐', '짠! 답변 나왔다옹', '작업 끝! 일동 박수!!', '됐다옹! 한번 봐 줘'],
       stopLong: ['7분 걸린 답 나왔어! 확인해 봐', '기다렸지? 7분짜리 답 도착!'],
+      contextWeb: ['이 대화 벌써 30번째 메시지야! 새 대화로 시작하면 더 정확해져'],
       notifyPermission: ['Bash 써도 되는지 물어봐!', 'Claude가 Bash 허락을 기다려', '허락이 필요해!'],
       lunch: ['점심시간이닷!!!!!', '오늘 뭐 먹을 거야?', '바빠도 점심 꼭 챙겨 먹어!'],
       late: ['1시야… 오늘은 여기까지 할까?', '이제 슬슬 졸리다. 우리 이제 자자', '내일은 내일의 해가 뜨겠지..'],
@@ -149,9 +155,9 @@ const TEXT = {
     },
     toolsEyebrow: '어떤 AI를 쓰든', toolsTitle: '쓰는 도구에 맞춰 연결해요', toolsLead: '터미널에서 쓰든 브라우저에서 쓰든 괜찮아요. 처음 켤 때 쓰는 도구를 고르면 연결 방법을 한 단계씩 안내해요.',
     tools: [
-      ['mood-thinking', 'Claude Code', '터미널 · IDE 에서', '대화 기록으로 자라고, hook 으로 허락 요청 · 작업 끝에 바로 반응해요.'],
-      ['c-mondaydev', 'Codex', '터미널 · IDE 에서', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.'],
-      ['mood-active', 'Claude · ChatGPT · Gemini', '브라우저에서', '작은 확장(크롬 · 엣지 · 웨일)을 넣으면 웹에서 쓸 때 자라요. 보냈다 · 답 끝 · 글자 수만 알려요.'],
+      ['tool-web', 'Claude · ChatGPT · Gemini', '브라우저에서', '작은 확장(크롬 · 엣지 · 웨일)을 넣으면 웹에서 쓸 때 자라요. 보냈다 · 답 끝 · 글자 수만 알려요.'],
+      ['tool-claude', 'Claude Code', '터미널 · IDE 에서', '대화 기록으로 자라고, hook 으로 허락 요청 · 작업 끝에 바로 반응해요.'],
+      ['tool-codex', 'Codex', '터미널 · IDE 에서', 'Codex 기록으로 자라고, 허락 요청과 작업 끝을 알려 줘요.'],
     ],
     dlEyebrow: '무료', dlTitle: '지금 받기', dlLead: '설치는 1분이면 끝나요.',
     win: { title: '윈도우', steps: ['설치 파일을 실행하면 관리자 권한 없이 설치되고 바로 켜져요.', '"Windows의 PC 보호" 창이 뜨면 <b>추가 정보 → 실행</b>.', '<b>새 버전은 자동으로</b> 받아서 설치해요.'], req: '윈도우 10 / 11 (64비트)' },
@@ -187,7 +193,12 @@ const TEXT = {
     hint: '<b>▸</b> Click the cat to pet it, drag it to pick it up',
     hintTouch: '<b>▸</b> Tap the cat to pet it, drag it to pick it up',
     viewMobile: 'Mobile', viewDesktop: 'Desktop', swipe: '◂ swipe ▸',
-    termTitle: 'claude — ~/my-app',
+    app: { title: 'AI Chat', new: 'New chat', placeholder: 'Ask anything', you: 'You' },
+    scenes: [
+      { q: 'Outline my talk for next week', a: ['Sure! Here is a simple flow.', '1. What the problem is', '2. How we solved it', '3. Results and next steps'] },
+      { q: 'Polish this whole report so it reads naturally', a: ['Done, from start to finish.', 'I fixed 42 sentences and tidied the flow.'], meta: 'Worked for 7 min', long: true },
+      { q: 'Turn everything we discussed into a table', a: ['Here it is, all in one view.', 'Item · Decision · Owner · Due'], ctx: true },
+    ],
     names: { cat: 'Klo', dur: '2h' },
     lines: {
       session: ['New session! What are we making today?', "Let's go! I'll cheer from right here", 'Klo is ready!'],
@@ -198,6 +209,7 @@ const TEXT = {
       caught: ['Gotcha!', 'Hehe, I win', 'Again!'],
       stop: ['Done! Take a look', 'Ta-da!', 'Ooh, this one looks good', 'Finished! Applause please'],
       stopLong: ['A 7m answer is ready! Take a look', 'Worth the wait? 7m answer arrived!'],
+      contextWeb: ['Message 30 in this chat! A new chat will be more accurate'],
       notifyPermission: ['Can Claude use Bash? It is asking!', 'Claude needs your OK for Bash', 'Permission needed!'],
       lunch: ['Lunch time! Eat well so the afternoon goes well', "Hungry? Let's eat first!"],
       late: ['1 a.m.… shall we stop here?', 'Yawn… let us sleep', 'Tomorrow-you will handle it'],
@@ -287,9 +299,9 @@ const TEXT = {
     },
     toolsEyebrow: 'Whatever AI you use', toolsTitle: 'Connects the way you work', toolsLead: 'Terminal or browser, it works either way. Pick your tool the first time you open it and the app walks you through connecting, one step at a time.',
     tools: [
-      ['mood-thinking', 'Claude Code', 'In the terminal or IDE', 'Grows from your history and reacts right away to permission requests and finished work through hooks.'],
-      ['c-mondaydev', 'Codex', 'In the terminal or IDE', 'Grows from your Codex sessions and tells you about permission requests and finished replies.'],
-      ['mood-active', 'Claude · ChatGPT · Gemini', 'In the browser', 'Add a small extension (Chrome, Edge, Whale) and it grows while you chat on the web. It only reports sent, answered and length.'],
+      ['tool-web', 'Claude · ChatGPT · Gemini', 'In the browser', 'Add a small extension (Chrome, Edge, Whale) and it grows while you chat on the web. It only reports sent, answered and length.'],
+      ['tool-claude', 'Claude Code', 'In the terminal or IDE', 'Grows from your history and reacts right away to permission requests and finished work through hooks.'],
+      ['tool-codex', 'Codex', 'In the terminal or IDE', 'Grows from your Codex sessions and tells you about permission requests and finished replies.'],
     ],
     dlEyebrow: 'Free', dlTitle: 'Get it now', dlLead: 'Installing takes about a minute.',
     win: { title: 'Windows', steps: ['Run the installer. It installs for your account (no admin rights) and opens right away.', 'If "Windows protected your PC" appears, click <b>More info → Run anyway</b>.', '<b>New versions install automatically.</b>'], req: 'Windows 10 / 11 (64-bit)' },
@@ -313,12 +325,6 @@ const TEXT = {
   },
 };
 
-// 첫 화면 터미널 연기 (영어 그대로). 단계: p 입력 · o 출력 · a 허락 묻기 · d 끝. 고양이가 단계마다 따라 움직인다 (site.js)
-const TERM = [
-  { cmd: 'fix the login redirect bug', out: ['Reading src/auth/login.ts', 'Editing 2 files'], ask: 'Allow Bash: npm test?', after: ['42 tests passed'], done: 'Done in 7m 12s', end: 'm-donebell', long: true },
-  { cmd: 'add a dark mode toggle', out: ['Reading src/theme.css', 'Writing src/ThemeToggle.tsx'], ask: 'Allow Bash: npm run build?', after: ['Build succeeded'], done: 'Done in 1m 52s', end: 'm-cicheck' },
-  { cmd: 'deploy to staging', out: ['Checking git status', 'Running release script'], ask: 'Allow Bash: npm run deploy?', after: ['Uploaded 14 files'], done: 'Deployed in 3m 05s', end: 'm-deployrocket' },
-];
 
 // 대화 맛보기 (0.5.0): 냥운세 · 초성 퀴즈 문제 · 성격 이름 · 성격별 점심 말풍선은 앱에서 그대로 뽑아 온다
 // (스크래치패드 extract-chat.js: 앱 src/renderer/i18n.js + src/main/companion.js → site/chat.json). 운세는 앱과 같은 날짜 시드라 결과도 같다
@@ -347,7 +353,7 @@ function page(t) {
   const totals = { motions: 87, costumes: 320 };
   const motionNames = Object.fromEntries(RANDOM.map((k) => ['m-' + k, NAMES.m[k][i]]));
   const chat = CHAT[t.lang];
-  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: RANDOM.map((k) => 'm-' + k), term: TERM, foods: FOODS, toys: t.toys, ui: t.ui,
+  const KC = { base: b + 'assets/sprites/', sprites: SPRITES, lines: t.lines, names: t.names, motionNames, randomMotions: RANDOM.map((k) => 'm-' + k), scenes: t.scenes, foods: FOODS, toys: t.toys, ui: t.ui,
     chat: { ...chat, talk: t.talk, lang: t.lang } };
   const dlButtons = `
         <a class="btn primary" data-dl="win" href="${REL}">${WIN_ICON}${t.dlWin} <small>${t.free}</small></a>
@@ -403,12 +409,21 @@ function page(t) {
       <p class="mobile-note" hidden>${t.mobile} <button type="button" data-send data-title="${t.sendTitle}" data-text="${t.sendText}" hidden>${t.send}</button> <a class="mail" data-mail data-title="${t.sendTitle}" data-text="${t.sendText}" href="#">${t.mail}</a> <button type="button" data-copy data-done="${t.copied}">${t.copy}</button></p>
     </div>
     <div>
-      <div class="screen">
-        <div class="bar"><i></i><i></i><i></i><span>${t.termTitle}</span></div>
-        <div class="term" id="term" aria-hidden="true"></div>
-        <div class="stage" id="hero-stage">
-          <div class="pet"><div class="bubble"></div><canvas></canvas></div>
+      <div class="monitor">
+        <div class="mon-screen">
+          <div class="app" aria-hidden="true">
+            <div class="bar"><i></i><i></i><i></i><span>${t.app.title}</span></div>
+            <div class="app-body">
+              <div class="app-side"><b>＋ ${t.app.new}</b><span></span><span></span><span></span></div>
+              <div class="app-main"><div class="app-log" id="app-log"></div><div class="app-input"><span id="app-input" data-ph="${t.app.placeholder}"></span><i>↑</i></div></div>
+            </div>
+          </div>
+          <div class="stage" id="hero-stage">
+            <div class="pet"><div class="bubble"></div><canvas></canvas></div>
+          </div>
+          <div class="taskbar" aria-hidden="true"><i></i><i></i><i></i><span>${t.names.cat}</span></div>
         </div>
+        <div class="mon-neck" aria-hidden="true"></div><div class="mon-foot" aria-hidden="true"></div>
       </div>
       <p class="hint"${touch(t.hintTouch)}>${t.hint}</p>
     </div>

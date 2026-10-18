@@ -174,46 +174,54 @@
 
   // 첫 화면: 터미널에서 일이 돌아가는 동안 고양이가 따라 연기한다 (같이 타이핑 → 허락 기다림 → 끝났다고 박수)
   const hero = $('#hero-stage');
-  if (hero) runTerm(walker(hero, { noFollow: true, start: 0.5 }), $('#term'));
-  async function runTerm(h, term) {
+  if (hero) runChat(walker(hero, { noFollow: true, start: 0.5 }), $('#app-log'), $('#app-input'));
+  // 첫 화면: 모니터 속 AI 채팅 앱에서 질문 → 답이 쓰이는 동안 고양이는 화면 아래에서 노트북을 두드리고,
+  // 짧은 답엔 폴짝, 오래 걸린 답 · 길어진 대화에만 말풍선 (앱 0.5.0 의 말풍선 규칙 그대로)
+  async function runChat(h, log, input) {
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-    const line = (cls, text = '') => {
+    const msg = (cls, text = '') => {
       const d = document.createElement('div');
-      d.className = cls;
+      d.className = 'm ' + cls;
       d.textContent = text;
-      term.appendChild(d);
-      while (term.children.length > 7) term.firstChild.remove();
+      log.appendChild(d);
+      while (log.children.length > 6) log.firstChild.remove();
+      log.scrollTop = log.scrollHeight;
       return d;
     };
-    const type = async (d, text) => {
-      d.classList.add('cur');
-      for (const ch of text) { d.textContent += ch; await sleep(40 + Math.random() * 50); }
-      d.classList.remove('cur');
-    };
-    h.act('a-wave'); // 세션 시작은 손 흔들기만 (0.5.0: 말풍선은 꼭 필요할 때만)
-    await sleep(250);
+    const ph = () => { input.textContent = ''; input.classList.add('ph'); };
+    h.act('a-wave');
+    ph();
+    await sleep(500);
     for (let i = 0; ; i++) {
-      const s = KC.term[i % KC.term.length];
-      term.innerHTML = '';
-      await type(line('p'), s.cmd);
+      const s = KC.scenes[i % KC.scenes.length];
+      if (i % KC.scenes.length === 0) log.innerHTML = '';
+      // 입력 칸에 질문을 치고 보낸다
+      input.classList.remove('ph');
+      input.classList.add('cur');
+      for (const ch of s.q) { input.textContent += ch; await sleep(45 + Math.random() * 45); }
+      input.classList.remove('cur');
       await sleep(350);
+      ph();
+      msg('me', s.q);
       h.loop('mood-thinking');
-      for (const o of s.out) { await sleep(1100); line('o', o); }
-      await sleep(900);
-      line('a', s.ask + ' (y/n)');
-      h.loop('m-enterwait');
-      h.say('notifyPermission', 'notify', 3000);
-      await sleep(3300);
-      await type(line('p'), 'y');
-      h.loop('mood-thinking');
-      for (const o of s.after) { await sleep(1200); line('o', o); }
-      await sleep(900);
-      line('d', s.done);
-      h.act(s.end);
-      if (s.long) h.say('stopLong', '', 3600); // 오래 걸린 답만 말풍선, 짧은 답은 모션만
-      await sleep(Math.max(4200, ((KC.sprites[s.end] || 48) / FPS) * 1000 + 600));
+      const a = msg('ai');
+      a.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>';
+      await sleep(s.long ? 2600 : 1300);
+      a.textContent = '';
+      for (const [n, line] of s.a.entries()) {
+        const p = document.createElement('p');
+        a.appendChild(p);
+        for (const w of line.split(/(\s+)/)) { p.textContent += w; log.scrollTop = log.scrollHeight; await sleep(55); }
+        if (n < s.a.length - 1) await sleep(120);
+      }
+      if (s.meta) { const m = document.createElement('small'); m.textContent = '⏱ ' + s.meta; a.appendChild(m); }
+      await sleep(250);
+      if (s.long) { h.act('m-donebell'); h.say('stopLong', '', 3800); }
+      else if (s.ctx) { h.act('m-fishthink'); h.say('contextWeb', 'notify', 4200); }
+      else h.act('a-happy'); // 짧은 답은 말풍선 없이 폴짝
+      await sleep(s.long || s.ctx ? 4600 : 2200);
       h.idle();
-      await sleep(2600);
+      await sleep(1600);
     }
   }
   const outro = $('#cta-stage');
