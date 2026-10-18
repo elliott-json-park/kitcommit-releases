@@ -459,7 +459,7 @@ function page(t) {
       <div class="caption"${touch(t.playCaptionTouch)}>${t.playCaption}</div>
     </div>
     <div class="actions">
-      ${t.acts.map(([a, ico, label]) => `<button class="btn" data-act="${a}" data-label="${label}"><span class="ico">${ico}</span>${label}${a === 'toy' ? ' <small></small>' : ''}</button>`).join('\n      ')}
+      ${t.acts.map(([a, ico, label], j) => `${j === 4 ? '<span class="br" aria-hidden="true"></span>' : ''}<button class="btn" data-act="${a}" data-label="${label}"><span class="ico">${ico}</span>${label}${a === 'toy' ? ' <small></small>' : ''}</button>`).join('\n      ')}
     </div>
   </div>
 </div></section>
